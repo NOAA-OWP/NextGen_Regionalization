@@ -10,7 +10,7 @@ A few notes:
  
 **The NWM Regionalization Framework**
 
-![Framework](https://github.com/NOAA-OWP/NextGen_Regionalization/tree/master/images/Framework.png?raw=true)
+![Framework](https://github.com/NOAA-OWP/NextGen_Regionalization/tree/master/images/Framework.png?raw=false)
 ![Framework](https://raw.githubusercontent.com/NOAA-OWP/NextGen_Regionalization/master/images/Framework.png)
 
 ## Dependencies
