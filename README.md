@@ -10,7 +10,7 @@ A few notes:
  
 **The NWM Regionalization Framework**
 
-![](https://raw.githubusercontent.com/NOAA-OWP/owp-open-source-project-template/master/doc/Screenshot.png)
+![](https://raw.githubusercontent.com/NOAA-OWP/owp-open-source-project-template/master/doc/NWM_regionalization_framework.png)
 
 
 ## Dependencies
