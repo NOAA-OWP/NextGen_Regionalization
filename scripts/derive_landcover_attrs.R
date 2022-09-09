@@ -63,7 +63,7 @@ crs(s1) <- crs(m0); extent(s1) <- extent(m0); res(s1) <- res(m0)
 strs <- c("urban", "forest","shrub","grassland","cropland","wetland")
 ids <- list(1,11:15,8:9,7,2:6,c(10,17:18))
 for (str1 in strs) {
-  r2 <- calc(s1[[ids[[str1]]]],sum)
+  r2 <- calc(s1[[ids[[match(str1,strs)]]]],sum)
   huc01 <- execute_zonal(rast(r2),geom=huc01,ID="id",FUN="mean",join=TRUE)
   huc01$V1 <- round(huc01$V1, 2)
   names(huc01)[names(huc01)=="V1"] <- paste0(ids[[str1]],"_nwm")

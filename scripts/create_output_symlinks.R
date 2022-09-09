@@ -1,3 +1,6 @@
+# For a mosaic run, create symlinks to ngen output files from existing runs of homogeneous formulation,
+# to avoid reruns and save disk space and computing time 
+
 rm(list=ls())
 
 library(data.table)

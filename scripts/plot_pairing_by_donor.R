@@ -1,3 +1,5 @@
+# plot door-receiver pairing on multi-panel spatial maps
+
 rm(list=ls())
 
 library(sf)

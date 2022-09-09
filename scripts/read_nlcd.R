@@ -1,5 +1,3 @@
-setwd("C:/Users/***REMOVED***/Desktop/Ngen/regionalization/scripts")
-
 library(zonal)
 library(sf)
 library(terra)

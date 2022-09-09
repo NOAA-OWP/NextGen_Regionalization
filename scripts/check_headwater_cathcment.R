@@ -1,3 +1,4 @@
+# temporary script to select and plot a few headwater catchments for regionalization illustration
 
 library(sf)
 

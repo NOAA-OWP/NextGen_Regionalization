@@ -1,3 +1,5 @@
+# read 250m Hydrologic Soil Group data for HUC-01
+
 rm(list=ls())
 
 library(zonal)

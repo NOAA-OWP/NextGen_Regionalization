@@ -1,4 +1,5 @@
-#
+# read optimal parameter values from calibration
+
 rm(list=ls())
 setwd("C:/Users/***REMOVED***/Desktop/Ngen/regionalization/scripts")
 
