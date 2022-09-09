@@ -12,7 +12,7 @@ A few notes:
 
 ![](https://github.com/NOAA-OWP/NextGen_Regionalization/tree/master/doc/Screenshot.png?raw=true)
 
-![](https://raw.githubusercontent.com/NOAA-OWP/owp-open-source-project-template/master/doc/Framework.png)
+![](https://raw.githubusercontent.com/NOAA-OWP/owp-open-source-project-template/master/doc/Screenshot.png)
 
 
 ## Dependencies
