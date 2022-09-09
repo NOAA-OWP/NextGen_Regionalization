@@ -4,9 +4,9 @@
 
 A few notes:
 
-  - **scripts**: A collection of scripts related to computing catchment attributes and generating the donor-receiver pairings 
   - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region might require adjustments to the scripts
-  - **fihm**: A collection of scripts related to generating ngen regionalization files and processing/analyzing the outputs for the FIHM AOP
+  - **./scripts**: A collection of scripts related to computing catchment attributes and generating the donor-receiver pairings 
+  - **./fihm/scripts**: A collection of scripts related to generating ngen regionalization files and processing/analyzing the outputs for the FIHM AOP
  
 **The NWM Regionalization Framework**
 
