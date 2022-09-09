@@ -10,11 +10,11 @@ A few notes:
  
 **The NWM Regionalization Framework**
 
-![TEST](https://github.com/NOAA-OWP/NextGen_Regionalization/tree/master/images/Framework.png?raw=true)
+[TEST](https://github.com/NOAA-OWP/NextGen_Regionalization/tree/master/images/Framework.png?raw=true)
 
 ## Dependencies
 
-The scripts uses a series of R libraries including the zonal package in the ![hydrofabric](https://github.com/NOAA-OWP/hydrofabric) tools 
+The scripts uses a series of R libraries including the zonal package in the [hydrofabric](https://github.com/NOAA-OWP/hydrofabric) tools 
 
 ## Credits and references
 
