@@ -20,7 +20,8 @@ The scripts uses a series of R libraries including the zonal package in the [hyd
 
 **Acknowlegement**: The NextGen regionalization framework was adapted from the NWM v3 regionalization work and has benefited from discussions and help from the NWM calibration team, as well as the valuable feedback from the RFCs.
 
-**References**
+**References**:
+
 Addor, N., A.J. Newman, N. Mizukami, and M.P. Clark, 2017. The CAMELS data set: catchment attributes and meteorology for large-sample studies. Hydrol. and Earth Syst. Sci., 21, 5293-5313, doi:10.5194/hess-21-5293-2017
 
 Winter, T. C. (2001) The concept of hydrologic landscapes. J. Am. Water Resour. Assoc. 37, 335–349.
