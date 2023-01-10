@@ -1,11 +1,11 @@
 library(hydrofabric)
-library(dplyr)
 library(sf)
+library(dplyr)
 library(data.table)
+source("network_subsetting.R")
 
-# check crosswalk for gage ID/ngen ID
-gfile <- "shapefile/nextgen_01.gpkg"
-cw1 <- read_sf(gfile, 'crosswalk')
+gfile <- 'shapefile/nextgen_01.gpkg'
+cw1 <- read_sf(gfile, 'lookup_table')
 subcw <- subset(cw1, POI_TYPE=="Gages", select=c("id","toid","POI_ID","POI_VALUE"))
 
 # trace the network from the ngen ID associated with the gage
@@ -13,12 +13,16 @@ df1 <- tibble()
 for (i in 1:nrow(subcw)) {
   print(i)
   cw <- subcw[i, ]
-  trace <- subset_network(gfile, origin=cw$id)
-
+  trace = subset_network(gpkg         = gfile,
+                     origin           = cw$toid,
+                     attribute_layers = c("flowpath_attributes",
+                                          "lake_attributes",
+                                          "cfe_noahowp_attributes",
+                                          "forcing_attributes"))
   # extract upstream catchment  
   catchments <- trace$divides
   catchments['gages'] <- cw$POI_VALUE
-  df1 <- rbind(df1, catchments)
+  df1 <- rbind(df1, catchments)                                        
 }
 
 # save 

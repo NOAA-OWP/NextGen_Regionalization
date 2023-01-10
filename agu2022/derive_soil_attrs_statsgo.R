@@ -9,22 +9,23 @@ library(terra)
 library(stars)
 library(raster)
 
-soil_raster <- TRUE #if soil property rasters already exist
+ver1 <- "v1.2"
+soil_raster <- FALSE #if soil property rasters already exist
 
 # attributes to compute
 pars <- c("soil_depth","soil_porosity","soil_conductivity","sand_frac","silt_frac","clay_frac","organic_frac","water_frac","other_frac")
 
-# read HUC-01 geojson into sf
-huc01 <- st_read("shapefile/catchment_data_drano.geojson")
+message("read HUC-01 geojson into sf")
+huc01 <- st_read(paste0("../datasets/gpkg_",ver1,"/catchment_data.geojson"))
 
 # if soil property rasters do not already exist, rasterize the shapefile first
 if ((!soil_raster)) {
   
-# load the original pennstate data
+message("load the original pennstate data")
 s1 <- st_read("../shapefile/statsgo_v5_WGS84.shp")
 
-# load huc01 catchment raster (30m)
-r1 <- rast("../datasets/elev/huc01_catchments_30m.tif")
+message("load DEM (30m) for raster template")
+r1 <- rast(paste0("../datasets/elev_",ver1,"/DEM_huc01_30m.tif"))
 
 # Compute soil properties following Addor et al. 2017 (Table 5) and Cosby et al. 1984 (Table 4)
 # Addor N.,A. J. Newman, N. Mizukami, and M. P. Clark, 2017: The CAMELS data set: catchment attributes and meteorology for large-sample studies. Hydrol. Earth Syst. Sci., 21, 5293–5313, https://doi.org/10.5194/hess-21-5293-2017
@@ -89,11 +90,10 @@ for (p1 in pars) {
 }
     
 message("derive soil parameter rasters and save to disk")
-grd = st_as_stars(st_bbox(r1),nx=ncol(r1),ny=nrow(r1), values = NA)
 for (p1 in pars) {
   message(p1)
-  r2 <- st_rasterize(s1[,p1],grd)
-  outfile <- paste0("../datasets/Statsgo_huc01/huc01_",p1,"_30m.tif")
+  r2 <- st_rasterize(s1[,p1],st_as_stars(st_bbox(r1),nx=ncol(r1),ny=nrow(r1), values = NA))
+  outfile <- paste0("../datasets/Statsgo_huc01_",ver1,"/huc01_",p1,"_30m.tif")
   if (!dir.exists(dirname(outfile))) dir.create(dirname(outfile),recursive=TRUE)
   write_stars(r2,outfile)
 }
@@ -103,7 +103,7 @@ message("compute areal mean for huc01 catchments")
 attrs <- data.table(id=huc01$id)
 for (p1 in pars) {
   message(p1)
-  outfile <- paste0("../datasets/Statsgo_huc01/huc01_",p1,"_30m.tif")
+  outfile <- paste0("../datasets/Statsgo_huc01_",ver1,"/huc01_",p1,"_30m.tif")
   r2 <- rast(outfile)
   if (p1 == "soil_conductivity") {
     r2[is.na(r2)] <- -999 #gm_mean function requires source data with no NA values
@@ -115,12 +115,12 @@ for (p1 in pars) {
   attrs <- merge(attrs, dt1, by="id", all=TRUE)
   rm(r2); gc()
 }
-save(attrs,file="output/soil_attr_huc01_statsgo.Rdata")
+save(attrs,file=paste0("output/",ver1,"soil_attr_huc01_statsgo.Rdata"))
 
 message("compute data coverage for each parameter (if there are data gaps)")
 for (p1 in pars) {
   message(p1)
-  outfile <- paste0("../datasets/Statsgo_huc01/huc01_",p1,"_30m.tif")
+  outfile <- paste0("../datasets/Statsgo_huc01_",ver1,"/huc01_",p1,"_30m.tif")
   r1 <- raster(outfile)
   r2 <- r1
   r2[] <- 1
@@ -138,7 +138,7 @@ for (p1 in pars) {
   
   rm(r1,r2); gc()
 }
-save(attrs,file="output/soil_attr_huc01_statsgo.Rdata")
+save(attrs,file=paste0("output/",ver1,"/soil_attr_huc01_statsgo.Rdata"))
 
 # check attribtue summary
 for (c1 in pars) {
@@ -153,7 +153,7 @@ plot(huc01[pars],border=NA)
 # plot the attributes separately with legend
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc01.png"),width = 5,height=5,units="in",res=300)
+  png(filename = paste0("figs/",ver1,"/attr_",c1,"_huc01.png"),width = 5,height=5,units="in",res=300)
   print(plot(huc01[c1], border=NA, key.pos=1))
   dev.off()
 }

@@ -9,8 +9,10 @@ library(data.table)
 library(ncdf4)
 library(raster)
 
+ver1 <- "v0"
+
 # read HUC-01 geojson into sf
-huc01 <- st_read("shapefile/catchment_data_drano.geojson")
+huc01 <- st_read(paste0("../datasets/gpkg_",ver1,"/catchment_data.geojson"))
 
 # ncld land cover class
 nlcd <- rast("../datasets/nlcd/nlcd_2019_land_cover_l48_20210604/nlcd_2019_land_cover_l48_20210604.img")
@@ -20,14 +22,14 @@ nlcd <- rast("../datasets/nlcd/nlcd_2019_land_cover_l48_20210604/nlcd_2019_land_
 system.time({
   lc_prc <- execute_zonal(nlcd,geom=huc01,ID="id",FUN="freq",join=FALSE)
 })
-save(lc_prc, file="output/nlcd_lc_perc_huc01.Rdata")
+save(lc_prc, file=paste0("output/",ver1,"/nlcd_lc_perc_huc01.Rdata"))
 
 # initialize the attribute data table
 attrs <- data.table(id=huc01$id)
 
 # fraction of various landcover classes from NLCD
-strs <- c("urban", "forest","shrub","grassland","cropland","wetland")
-ids <- list(21:24,41:43,52,71,81:82,c(90,95))
+strs <- c("urban", "forest","shrub","grassland","cropland","wetland","water")
+ids <- list(21:24,41:43,52,71,81:82,c(90,95),11)
 names(ids) <- strs
 for (s1 in strs) {
   tmp <- subset(lc_prc,value %in% ids[[s1]])
@@ -43,7 +45,7 @@ nlcd_cov <- l1[,.(nlcd_coverage=sum(percentage)),by=.(id)]
 attrs <- merge(attrs,nlcd_cov,by="id",all=TRUE)
 
 # save the computed attributes 
-save(attrs,file="output/landcover_attr_huc01.Rdata")
+save(attrs,file=paste0("output/",ver1,"/landcover_attr_huc01.Rdata"))
 
 #USGS 24 class land cover (1km) used by the NWM;   
 f1 <- "../datasets/nwm_lc_1km/geo_em_conus_elev_landcover.nc"
@@ -58,8 +60,8 @@ s1 <- do.call(stack,lapply(1:dim(v1)[3], function(x) raster(t(v1[,,x])[nrow(t(v1
 crs(s1) <- crs(m0); extent(s1) <- extent(m0); res(s1) <- res(m0)
 
 # fraction of various landcover types from the 1-km NWM dataset
-strs <- c("urban", "forest","shrub","grassland","cropland","wetland")
-ids <- list(1,11:15,8:9,7,2:6,c(10,17:18))
+strs <- c("urban", "forest","shrub","grassland","cropland","wetland","water")
+ids <- list(1,11:15,8:9,7,2:6,c(10,17:18),16)
 for (str1 in strs) {
   r2 <- calc(s1[[ids[[match(str1,strs)]]]],sum)
   dt1 <- execute_zonal(rast(r2),geom=huc01,ID="id",FUN="mean",join=FALSE)
@@ -105,7 +107,7 @@ attrs <- merge(attrs, dt1, by="id", all=TRUE)
 nc_close(nc)
 
 # save the computed attributes 
-save(attrs,file="output/landcover_attr_huc01.Rdata")
+save(attrs,file=paste0("output/",ver1,"/landcover_attr_huc01.Rdata"))
 
 # check attribtue summary
 pars <- names(attrs)
@@ -119,7 +121,7 @@ for (c1 in pars) {
 huc01 <- merge(huc01, attrs, by="id", all=TRUE)
 for (str1 in strs) {
   message(str1)
-  png(filename = paste0("figs/attr_",str1,"_huc01.png"),width = 12,height=5,units="in",res=300)
+  png(filename = paste0("figs/",ver1,"/attr_",str1,"_huc01.png"),width = 12,height=5,units="in",res=300)
   huc01[[paste0(str1,"_diff")]] <- abs(huc01[[paste0(str1,"_nlcd")]] - huc01[[paste0(str1,"_nwm")]])
   print(plot(huc01[c("nlcd_coverage",paste0(str1,c("_nlcd","_nwm","_diff")))], border=NA, key.pos=1))
   dev.off() 
@@ -129,7 +131,7 @@ for (str1 in strs) {
 pars <- c("gvf_max", "gvf_diff","lai_max","lai_diff")
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc01.png"),width = 5,height=5,units="in",res=300)
+  png(filename = paste0("figs/",ver1,"/attr_",c1,"_huc01.png"),width = 5,height=5,units="in",res=300)
   print(plot(huc01[c1], border=NA, key.pos=1))
   dev.off()
 }
