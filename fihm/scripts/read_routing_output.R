@@ -16,7 +16,8 @@ date1 <- "20081001"
 date2 <- "20140930"
 regs <- "hlr" # regionalization scenarios
 runs <- c("CFE","TOPMODEL","mosaic") # model scenarios
-runs <- c("TOPMODEL")
+runs <- c("CFE")
+calib_scenario <- "kge-dds"
 
 # get crosswalk table
 cwt <- read.csv("../data/nhd-crosswalk.csv")
@@ -35,7 +36,8 @@ cwt1 <- cwt1[!duplicated(cwt1),]
 for (reg1 in regs) {
 for (run1 in runs) {
 
-    scenario <- paste0("noah_owp_",run1,".",reg1)
+    #scenario <- paste0("noah_owp_",run1,".",reg1)
+    scenario <- paste0(run1,"_",reg1,"_",calib_scenario)
     message(scenario)
     
     # read in output in hdf5 format
@@ -47,7 +49,8 @@ for (run1 in runs) {
     # Get indices for retrieving hourly streamflow for all gages in the crosswalk table
     # Note the hdf5 file stores three variables (flow, velocity & depth) every 5 minutes
     dims <- as.numeric(strsplit(subset(h5ls(file1),group=="/qvd" & name=="block0_values")$dim,split=" x ")[[1]])   
-    idx1 <- seq(1,dims[1],by=36) # time dimension
+    #idx1 <- seq(1,dims[1],by=36) # time dimension
+    idx1 <- seq(1,dims[1],by=3) # time dimension
     idx2 <- match(cwt1$ID,ids) # catchment dimension
     flows <- flow[idx1,idx2]
     flows <- as.data.table(flows)
