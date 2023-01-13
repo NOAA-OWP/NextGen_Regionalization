@@ -3,6 +3,11 @@
 # Multiple rounds are conducted to handle spatial gaps (NA values) in some attributes 
 #
 # This version allows donors and receivers to have different hydrofabric files
+# 
+# Here all calibration basins (regardless of their performance during calibration) are used as donors.
+# These runs are used to assess the model (CFE and Topmodel) performance at the calibration basins,
+# with the old (FIM) version hydrofabric and BMI files. Note the basins were originally calibrated with 
+# new hydrofabric (v1.2) and BMI files.
 
 rm(list=ls())
 
@@ -10,8 +15,6 @@ library(data.table)
 library(sf)
 library(psych)
 library(cluster)
-
-calib_scenario <- "nse"
 
 # algorithm parameters
 minAttrDist <- 0.1 #minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
@@ -45,13 +48,10 @@ ver_receiver <- "v0"
 ver_donor <- "v1.2"
 
 # calib gages
-f1 <- paste0("data/calib_",calib_scenario,"_dds/cfe_noah_",calib_scenario,"_calib_best_params_2016_2021.csv")
+f1 <- "data/calib_kge_dds/cfe_noah_kge_calib_best_params_2016_2021.csv"
 gages_calib <- unique(read.csv(f1,header=TRUE,colClasses=c("site_no"="character"))$site_no)  
 
 # donors
-models <- c("CFE","TOPMODEL") 
-for (m1 in models) {
-
 cwt <- get(load(paste0("output/",ver_donor,"/crosswalk_gage_cat_huc01.Rdata")))
 donorsAll <- unique(subset(cwt, gages %in% gages_calib)$id)
 
@@ -74,7 +74,7 @@ receiversAll <- dtAttrReceiver$id
 dtAttrAll <- rbind(dtAttrDonor, dtAttrReceiver)
 
 # compute spatial distance between all receivers and donors if not already exists
-f1 <- paste0("output/",ver_receiver,"/dist_spatial_all_",calib_scenario,"_dds_",m1,"_no_screening.Rdata")
+f1 <- paste0("output/",ver_receiver,"/dist_spatial_all_no_screening.Rdata")
 if (file.exists(f1)) {
   distSpatial0 <- get(load(f1))
 } else {
@@ -114,7 +114,7 @@ for (scenario in scenarios) {
   if (ver_donor == ver_receiver) 
     dtDonorAll <- data.table(id=donorsAll, donor=donorsAll, distAttr=0, distSpatial=0, tag="donor")
   
-  outfile <- paste0("output/",ver_receiver,"/donor_",scenario,"_",calib_scenario,"_dds_",m1,"_no_screening.Rdata")
+  outfile <- paste0("output/",ver_receiver,"/donor_",scenario,"_dds_no_screening.Rdata")
   if (file.exists(outfile)) dtDonorAll <- get(load(outfile))
 
   # "base" is used for catchments where no donor is found for the given scenario
@@ -226,7 +226,7 @@ for (scenario in scenarios) {
         
         message(paste0("Round ", kround,": ", rec1," ", match(rec1, recs)))
         
-        #if (rec1=="cat-26665") stop()
+        #if (rec1=="cat-11477") stop()
 
         # find donors within the defined buffer iteratively so that donors with attr distance
         # below the predefined value can be found
@@ -235,8 +235,14 @@ for (scenario in scenarios) {
           
           buffer <- buffer + 100
           
-          # narrow down to donors within the buffer
-          donors1 <- names(which(distSpatial0[rec1,donorsAll1]<= buffer))
+          # if there exists donor catchment within 1km, select that catchment as donor
+          donors1 <- names(which(distSpatial0[rec1,donorsAll1]<=1))
+          if (length(donors1)>0) {
+            donors1 <- donors1[which.min(distSpatial0[rec1,donors1])]
+          } else {
+            # narrow down to donors within the buffer
+            donors1 <- names(which(distSpatial0[rec1,donorsAll1]<= buffer))
+          }
 
           # potential donors with dist <= maxAttrDist
           dist1 <- distAttr0[match(rec1,receiversAll1),]
@@ -341,4 +347,3 @@ for (scenario in scenarios) {
   # save to csv for porpulating the realization file
   #write.csv(dtDonorAll,file=paste0("output/",ver_receiver,"/donor_",scenario,".csv"),quote=FALSE)
 } #loop scenario
-} #loop model

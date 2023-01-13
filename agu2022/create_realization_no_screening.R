@@ -1,5 +1,8 @@
 # create realization files from a template containing all models (currently CFE and TOPMODEL), 
 # using donor pairing and calibrated parameters for donor catchments
+# 
+# This version creates realization files for CFE and Topmdel, respectively, using all 50 calibration
+# basins as donors (i.e., no donor screening)
 
 rm(list=ls())
 
@@ -10,79 +13,38 @@ library(jsonlite)
 library(magrittr)
 library(dplyr)
 
+calib_scenario <- "nse"
 ver_donor <- "v1.2"
 ver_receiver <- "v0"
-screening <- "kge_nse"
 
-# calibration gages screened for performance to be used as donors
-gages_calib <- get(load(paste0("output/",ver_receiver,"/calib_gages_screened_",screening,".Rdata")))
-
-# stats simulated with old BMI and hydrofabric
-load("stat/stat_retro_20131001_20160930_no_screening.Rdata")
-stats0 <- subset(stats_str, site_no %in% gages_calib)
+run1 <- "camels"
 
 # upstream cathcments of gages
 cwt <- get(load(paste0("output/",ver_donor,"/crosswalk_gage_cat_huc01.Rdata")))
 
 # model/formulation scenarios
-models <- c("CFE","TOPMODEL","CFE+TOPMODEL") 
-
-# regionalization scenarios
-runs <- c("hlr","camels") 
-
-# calib scenarios
-calib_scenarios <- c("kge","nse")
-
-for (calib1 in calib_scenarios) {
+models <- c("CFE","TOPMODEL") 
 
 # loop through model scenarios
 for (model1 in models) {
-
-if (model1 != "CFE+TOPMODEL") {
-
-  # optimal parameters
-  f1 <- paste0("data/calib_",calib1,"_dds/",tolower(model1),"_noah_",calib1,"_calib_best_params_2016_2021.csv")
-  dtPars <- as.data.table(read.csv(f1,header=TRUE,colClasses=c("site_no"="character")))
-  dtPars<- setNames(split(dtPars, seq(nrow(dtPars))), dtPars$site_no) #convert to list
-  dtPars <- lapply(dtPars, function(x) {x$model <- model1;x})
-
-} else {
-
-  mods <- strsplit(model1,split="[+]")[[1]]
-  dtPars0 <- vector("list", length(mods))
-  names(dtPars0) <- mods
   
-  for (m1 in mods) {
+# optimal parameters
+f1 <- paste0("data/calib_",calib_scenario,"_dds/",tolower(model1),"_noah_",calib_scenario,"_calib_best_params_2016_2021.csv")
+dtPars <- as.data.table(read.csv(f1,header=TRUE,colClasses=c("site_no"="character")))
+dtPars<- setNames(split(dtPars, seq(nrow(dtPars))), dtPars$site_no) #convert to list
+dtPars <- lapply(dtPars, function(x) {x$model <- model1;x})
 
-    # optimal parameters
-    f1 <- paste0("data/calib_",calib1,"_dds/",tolower(m1),"_noah_",calib1,"_calib_best_params_2016_2021.csv")
-    dtPars0[[m1]] <- as.data.table(read.csv(f1,header=TRUE,colClasses=c("site_no"="character")))
-  }
-  
-  # get the optimal model and its parameters for each donor gage
-  dtPars <- vector("list",length(gages_calib))
-  names(dtPars) <- gages_calib
-  for (g1 in gages_calib) {
-    scenarios <- paste0(mods,"_",calib1,"_dds_no_screening")
-    stats1 <- subset(stats0,scenario %in% scenarios & site_no==g1)
-    mod1 <- strsplit(slice_max(stats1,get(toupper(calib1)))$scenario,split="_")[[1]][1]
-    dtPars[[g1]] <- subset(dtPars0[[mod1]], site_no==g1)
-    dtPars[[g1]]$model <- mod1
-  }
-}
-
-# loop through regionalization scenarios
-for (run1 in runs) {
+gages_calib <- unique(names(dtPars))
 
 # donor pairing
-dtDonorAll <- get(load(paste0("output/",ver_receiver,"/donor_",run1,"_",screening,".Rdata")))
+dtDonorAll <- get(load(paste0("output/",ver_receiver,"/donor_",run1,"_",calib_scenario,"_dds_",model1,"_no_screening.Rdata")))
 dtDonorAll <- dtDonorAll[,c("id","donor"), with=FALSE]
 
 # realization template file
 # set simplifyVector=FALSE to avoid reading into data.frame that would create issue for toJSON
 l1 <- fromJSON("realization/realization_template.json", simplifyVector=FALSE) 
 
-# loop through all receiver catchments
+# loop through all catchments
 for (id1 in dtDonorAll$id) {
     
     message(paste0(model1," ",run1," ",match(id1,dtDonorAll$id)))
@@ -99,7 +61,8 @@ for (id1 in dtDonorAll$id) {
     
     # if nested, assign to the inner gage
     if (length(gage1)>1) {
-      gage1 <- cwt %>% subset(gages %in% gage1) %>% count("gages") %>% slice_min(freq)
+      #gage1 <- cwt %>% subset(gages %in% gage1) %>% count("gages") %>% slice_min(freq)
+      gage1 <- cwt %>% subset(gages %in% gage1) %>% count(gages) %>% slice_min(n)
       gage1 <- gage1$gages
     }
 
@@ -131,7 +94,7 @@ for (c1 in cats_temp) l1$catchments[[c1]] <- NULL
 
 # write realization to file
 write(toJSON(l1,digits=7,pretty=TRUE,auto_unbox=TRUE),
-      paste0("realization/",model1,"_",run1,"_",calib1,".json"))
-}}}
+      paste0("realization/",model1,"_",calib_scenario,"_dds_no_screening.json"))
+}
 
 

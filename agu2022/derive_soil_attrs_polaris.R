@@ -1,4 +1,5 @@
 # Derive soil attributes from Polaris data
+# Note: not used for AGU 2022
 
 rm(list=ls())
 

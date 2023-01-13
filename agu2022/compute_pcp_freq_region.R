@@ -6,11 +6,11 @@ library(data.table)
 
 for (ver1 in c("v1.2","v0")) {
   
-  if (ver1 == "v1.2") {
-    date1 <- "20121001"; date2 <- "20210831"; years <- 2013:2020
-  } else if (ver1 == "v0") {
-    date1 <- "20070101"; date2 <- "20191231"; years <- 2008:2019
-  }
+if (ver1 == "v1.2") {
+  date1 <- "20121001"; date2 <- "20210831"; years <- 2013:2020
+} else if (ver1 == "v0") {
+  date1 <- "20070101"; date2 <- "20191231"; years <- 2008:2019
+}
   
 hours1 <- seq(as.POSIXct(paste0(years[1]-1,"1001"),format="%Y%m%d",tz="UTC"),
               as.POSIXct(paste0(years[length(years)],"093023"),format="%Y%m%d%H",tz="UTC"),by="hour")
@@ -19,7 +19,6 @@ hours0 <- seq(as.POSIXct(date1,format="%Y%m%d",tz="UTC"),
 ix1 <- match(hours1,hours0)
 if (sum(is.na(ix1))>0) stop("ERROR: dataset is not complete!")
 dates1 <- sort(unique(format(hours1,"%Y%m%d",tz="UTC")))
-
 
 # function for computing high/low precip duration
 myfunc <- function(x) {

@@ -1,3 +1,7 @@
+# create catchment and nexus geojson files for each individual calibration basins
+# (eventually not used for AGU 2022)
+#
+
 rm(list=ls())
 
 library(geojsonsf)

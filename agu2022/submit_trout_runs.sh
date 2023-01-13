@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# submit trout runs for different scenarios
+
 dir1=/home/***REMOVED***/NextGen_Regionalization/agu2022
 dir2=/local/ngen/data/fihm
 

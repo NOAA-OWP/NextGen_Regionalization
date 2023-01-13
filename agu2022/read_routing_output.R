@@ -15,12 +15,9 @@ library(magrittr)
 date1 <- "20121001"
 date2 <- "20160930"
 
-scenarios <- c("TOPMODEL_hlr_kge_dds", "CFE_hlr_kge_dds", "TOPMODEL_camels_kge_dds", "CFE_camels_kge_dds", "CFE+TOPMODEL_hlr_kge_dds", "CFE+TOPMODEL_camels_kge_dds")
-scenarios <- "CFE_hlr_kge"
-scenarios <- c("TOPMODEL_hlr_kge","TOPMODEL_camels_kge","CFE_camels_kge")
-scenarios <- c("CFE_hlr_nse","TOPMODEL_hlr_nse")
-scenarios <- c("CFE+TOPMODEL_camels_kge","CFE+TOPMODEL_hlr_kge")
-scenarios <- c("CFE_camels_nse","TOPMODEL_camels_nse","CFE+TOPMODEL_hlr_nse","CFE+TOPMODEL_camels_nse")
+scenarios <- C("CFE_hlr_kge", "TOPMODEL_hlr_kge","TOPMODEL_camels_kge","CFE_camels_kge", 
+               "CFE_hlr_nse","TOPMODEL_hlr_nse","CFE+TOPMODEL_camels_kge","CFE+TOPMODEL_hlr_kge",
+               "CFE_camels_nse","TOPMODEL_camels_nse","CFE+TOPMODEL_hlr_nse","CFE+TOPMODEL_camels_nse")
 
 # get crosswalk table
 cwt <- read.csv("data/nhd-crosswalk.csv")

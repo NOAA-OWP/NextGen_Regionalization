@@ -1,3 +1,6 @@
+
+# plot each donor and all of its receiver catchments using the same color on a spatial map
+
 rm(list=ls())
 
 library(sf)

@@ -1,3 +1,5 @@
+# retrieve the 30-m DEM raster from VRT for HUC-01
+
 rm(list=ls())
 
 library(zonal)
@@ -9,7 +11,6 @@ ver1 <- "v1.2"
 # read HUC-01 geojson into sf
 huc01 <- st_read("../datasets/gpkg_v1.2/catchment_data.geojson") 
 
-# retrieve the 30-m DEM raster from VRT for HUC-01
 system.time({
   r1 <- crop(
     #rast("/vsicurl/http://mikejohnson51.github.io/opendap.catalog/ned_1_tester.vrt"),

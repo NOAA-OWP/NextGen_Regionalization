@@ -1,10 +1,9 @@
+# compute area-weighted attributes for a gage given the attributes for all upstream catchments
+
 rm(list=ls())
 
 library(data.table)
 library(sf)
-
-# huc-01
-#huc01 <- st_read("shapefile/catchment_data.geojson")
 
 # upstream catchments of gages
 dtUpstream <- get(load("output/crosswalk_gage_cat_huc01.Rdata"))

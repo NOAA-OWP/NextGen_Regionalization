@@ -1,3 +1,5 @@
+# plot the upstream catchments of calibration basins in the old and new hydrofabrics 
+
 rm(list=ls())
 
 library(sf)
@@ -8,7 +10,7 @@ ver_receiver <- "v0"
 shps_rec <- st_read(paste0("../datasets/gpkg_",ver_receiver,"/catchment_data.geojson"))
 
 # HUC-01 nexus (old version)
-shps_rec <- st_read(paste0("../datasets/gpkg_",ver_receiver,"/nexus_data.geojson"))
+nex01 <- st_read(paste0("../datasets/gpkg_",ver_receiver,"/nexus_data.geojson"))
 
 # shapefile of USGS gages in HUC-01
 # usgs1 <- st_read("../shapefile/usgs_gages_huc01.shp")
@@ -24,7 +26,7 @@ load("../datasets/gpkg_v0/obsStrMeta_gages_retro.Rdata")
 usgs1 <- subset(obsStrMeta,site_no %in% gages0)
 usgs1 <- usgs1[,c("site_no","dec_lat_va","dec_long_va")] 
 names(usgs1) <- c("gage","lat","lon")
-usgs1 <- st_as_sf(usgs1,coords=c("lon","lat"),crs=st_crs(shps_don))
+usgs1 <- st_as_sf(usgs1,coords=c("lon","lat"),crs=st_crs(shps_rec))
 
 # identify the catchments where gages are located
 sf::sf_use_s2(FALSE)

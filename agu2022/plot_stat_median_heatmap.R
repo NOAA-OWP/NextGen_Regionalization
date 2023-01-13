@@ -1,4 +1,4 @@
-# plot/compare (violins of) summary stats of different regionalization runs 
+# create heatmap of median stats of different regionalization runs 
 
 rm(list=ls())
 .libPaths("R_lib")

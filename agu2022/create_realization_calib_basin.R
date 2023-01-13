@@ -1,5 +1,8 @@
 # create realization files from a template containing all models (currently CFE and TOPMODEL), 
 # using donor pairing and calibrated parameters for donor catchments
+#
+# Here the realization file for each individual calibration basin was created, but
+# eventually not used for AGU 2022
 
 rm(list=ls())
 

@@ -1,0 +1,27 @@
+==== 09/13/2022 ====
+Matt:
+/local/ngen/data/huc01/huc01_20220901/hydrofabric/catchment_data.geojson 
+has duplicate features, negative catchment IDs (like cat--2343), and many catchments did not have any destination nexus.
+The "drano" version "patches" all these things. It works with ngen, but not t-route yet.
+
+==== 09/7/2022 ====
+Matt:
+Forcing file is now at:
+/local/ngen/data/huc01/huc01_20220901/forcing/NextGen_forcing_2007010100_ee.nc on UCS6 ...
+0922 HUC01 hydrofabric files are at:
+/local/ngen/data/huc01/huc01_20220901/hydrofabric/
+
+
+1. some IDs in the crosswalk table are associated with multiple gages (likely nested gages).
+How do we handle that? See example below
+
+
+        ID   comid  main  hydroseq outlet_comid             gages
+5211 30020 9343439 25449 150008213      9343439 01163500,01164000
+5348 30020 9343773 25449 150008362      9343439 01163500,01164000
+5489 30020 9343415 25449 150008519      9343439 01163500,01164000
+5647 30020 9343409 25449 150008699      9343439 01163500,01164000
+5809 30020 9343765 25449 150008871      9343439 01163500,01164000
+
+2. for all single-catchment basins (including those that were calibrated), the simulated flow is constantly zero in the troute output, even though Q_OUT in the cat-.* files are not zero.
+

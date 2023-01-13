@@ -1,4 +1,5 @@
-# plot streamflow time series for all gages (calibrated and regionalized, in separate files)
+# plot streamflow time series for selected gages and scenarios
+
 rm(list=ls())
 
 library(data.table)
@@ -21,7 +22,7 @@ obsDt <- subset(obsDt, validTime %in% times)
 # calibration gages
 gages_calib <- get(load("output/v0/calib_gages_screened_kge_nse.Rdata"))
 
-# stats from new runs
+# stats from different runs
 load(paste0("stat/stat_retro_",val_date1,"_",val_date2,".Rdata"))
 stats1 <- subset(stats_str, !site_no %in% gages_calib)
 stats1$scenario <-gsub("CFE[+]TOPMODEL","mixed", stats1$scenario)

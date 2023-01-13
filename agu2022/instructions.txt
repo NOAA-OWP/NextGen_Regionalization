@@ -1,0 +1,65 @@
+============================================================
+1. Instructions for running Nextgen over the HUC01 Region
+============================================================
+
+Directory /local/ngen/data/fihm on ucs6 has all the pieces prepared. Current working directory of your shell must be /local/ngen/data/fihm
+
+Both the realization files Nels had prepared are set up there. They have been modified to match the paths of the data that is available there on UCS6.
+
+You can run either of them like this:
+
+time mpirun -np 16 /local/ngen/bin/ngen data/hydrofabric/catchment_data.geojson all data/hydrofabric/nexus_data.geojson all realization/noah_owp_CFE_camels.json data/huc01_partitions_16.json
+
+/local/ngen/bin/ngen-serial data/catchment_data_01115630.geojson all data/nexus_data_01115630.geojson all realization/CFE_hlr_kge-dds_01115630.json
+
+To generate the partitions:
+/local/ngen/bin/partitionGenerator /path/to/catchment_data.geojson /path/to/nexus_data.geojson ./partitions_16.json 16 '' ''
+
+There are three partition files available for running in parallel either with 8, 16, or 64 partitions/processes, so you can run that with 64 instead of 16 processes by changing the two 16's in the command above to two 64's.
+
+I made only a small change to the Topmodel files (in data/Topmodel) to try to get it to stop writing output files in the Topmodel directory to speed it up  but I'm not sure it helped, so we can change it back if there's a concern (all the "subcat" files had 1 1 1 as the top line, now they have 1 1 0 to shut off output writing from Topmodel).
+
+========================================================
+2. run T-route as post-processing
+========================================================
+
+2.1 Activate the python environment
+source /local/ngen/workdir/.venv/bin/activate
+2.2 Modify config (data/routing/routing-config.yaml) to redirec input/out as needed
+2.3 Run routing
+#python -m ngen_routing.ngen_main -f data/routing/routing-config.yaml
+python -m ngen_routing.ngen_main -f data/routing/routing-config-withsomelakes_new.yaml
+
+=======================================================
+3. run R containers
+=======================================================
+
+** Image "hydrofab:full_hydrofabric_tools"  (R version 4.1.3)
+docker run -it --rm -u=`id -u`:`id -g` -v /home/***REMOVED***/NextGen_Regionalization:/reg1/ --name reg1 hydrofab:full_hydrofabric_tools bash -c 'cd /reg1 && /bin/bash'
+docker run -it --rm -u=`id -u`:`id -g` -v /home/***REMOVED***/reg_ngen:/reg2/ --name reg2 hydrofab:full_hydrofabric_tools bash -c 'cd /reg2 && /bin/bash'
+docker run -it --rm -u=`id -u`:`id -g` -v /local/ngen/data:/data/ --name data hydrofab:full_hydrofabric_tools bash -c 'cd /data && /bin/bash'
+docker run -it --rm -u=`id -u`:`id -g` -v /local/ngen/data/fihm:/fihm/ --name fihm hydrofab:full_hydrofabric_tools bash -c 'cd /fihm && /bin/bash'
+
+** Image "brianavant/r_hydrofabric:1.1.2"  (R version 4.2.1)
+docker run --rm -it --name reg -v /home/***REMOVED***/NextGen_Regionalization:/reg/ brianavant/r_hydrofabric:1.1.2
+docker run --rm -it --name reg -v /local/ngen/data/fihm:/fihm/ brianavant/r_hydrofabric:1.1.2
+cd fihm
+
+** install and use packages inside container
+install.packages("hydroGOF",lib="R_lib")
+.libPaths("R_lib")
+library(hydroGOF)
+
+=======================================================
+4. read routing output
+=======================================================
+
+install.packages("BiocManager")
+BiocManager::install("rhdf5")
+library(rhdf5)
+h5f <- H5Fopen("routing_outputs/flowveldepth_camels_noah_owp_CFE_donated.h5")
+h5f&"qvd"
+ids <- h5f$"/qvd/axis1"
+head(ids)
+tail(ids)
+flow <- h5f&"/qvd/block0_values"

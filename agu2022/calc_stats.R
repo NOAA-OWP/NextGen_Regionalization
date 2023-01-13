@@ -1,4 +1,5 @@
-# compute statistics for simulations from different runs, each time skipping runs that have already been computed
+# compute statistics for simulations from different runs, each time skipping runs 
+# that have already been computed
 
 rm(list=ls())
 
@@ -12,7 +13,6 @@ library(hydroGOF)
 
 ##################
 date1 <- "20121001"; date2 <- "20160930"  #model run time period
-#scenarios <- c("CFE_nse_dds_no_screening", "TOPMODEL_nse_dds_no_screening")
 scenarios <- c("TOPMODEL_hlr_kge", "CFE_hlr_kge", "TOPMODEL_camels_kge", "CFE_camels_kge", 
                "CFE+TOPMODEL_hlr_kge", "CFE+TOPMODEL_camels_kge",
                "TOPMODEL_hlr_nse", "CFE_hlr_nse", "TOPMODEL_camels_nse", "CFE_camels_nse",
@@ -28,7 +28,6 @@ obsDt <- get(load(paste0("../datasets/usgs_hourly_flow_",date1,"_",date2,"_huc01
 
 # Stats file to write
 statsOutFile <- paste0("stat/stat_retro_",format(startDate,"%Y%m%d"),"_",format(endDate, "%Y%m%d"),".Rdata")
-#statsOutFile <- paste0("stat/stat_retro_",format(startDate,"%Y%m%d"),"_",format(endDate, "%Y%m%d"),"_no_screening.Rdata")
 if (file.exists(statsOutFile)) {
     load(statsOutFile)
 } else {
@@ -122,42 +121,3 @@ stats_str[stats_str=="-Inf"]<-NA
 # Save
 save(stats_str, stats_qmean, stats_dates, file=statsOutFile, compress=FALSE)
 
-# compare with FIHM runs
-# library(ggplot2)
-# library(magrittr)
-# load("stat/stat_retro_20091001_20140930.Rdata")
-# #s1 <- subset(stats_str,scenario=="CFE.hlr")
-# s1 <- subset(stats_str,scenario=="TOPMODEL_hlr_kge-dds")
-# load("../fihm/stat/stat_retro_20091001_20140930.Rdata")
-# #s0 <- subset(stats_str, scenario=="noah_owp_CFE.hlr")
-# s0 <- subset(stats_str, scenario=="noah_owp_TOPMODEL.hlr")
-
-# metrics <- c("RMSE","PBIAS","NSE","CORR","KGE")
-# dt1 <- merge(s0[,c("site_no",metrics),with=FALSE],s1[,c("site_no",metrics),with=FALSE],by="site_no",suffix=c(".old",".new"))
-
-# dt1[["NSE.new"]][dt1[["NSE.new"]] < -1] <- -1
-# dt1[["NSE.old"]][dt1[["NSE.old"]] < -1] <- -1
-# dt1[["KGE.new"]][dt1[["KGE.new"]] < -1] <- -1
-# dt1[["KGE.old"]][dt1[["KGE.old"]] < -1] <- -1
-# dt1[["PBIAS.old"]] <- abs(dt1[["PBIAS.old"]])
-# dt1[["PBIAS.new"]] <- abs(dt1[["PBIAS.new"]])
-# dt1[["PBIAS.new"]][dt1[["PBIAS.new"]]>200] <- 200
-# dt1[["PBIAS.old"]][dt1[["PBIAS.old"]]>200] <- 200
-
-# dt2 <- melt(dt1,id.vars="site_no")
-# dt2[,run:=ifelse(grepl("new",variable),"new","old")]
-# dt2[,stat:=gsub(".old","",variable)]
-# dt2[,stat:=gsub(".new","",stat)]
-# dt3 <- dcast(dt2,site_no + stat ~ run, measure.vars=value)
-
-# gages_calib <- get(load("output/v1.2/calib_gages_screened_kge_dds.Rdata"))
-# #dt4 <- subset(dt3,site_no %in% gages_calib[["cfe"]])
-# dt4 <- subset(dt3,site_no %in% gages_calib[["topmodel"]])
-
-# gg1 <- ggplot() +
-#        geom_point(data=dt3,aes(x=old, y=new),color="blue",shape=2) + geom_abline(slope=1) +
-#        geom_point(data=dt4,aes(x=old, y=new),color="red",shape=3,size=3) +
-#        facet_wrap(~stat, ncol=3, scales="free") 
-       
-# #ggsave("figs/compare_stat_CFE_hlr.png",gg1,width=9,height=7,units="in",dpi=300)
-# ggsave("figs/compare_stat_TOPMODEL_hlr.png",gg1,width=9,height=7,units="in",dpi=300)
