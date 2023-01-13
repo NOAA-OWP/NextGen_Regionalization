@@ -7,7 +7,7 @@ A few notes:
   - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region might require adjustments to the scripts
   - **./scripts**: A collection of scripts related to computing catchment attributes and generating donor-receiver pairings 
   - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM AOP
-  - **./agu2022**: A collection of scripts related to deriving the attributes, conduct donor-receier pairing, generating realization files for various scenario, and evaluate/visualize the results the AGU2022 presentation
+  - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU2022 presentation
  
 **The NWM Regionalization Framework**
 
