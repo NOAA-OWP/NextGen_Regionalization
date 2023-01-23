@@ -10,11 +10,8 @@ A few notes:
   - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU2022 presentation
   - Documentation for the regionalization work completed for the AGU 2022 MVP can be found here: https://docs.google.com/document/d/1rhMcOpf3yRHTvYOlCjBjXC2Evy4C8ungGGJywSNPv-o/edit?usp=share_link
  
-**The NWM Regionalization Framework**
-
 ![Framework](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/Framework.png?raw=false)
 
-**NextGen Regionalization Flowchart**
 ![Flowchart](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen_regionalization_flowchart.jpg)
 
 ## Dependencies
