@@ -14,7 +14,7 @@ A few notes:
 
 ![Framework](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/Framework.png?raw=false)
 
-** NextGen Regionalization Flowchart**
+**NextGen Regionalization Flowchart**
 ![Flowchart](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen_regionalization_flowchart.jpg)
 
 ## Dependencies
