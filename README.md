@@ -6,8 +6,8 @@ A few notes:
 
   - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region might require adjustments to the scripts
   - **./scripts**: A collection of scripts related to computing catchment attributes and generating donor-receiver pairings 
-  - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM AOP
-  - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU2022 presentation
+  - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM MVP
+  - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU 2022 MVP
   - [Documentation for AGU 2022 MVP](https://docs.google.com/document/d/1rhMcOpf3yRHTvYOlCjBjXC2Evy4C8ungGGJywSNPv-o/edit?usp=share_link) 
   - [AGU 2022 presentation slides](https://docs.google.com/presentation/d/15cIzvltzJp6B4y-Cuskc_Fit0d2Z9j1C/edit?usp=share_link&ouid=117267696082803250432&rtpof=true&sd=true)
   - [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
