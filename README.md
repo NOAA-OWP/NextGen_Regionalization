@@ -4,7 +4,7 @@
 
 A few notes:
 
-  - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region might require adjustments to the scripts
+  - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region would require adjustments to the scripts
   - **./scripts**: A collection of scripts related to computing catchment attributes and generating donor-receiver pairings 
   - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM MVP
   - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU 2022 MVP
