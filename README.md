@@ -1,16 +1,20 @@
 # Parameter/Fomulation Regionalization for NextGen
 
-**Description**: NextGen regionalization is adapted from the NWM regionalization framework (see below), which uses a physical similarity-based approach to transfer model formulations and parameters from calibrated basins (donors) to uncalibrated areas (receivers). Currently, the framework considers two different sets of basin attributes to represent physical similarity: Hydrologic Landscape Regions (HLR, Winter 2001 and Wolock et al. 2004 ) and Catchment Attributes and Meteorology for Large-sample Studies (CAMELS, Addor et al. 2017). 
+**Description**: NextGen regionalization is adapted from the NWMv3.0 regionalization framework (see below), which uses a physical similarity-based approach to transfer model formulations and parameters from calibrated basins (donors) to uncalibrated areas (receivers). Currently, the framework considers two different sets of basin attributes to represent physical similarity: Hydrologic Landscape Regions (HLR, Winter 2001 and Wolock et al. 2004 ) and Catchment Attributes and Meteorology for Large-sample Studies (CAMELS, Addor et al. 2017). 
 
 A few notes:
 
-  - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region might require adjustments to the scripts
+  - **Status**: Currently the framework focuses on regionalization in HUC-01; extending to the CONUS region would require adjustments to the scripts
   - **./scripts**: A collection of scripts related to computing catchment attributes and generating donor-receiver pairings 
-  - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM AOP
+  - **./fihm/scripts**: A collection of scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM MVP
+  - **./agu2022**: A collection of scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU 2022 MVP
+  - [Documentation for AGU 2022 MVP](https://docs.google.com/document/d/1rhMcOpf3yRHTvYOlCjBjXC2Evy4C8ungGGJywSNPv-o/edit?usp=share_link) 
+  - [AGU 2022 presentation slides](https://docs.google.com/presentation/d/15cIzvltzJp6B4y-Cuskc_Fit0d2Z9j1C/edit?usp=share_link&ouid=117267696082803250432&rtpof=true&sd=true)
+  - [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
  
-**The NWM Regionalization Framework**
-
 ![Framework](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/Framework.png?raw=false)
+
+![Flowchart](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen_regionalization_flowchart.jpg)
 
 ## Dependencies
 
