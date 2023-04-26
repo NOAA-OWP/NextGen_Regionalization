@@ -11,7 +11,7 @@ attrs:
     
 ### algorithm parameters
 pars:
-  # general parameters common to all algorithms 
+  ## general parameters common to all algorithms 
   general:
     # snow fraction threshold to determine snowiness category 
     minSnowFrac: 0.2
@@ -24,7 +24,7 @@ pars:
       forest_frac: 0.5 
       urban_frac: 0.5 
       cropland_frac: 0.5 
-  # parameters specific to gower 
+  ## parameters specific to gower 
   gower:
     # minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
     minAttrDist: 0.1
@@ -34,7 +34,22 @@ pars:
     minSpaDist: 200
     # maximum umber of donors to keep that satisfy the attribute distance requirement
     nDonorMax: 3
-  # parameters specific to kmeans
+  ## parameters specific to kmeans
   kmeans:
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
+    # number of maximum iterations (for kmeans function)
+    nIterMax: 20
+    # numbmer of subsets (for kmeans function)
+    nSubset: 2
+  ## parameters specific to pamk
+  pamk:
+    # number of donor basins in a cluster when no further clustering is needed
+    nDonorMax: 5
+    # max number of clusters for pamk function
+    nClusterMax: 30
+    # number of subsets (for pamk function); change to smaller number if running into issues
+    nSubset: 10
+    # criterion for pamk (one of "asw", "multiasw" or "ch", determining whether average silhouette width or 
+    # Calinski-Harabasz is applied; multiasw is recommended for large datasets)
+    #criterion: multiasw
