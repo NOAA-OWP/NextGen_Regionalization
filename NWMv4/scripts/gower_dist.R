@@ -128,7 +128,7 @@ gower_dist <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
           tag1 <- "proximity"
           
           # best donor (same as donor1)
-          donor_best1 <- donor_best1
+          donor_best1 <- donor1
           distSpatial_best1 <- distSpatial1
           distAttr_best1 <- distAttr1
         }

@@ -78,7 +78,7 @@ kmeans_clust <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
       # proceed with clustering, iteratively
       while(sum(myFlag[(ndonor+1):(ndonor+nreceiver)]==0)>=1) {
         
-        # for each cluster that has more than the preset max. number of gages
+        # for each cluster that has more than the preset max. number of donors, break it into smaller clusters
         for (i1 in which(dtCluster$N > config$pars$kmeans$nDonorMax)) {
           
           # retrieve all the receivers and donors within the cluster
@@ -93,14 +93,15 @@ kmeans_clust <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
           nreceiver1 <- sum(idx1>ndonor)
           
           # determine number of clusters for K-Means Clustering; choose the maximum number
-          # of clusters that can ensure each cluster contains at least one donor 
-          # and that no group is left with only donors (i.e., no potential receiver
-          # is included in the group)
-          for (nc in 2:(nrow(mydata1)-1)){
+          # of clusters that can ensure 1) each cluster contains at least one donor 
+          # and that 2) no group is left with only donors (i.e., no potential receiver
+          # is included in the group) 
+          # but note the 2nd condition is commented out below
+          for (nc in 2:(nrow(mydata1)-1)) {
           #ss1 <- NULL
           #for (nc in 1:15) {
             set.seed(7777)
-            fit <- kmeans(mydata1, nc, iter.max=20,nstart=2) # chosen cluster solution
+            fit <- kmeans(mydata1, nc, iter.max=config$pars$kmeans$nIterMax,nstart=config$pars$kmeans$nSubset) # chosen cluster solution
             #ss1 <- c(ss1,fit$tot.withinss)
             #print(paste0("nc=",nc,", withinss=",fit$tot.withinss))
             c0 <- fit$cluster[1:ndonor1]
@@ -121,10 +122,10 @@ kmeans_clust <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
           
           # Given the chosen number of clusters, perform a final round of K-mean clustering analysis
           set.seed(7777)
-          fit <- kmeans(mydata1, nc2, iter.max=20,nstart=2)
+          fit <- kmeans(mydata1, nc2, iter.max=config$pars$kmeans$nIterMax,nstart=config$pars$kmeans$nSubset)
           tmp1 <- fit$cluster
           
-          # assign cluster number to the subclusters;first subcluster 1 get the parent cluster number
+          # assign cluster number to the subclusters; first subcluster gets the parent cluster number
           tmp1[fit$cluster==1] <- as.integer(dtCluster$V1[i1])
           # the remaining subclusters become new members of the parent group
           tmp1[fit$cluster>1] <- tmp1[fit$cluster>1]+max(myCluster) - 1
@@ -132,7 +133,7 @@ kmeans_clust <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
           dtCluster <- as.data.table(table(myCluster[1:ndonor])) 
         }
         
-        # determine which clusters do not need further clustering
+        # determine which clusters do not need further clustering 
         # and change the flag to 1; if the number of potentail donors in a cluster is 
         # smaller than the defined max number, then no further clustering is needed
         dtCluster <- as.data.table(table(myCluster[1:ndonor])) 

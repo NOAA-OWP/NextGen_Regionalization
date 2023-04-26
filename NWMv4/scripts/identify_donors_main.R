@@ -13,6 +13,7 @@ source("apply_pca.R")
 source("apply_donor_constraints.R")
 source("gower_dist.R")
 source("kmeans_clust.R")
+source("pamk_clust.R")
 source("compute_dist_spatial.R")
 
 # Read the configuration file and assign parameters
@@ -46,22 +47,15 @@ if (file.exists(f1)) {
 scenarios <- names(config$attrs)
 scenarios <- scenarios[scenarios!="base"]
 funcs <- c("gower_dist","kmeans_clust","pamk_clust")
+#funcs <- "pamk_clust"
 for (func1 in funcs) {
   for (scenario in scenarios) {
     
     outfile <- paste0("../output/donor_",scenario,"_",func1,".Rdata")
     if (file.exists(outfile)) next
     
-    stop()
     message(paste0("\n======== processing donors: ", func1, "  ", scenario," =============\n"))
     dtDonorAll <- do.call(func1,list(config, dtAttrAll,scenario, distSpatial0))
-    
-    # if receivers and donors share the same hydrofabric, assign donors directly
-    if (ver_donor == ver_receiver) {
-      dtDonorAll <- subset(dtDonorAll,! id %in% donorsAll)
-      dt_donor <- data.table(id=donorsAll, donor=donorsAll, distAttr=0, distSpatial=0, tag="donor")
-      dtDonorAll <- rbind(dt_donor,dtDonorAll)
-    }
     
     save(dtDonorAll,file=outfile)
     

@@ -1,7 +1,7 @@
-# apply kmeans clustering approach to identify donors
-pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
+# apply pamk-based clustering approach to identify donors
+pamk_clust <- function(config, dtAttrAll, attr_scenario, dist_spatial) {
   
-  #pars: algorithm parameters
+  #config: algorithm parameters
   #dtAttrAll: attributes table of all donors and receivers
   #attr_scenario: scenario for attributes (e.g., HLR or CAMELS)
   #dist_spatial: spatial distance (1km) between all donors and receivers
@@ -57,6 +57,7 @@ pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
       receivers <- receivers[receivers %in% recs]
       ndonor <- length(donors)
       nreceiver <- length(receivers)
+      if (nreceiver==0) next
       
       # keep only donors and and receiver for this round
       idx0 <- c(1:ndonor,ndonor + which(subset(dtAttr1,tag=="receiver")$id %in% receivers))
@@ -76,10 +77,13 @@ pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
       
       # while there exist receiver catchments that require further clustering
       # proceed with clustering, iteratively
+      #kk <- 0
       while(sum(myFlag[(ndonor+1):(ndonor+nreceiver)]==0)>=1) {
-        
-        # for each cluster that has more than the preset max. number of gages
-        for (i1 in which(dtCluster$N > pars$nDonorMax)) {
+        #kk <- kk + 1
+        # for each cluster that has more than the preset max. number of donors, break it into smaller clusters
+        clusts <- which(dtCluster$N > config$pars$pamk$nDonorMax)
+        if (length(clusts)==0) break
+        for (i1 in clusts) {
           
           # retrieve all the receivers and donors within the cluster
           idx1 <- which(myCluster == as.integer(dtCluster$V1[i1]))
@@ -92,43 +96,30 @@ pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
           ndonor1 <- sum(idx1<=ndonor)
           nreceiver1 <- sum(idx1>ndonor)
           
-          # determine number of clusters for K-Means Clustering; choose the maximum number
-          # of clusters that can ensure each cluster contains at least one donor 
-          # and that no group is left with only donors (i.e., no potential receiver
-          # is included in the group)
-          for (nc in 2:(nrow(mydata1)-1)){
-          #ss1 <- NULL
-          #for (nc in 1:15) {
-            set.seed(7777)
-            fit <- kmeans(mydata1, nc, iter.max=20,nstart=2) # chosen cluster solution
-            #ss1 <- c(ss1,fit$tot.withinss)
-            #print(paste0("nc=",nc,", withinss=",fit$tot.withinss))
-            c0 <- fit$cluster[1:ndonor1]
-            c1 <- fit$cluster[(ndonor1+1):(ndonor1+nreceiver1)]
-            nrec_nodonor <- sum(!(c1 %in% c0))
-            ndon_norec <- sum(!(c0 %in% c1))
-            #if (nrec_nodonor >=1 | ndon_norec>=1) break
-            if (nrec_nodonor >=1) break
+          # perform pamk clustering (use "multisaw" for large datasets and "asw" for small datasets)
+          if (nrow(mydata1)>config$pars$pamk$nClusterMax * config$pars$pamk$nSubset) {
+            fit <- pamk(mydata1,krange = 2:config$pars$pamk$nClusterMax,
+                    criterion = "multiasw",usepam = FALSE,
+                    ns=config$pars$pamk$nSubset,critout = FALSE,seed=7777)
+          } else {
+            ncmax <- min(nrow(mydata1)-1,config$pars$pamk$nClusterMax)
+            fit <- pamk(mydata1,krange = 2:ncmax,criterion="asw",usepam=TRUE,
+                    ns=config$pars$pamk$nSubset,critout = FALSE,seed=7777)
           }
-          nc2 <- nc-1 
-          #nc2 is the nubmer of sub-clusters we would want to break the current cluster into
-          
-          #if the cluster cannot be subset further, change myFlag to 1
-          if (nc2==1) {
-            myFlag[idx1] <- 1 
-            next 
-          }
-          
-          # Given the chosen number of clusters, perform a final round of K-mean clusterng analysis
-          set.seed(7777)
-          fit <- kmeans(mydata1, nc2, iter.max=20,nstart=2)
-          tmp1 <- fit$cluster
-          
-          # assign cluster number to the subclusters;first subcluster 1 get the parent cluster number
-          tmp1[fit$cluster==1] <- as.integer(dtCluster$V1[i1])
+          clusters0 <- fit$pamobject$clustering
+          clusters <- clusters0
+
+          # if any resulting cluster has no donors, abort the clustering
+          # clusts1 <- as.numeric(names(table(clusters[which(idx1<ndonor)]))) #cluster numbers of donors
+          # if (sum(! (unique(clusters) %in% clusts1)) >= 1) next
+
+          # assign cluster number to the subclusters;first subcluster gets the parent cluster number
+          clusters[clusters0==1] <- as.integer(dtCluster$V1[i1])
           # the remaining subclusters become new members of the parent group
-          tmp1[fit$cluster>1] <- tmp1[fit$cluster>1]+max(myCluster) - 1
-          myCluster[idx1] <- tmp1
+          clusters[clusters0>1] <- clusters[clusters0>1]+max(myCluster) - 1
+          myCluster[idx1] <- clusters
+          #print(paste0("kk=",kk,"   i1=",i1))
+          #print(table(myCluster))
           dtCluster <- as.data.table(table(myCluster[1:ndonor])) 
         }
         
@@ -136,7 +127,7 @@ pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
         # and change the flag to 1; if the number of potentail donors in a cluster is 
         # smaller than the defined max number, then no further clustering is needed
         dtCluster <- as.data.table(table(myCluster[1:ndonor])) 
-        i2 <- which(dtCluster$N <= pars$nDonorMax)
+        i2 <- which(dtCluster$N <= config$pars$pamk$nDonorMax)
         idx0 <- myCluster %in% as.integer(dtCluster$V1[i2])
         myFlag[idx0] <- 1
         
@@ -149,20 +140,45 @@ pamk_clust <- function(pars, dtAttrAll, attr_scenario, dist_spatial) {
         c1 <- myCluster[i1+ndonor]
         donors1 <- donors[myCluster[1:ndonor]==c1]
         dists1 <- dist_spatial[rec1,donors1]
-        
+        if (length(donors1)==0) next
+
         # apply additional donor constraints
-        list1 <- apply_donor_constraints(rec1, donors1, dists1, pars, dtAttrAll)
+        list1 <- apply_donor_constraints(rec1, donors1, dists1, config$pars, dtAttrAll)
         dists1 <- list1$dist; donors1 <- list1$donor
-        
-        dtDonorAll <- rbind(dtDonorAll, data.table(id=rec1, tag="main",
+        if (length(donors1)==0) next
+
+        # add donor/receiver pair to donor table
+        dtDonorAll <- rbind(dtDonorAll, data.table(id=rec1, tag=run1,
                                                    donor=donors1[which.min(dists1)],distSpatial=min(dists1),
                                                    donors=paste(donors1,collapse=","), 
                                                    distSpatials=paste(dists1,collapse=",")))
       }
     }# snowy or non-snowy
-  } # loop round
+  } # loop round to deal with missing attributes for some catchments
   } # main or base attrs
   
+  # if no donors found (after main & base attrs rounds), get the spatially closest donor with constraints applied
+  recs0 <- subset(dtAttrAll, tag=="receiver")$id
+  recs0 <- recs0[!recs0 %in% dtDonorAll$id]
+  if (length(recs0)>0) {
+    for (rec1 in recs0) {
+      # get all donors and their spatial distance to the receiver
+      donor0 <- subset(dtAttrAll, tag=="donor")$id
+      dist0 <- dist_spatial[rec1,]
+      
+      # apply additional donor constraints
+      list1 <- apply_donor_constraints(rec1, donor0, dist0, config$pars, dtAttrAll)
+      dist0 <- list1$dist; donor0 <- list1$donor
+      
+      # choose the donor that is spatially closest
+      donor1 <- donor0[which.min(dist0)]
+      distSpatial1 <- min(dist0)
+      dtDonorAll <- rbind(dtDonorAll, data.table(id=rec1, tag="proximity",
+                                                donor=donor1,distSpatial=distSpatial1,
+                                                donors=donor1,distSpatials=distSpatial1))      
+
+    }
+  }
   return(dtDonorAll)
   
 } # function pamk_clust
