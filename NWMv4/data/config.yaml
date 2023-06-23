@@ -30,26 +30,28 @@ pars:
     minAttrDist: 0.1
     # maximum attr distance (donors with distance larger than this value are discarded, unless no donor smaller than this threshold is available)
     maxAttrDist: 0.25
-    #starting distance for searching donors (km)
+    # starting distance (neighbourhood) for searching donors (km)
     minSpaDist: 200
     # maximum umber of donors to keep that satisfy the attribute distance requirement
     nDonorMax: 3
-  ## parameters specific to kmeans
+    # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
+    zeroSpaDist: 1
+  ## parameters specific to the K-means approach
   kmeans:
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
-    # number of maximum iterations (for kmeans function)
-    nIterMax: 20
-    # numbmer of subsets (for kmeans function)
-    nSubset: 2
-  ## parameters specific to pamk
-  pamk:
+    # number of maximum iterations
+    nIterMax: 100
+    # initialization method, choose from 'k-means++', 'random'
+    init: k-means++
+    # number of times the k-means algorithm is run with different centroid seeds.
+    nInit: 3
+  ## parameters specific to the K-mediods approach
+  kmedoids:
     # number of donor basins in a cluster when no further clustering is needed
-    nDonorMax: 5
-    # max number of clusters for pamk function
-    nClusterMax: 30
-    # number of subsets (for pamk function); change to smaller number if running into issues
-    nSubset: 10
-    # criterion for pamk (one of "asw", "multiasw" or "ch", determining whether average silhouette width or 
-    # Calinski-Harabasz is applied; multiasw is recommended for large datasets)
-    #criterion: multiasw
+    nDonorMax: 3
+    # maximum number of iterations
+    nIterMax: 100
+    # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
+    init: heuristic
+    
