@@ -5,6 +5,7 @@ import time
 
 import gower_dist
 import kmeans_clust
+import unsupervised_random_forest
 
 # read configuration (algorithm parameters etc) into dictionary
 with open('../data/config.yaml', 'r') as stream:
