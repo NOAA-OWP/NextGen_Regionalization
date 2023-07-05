@@ -5,7 +5,6 @@ from joblib import Parallel, delayed
 from numba import njit
 import synthetic_data
 
-
 class urf(object):
     def __init__(self, n_trees = 100, synthetic_data_type = None, max_features='auto', max_depth=None):
 
