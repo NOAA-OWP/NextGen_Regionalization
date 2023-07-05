@@ -5,7 +5,7 @@ import time
 
 import gower_dist
 import kmeans_clust
-import unsupervised_random_forest
+import random_forest
 
 # read configuration (algorithm parameters etc) into dictionary
 with open('../data/config.yaml', 'r') as stream:
@@ -47,9 +47,10 @@ else:
 # which are assembled in a dictionary 
 scenarios = list(config['attrs'].keys())
 scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
-funcs = ['gower_dist','kmeans_clust','kmedoids_clust']
+funcs = ['random_forest','gower_dist','kmeans_clust','kmedoids_clust']
 scenarios = ['hlr', 'camels']
-functions = {'gower_dist': gower_dist,
+functions = {'random_forest': random_forest,
+             'gower_dist': gower_dist,
              'kmeans_clust': kmeans_clust,
              'kmedoids_clust': kmeans_clust,
              }
