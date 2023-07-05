@@ -54,4 +54,11 @@ pars:
     nIterMax: 100
     # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
     init: heuristic
+  random_forest:
+    # number of trees in the forest
+    nTrees: 500
+    # the maximum depth of each tree
+    maxDepth: 3
+    # clustering algorithm (choose from kmeans or kmedoids)
+    clustAlg: kmeans
     
