@@ -6,6 +6,7 @@ import time
 import gower_dist
 import kmeans_clust
 import random_forest
+import funcs_dist
 
 # read configuration (algorithm parameters etc) into dictionary
 with open('../data/config.yaml', 'r') as stream:
@@ -21,6 +22,10 @@ dtAttrDonor['tag'] = 'donor'
 # read receiver attributes
 dtAttrReceiver = pd.read_csv('../data/all_attrs_receivers.csv')
 dtAttrReceiver['tag'] = 'receiver'
+
+# if donors overlap with receivers (i.e., they share the same hydrofabric files), exclude them from the receivers
+if config['hydrofabric']['shared']:
+    dtAttrReceiver = dtAttrReceiver.loc[~dtAttrReceiver['id'].isin(dtAttrDonor['id'])]
 
 # combine donor & receiver attributes
 dtAttrAll = pd.concat([dtAttrDonor, dtAttrReceiver])
@@ -49,12 +54,13 @@ scenarios = list(config['attrs'].keys())
 scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
 funcs = ['random_forest','gower_dist','kmeans_clust','kmedoids_clust']
 scenarios = ['hlr', 'camels']
-functions = {'random_forest': random_forest,
-             'gower_dist': gower_dist,
+functions = {'random_forest': funcs_dist,
+             'gower_dist': funcs_dist,
              'kmeans_clust': kmeans_clust,
              'kmedoids_clust': kmeans_clust,
              }
 for func1 in funcs:
+#    func1 = funcs[0]
     for scenario in scenarios:
         outfile = '../output/donor_' + scenario + '_' + func1 + '.csv'
         if os.path.isfile(outfile):
@@ -67,6 +73,10 @@ for func1 in funcs:
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmeans")
         elif func1 == "kmedoids_clust":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmedoids")
+        if func1 == "gower_dist":
+            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "gower")
+        elif func1 == "random_forest":
+            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "random_forest")        
         else:
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0)  
         print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  

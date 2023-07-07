@@ -1,4 +1,4 @@
-def func(recs0, recs1, dtAttr0, attrs):
+def func(recs0, recs1, dtAttr0, attrs, config):
 
     from sklearn.preprocessing import StandardScaler
     from sklearn.decomposition import PCA    
@@ -7,7 +7,8 @@ def func(recs0, recs1, dtAttr0, attrs):
     # get the valid attributes for the first receiver to be processed this round
     dt1 = dtAttr0.query("tag == 'receiver'")
     dt1 = dt1[dt1.id.isin(recs0) & ~dt1.id.isin(recs1)].iloc[0]
-    vars = dt1.index[~dt1.isna()].tolist()
+    dt1 = dt1[~dt1.index.isin(config['non_attr_cols'])]
+    vars = config['non_attr_cols'] + dt1.index[~dt1.isna()].tolist()
     dtAttr = dtAttr0[vars]        
     vars = [value for value in vars if value in attrs]    # attrs included for current round
     vars0 = [value for value in attrs if value not in vars] # attrs excluded for current round
@@ -19,7 +20,7 @@ def func(recs0, recs1, dtAttr0, attrs):
             print("Using all attributes")
         
         # ignore donors & receivers with NA attribute values
-        dtAttr = dtAttr.dropna()
+        dtAttr.dropna(subset=[x for x in attrs if x not in vars0], inplace=True)
 
         # reduce table to only attributes that are to be used
         dtAttr1 = dtAttr[vars]

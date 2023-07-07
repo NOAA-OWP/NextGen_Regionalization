@@ -1,5 +1,6 @@
 def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
-    print("calling function kmeans_clust ...")
+    
+    print("perform clustering using " + str(method) + " approach ...")
 
     import pandas as pd
     import numpy as np
@@ -38,7 +39,7 @@ def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
         print("\n------------------------" + scenario + " attributes,  Round " + str(kround) + "--------------------")
 
         # apply principal component analysis
-        myscores, weights, dtAttr = apply_pca.func(recs0, recs1, dtAttr0, attrs1)    
+        myscores, weights, dtAttr = apply_pca.func(recs0, recs1, dtAttr0, attrs1, config)    
                 
         # donors and receivers for this round
         #donorsAll1 = dtAttr.query("tag=='donor'")['id'].tolist()
