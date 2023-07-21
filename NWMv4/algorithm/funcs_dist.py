@@ -1,3 +1,6 @@
+# This function performs donor-receiver pairing using either Gower's distance (method = "gower_dist") or 
+#   the distance computed by unsurpervised random forest classification (method = "random_forest")
+#
 def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
     
     print("calling function funcs_dist using the " + str(method) + " approach ...")
@@ -8,6 +11,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
     import apply_donor_constraints
     import sys
     from unsupervised_random_forest import urf
+    import time
 
     dtDonorAll = pd.DataFrame()
 
@@ -33,8 +37,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
         while len([x for x in recs0 if x in recs1]) != len(recs0):
             kround = kround + 1
             print("\n------------------------" + run1 + " attributes,  Round " + str(kround) + "--------------------")   
-            #pdb.set_trace()
-            
+                       
             # apply principal component analysis
             myscores, weights, dtAttr = apply_pca.func(recs0, recs1, dtAttr0, attrs1[run1], config)
             
@@ -42,6 +45,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
             donorsAll1 = dtAttr.query("tag=='donor'")['id'].tolist()
             receiversAll1 = dtAttr.query("tag=='receiver'")['id'].tolist()
 
+            time1 = time.time()
             if method == 'gower':
                 # compute Gower's distance between donors and receivers only, i.e., avoid calculating distance
                 # between donors and donors, receivers and receivers (faster)     
@@ -61,12 +65,14 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                 # compute attribute distance using unsupervised random forecast classification
                 myscores = dtAttr.drop(config['non_attr_cols'], axis=1)
                 rf1 = urf(n_trees=config['pars'][method]['nTrees'], max_depth=config['pars'][method]['maxDepth'])
-                distAttr0 = pd.DataFrame(rf1.get_distance(myscores.to_numpy())) 
+                distAttr0 = pd.DataFrame(rf1.get_distance(myscores.to_numpy(),njob=config['pars'][method]['njobs'])) 
                 distAttr0 = distAttr0.iloc[len(donorsAll1):,:len(donorsAll1)] 
                                               
             else:
                 sys.exit("ERROR: only gower and random_forest methods are supported for distance based donor-receiver pairing")
 
+            print("\nTime consumed for distance calculation using " + method + " is : --- %s seconds ---" % (time.time() - time1)) 
+            
             distAttr0.columns = donorsAll1
             distAttr0.index = receiversAll1
 
@@ -85,7 +91,6 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                 while buffer < config['pars']['general']['maxSpaDist'] -100 :
 
                     buffer = buffer + 100
-                    # print("buffer = " + str(buffer))
                     
                     #if there exists donor catchment within a short distance,               
                     s1 = dist_spatial.loc[rec1]

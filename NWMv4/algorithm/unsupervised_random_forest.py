@@ -56,17 +56,18 @@ class urf(object):
 
         return
 
-    def get_distance(self,X):
+    def get_distance(self,X,njob=1):
         self.get_Xs(X)
         rf_leafs, is_good = self.get_leafs()
-        distance_matrix = Parallel(n_jobs=-1)(delayed(build_distance_matrix_slow)
+        #distance_matrix = Parallel(n_jobs=-1)(delayed(build_distance_matrix_slow)
+        distance_matrix = Parallel(n_jobs=njob)(delayed(build_distance_matrix_slow)                                      
                                               (rf_leafs, is_good, se)          for se in self.fe)
         distance_matrix = numpy.vstack(distance_matrix)
         distance_matrix = distance_mat_fill(distance_matrix)
 
         return distance_matrix
 
-    def get_anomaly_score(self,X,mean_over=2500, knn=None):
+    def get_anomaly_score(self,X,mean_over=2500, knn=None,njob=1):
         self.get_Xs(X)
         rf_leafs, is_good = self.get_leafs()
 
@@ -81,7 +82,7 @@ class urf(object):
         else:
             distance_to_objects = numpy.arange(nof_objects)
 
-        anomaly_score = Parallel(n_jobs=-1)(delayed(get_anomaly_score_slow)
+        anomaly_score = Parallel(n_jobs=njob)(delayed(get_anomaly_score_slow)
                                               (knn, distance_to_objects, rf_leafs, is_good, se)          for se in self.fe)
 
         anomaly_score = numpy.concatenate(anomaly_score)
@@ -97,8 +98,8 @@ def is_good_vec(tree, X):
     return  is_good
 
 
-def is_good_matrix_get(forest, X):
-    is_good_matrix = Parallel(n_jobs=-1, verbose=0)(delayed(is_good_vec)
+def is_good_matrix_get(forest, X, njob=1):
+    is_good_matrix = Parallel(n_jobs=njob, verbose=0)(delayed(is_good_vec)
                                                     (tree, X) for tree in forest.estimators_)
     is_good_matrix = numpy.vstack(is_good_matrix)
     is_good_matrix = is_good_matrix.T

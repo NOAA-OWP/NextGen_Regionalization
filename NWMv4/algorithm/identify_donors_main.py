@@ -3,9 +3,7 @@ import pandas as pd
 import os.path
 import time
 
-import gower_dist
 import kmeans_clust
-import random_forest
 import funcs_dist
 
 # read configuration (algorithm parameters etc) into dictionary
@@ -59,13 +57,12 @@ functions = {'random_forest': funcs_dist,
              'kmeans_clust': kmeans_clust,
              'kmedoids_clust': kmeans_clust,
              }
+
+# loop through regionalization functions and scenarios
 for func1 in funcs:
-#    func1 = funcs[0]
     for scenario in scenarios:
         outfile = '../output/donor_' + scenario + '_' + func1 + '.csv'
-        if os.path.isfile(outfile):
-            continue
-        
+
         print("\n======== processing donors: " + func1 + "  " + scenario +" =============\n")
         
         start_time = time.time()
@@ -73,13 +70,15 @@ for func1 in funcs:
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmeans")
         elif func1 == "kmedoids_clust":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmedoids")
-        if func1 == "gower_dist":
+        elif func1 == "gower_dist":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "gower")
         elif func1 == "random_forest":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "random_forest")        
         else:
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0)  
-        print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  
             
+        print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  
+        
+        # save donor receiver pairing to csv file    
         dtDonorAll.to_csv(outfile, index=False)
 

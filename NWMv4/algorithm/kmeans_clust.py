@@ -1,3 +1,6 @@
+# This function performs donor-receiver pairing based on clustering using   
+#   k-means clustering (method = "kmeans") or k-medoids clustering (method = "kmedoids")
+#
 def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
     
     print("perform clustering using " + str(method) + " approach ...")
@@ -112,12 +115,12 @@ def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
                         if method == 'kmeans':
                             fit1 = KMeans(init=init, n_clusters=nc, n_init=n_init, max_iter=max_iter, random_state=42).fit(mydata1)
                         elif method == 'kmedoids':
-                            fit1 = KMedoids(init=init, n_clusters=nc, max_iter=max_iter, random_state=42).fit(mydata1)                        
-
+                            fit1 = KMedoids(init=init, n_clusters=nc, max_iter=max_iter, random_state=42).fit(mydata1)    
+                                                
                         c0 = fit1.labels_[:ndonor1]
-                        c1 = fit1.labels_[ndonor1:(ndonor1+nreceiver1)]
-                        nrec_nodonor = len(np.where(np.isin(c1,c0)==False)[0])
-                        #ndon_norec = len(np.where(np.isin(c0,c1)==False)[0])
+                        c1 = fit1.labels_[ndonor1:(ndonor1+nreceiver1)] 
+                        nrec_nodonor = len(c1) - np.isin(c1,c0).sum()    
+                        #ndon_norec = len(c0) - np.isin(c0,c1).sum()                     
 
                         if nrec_nodonor >= 1:
                             break
@@ -128,40 +131,32 @@ def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
                         myFlag[idx1] = 1
                         continue
                     
-                    # Given the chosen number of clusters, perform a final round of K-mean clustering analysis
+                    # Given the chosen number of clusters, perform a final round of K-means clustering analysis
                     if method == 'kmeans':
                         fit1 = KMeans(init=init, n_clusters=nc2, n_init=n_init, max_iter=max_iter, random_state=42).fit(mydata1)
                     elif method == 'kmedoids':
                         fit1 = KMedoids(init=init, n_clusters=nc2, max_iter=max_iter, random_state=42).fit(mydata1)
                     tmp1 = fit1.labels_ + 1   
-                                    
+  
                     # assign cluster number to the subclusters; first subcluster gets the parent cluster number
                     tmp1[fit1.labels_==0] = i1
                     # the remaining subclusters become new members of the parent group
                     tmp1[fit1.labels_>0] = tmp1[fit1.labels_>0]+myCluster.max() - 1
                     myCluster[idx1] = tmp1
                     unique, counts = np.unique(myCluster[:ndonor], return_counts=True)
-                    dtCluster = dict(zip(unique, counts))              
+                    dtCluster = dict(zip(unique, counts))                              
                     
                 # determine which clusters do not need further clustering 
                 # and change the flag to 1; if the number of potentail donors in a cluster is 
                 # smaller than the defined max number, then no further clustering is needed
                 unique, counts = np.unique(myCluster[:ndonor], return_counts=True)
                 dtCluster = dict(zip(unique, counts))
-                #print(dtCluster)
-                #import sys
-                #sys.exit()
-                #print(yaml.dump(dtCluster, default_flow_style=False))
                 clusts = [k for k, v in dtCluster.items() if v <= max_donor]
                 idx0 = np.where(np.isin(myCluster, clusts))
-                myFlag[idx0] = 1
-                    #print("myflag==1: " + str(sum(myFlag)))
+                myFlag[idx0] = 1                  
                     
             ###### assign donors based on clusters and spatial distance and apply additional constrains
-            #print(myCluster)
             for rec1 in receivers:
-                #print("rec1=",rec1)
-                #print(len(receivers))
                 i1 = [ receivers.index(x)+1 for x in receivers if x == rec1 ][0]
                 
                 if math.isnan(i1):
@@ -191,7 +186,7 @@ def func(config, dtAttrAll,scenario, dist_spatial, method="kmeans"):
                         'distSpatials': ','.join(map(str,pd.Series(dists1)))}
                     dtDonorAll = pd.concat((dtDonorAll, pd.DataFrame(pair1,index=[0])),axis=0)
             # end of loop rec1
-        # end of loop snowy
+        # end of loop snow1
     # end of loop kround
 
     return dtDonorAll
