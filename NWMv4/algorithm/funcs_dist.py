@@ -7,12 +7,13 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
 
     import pandas as pd
     import numpy as np
-    import apply_pca
     import apply_donor_constraints
     import sys
     from unsupervised_random_forest import urf
     import time
-
+    
+    import my_utils
+    
     dtDonorAll = pd.DataFrame()
 
     # two rounds of processing, first with attrs defined by the selected scenario (i.e., 'main'), 
@@ -38,8 +39,11 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
             kround = kround + 1
             print("\n------------------------" + run1 + " attributes,  Round " + str(kround) + "--------------------")   
                        
+            # figure out valid attributes to use this round
+            dtAttr = my_utils.get_valid_attrs(recs0, recs1, dtAttr0, attrs1[run1], config)
+
             # apply principal component analysis
-            myscores, weights, dtAttr = apply_pca.func(recs0, recs1, dtAttr0, attrs1[run1], config)
+            myscores, weights = my_utils.apply_pca(dtAttr.drop(config['non_attr_cols'], axis=1)) 
             
             # donors and receivers for this round
             donorsAll1 = dtAttr.query("tag=='donor'")['id'].tolist()

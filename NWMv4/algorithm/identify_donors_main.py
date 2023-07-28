@@ -3,7 +3,7 @@ import pandas as pd
 import os.path
 import time
 
-import kmeans_clust
+import funcs_clust
 import funcs_dist
 
 # read configuration (algorithm parameters etc) into dictionary
@@ -50,12 +50,14 @@ else:
 # which are assembled in a dictionary 
 scenarios = list(config['attrs'].keys())
 scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
-funcs = ['random_forest','gower_dist','kmeans_clust','kmedoids_clust']
+funcs = ['gower_dist','kmeans_clust','kmedoids_clust','random_forest']
+funcs = ['dbscan_clust']
 scenarios = ['hlr', 'camels']
 functions = {'random_forest': funcs_dist,
              'gower_dist': funcs_dist,
-             'kmeans_clust': kmeans_clust,
-             'kmedoids_clust': kmeans_clust,
+             'kmeans_clust': funcs_clust,
+             'kmedoids_clust': funcs_clust,
+             'dbscan_clust': funcs_clust,
              }
 
 # loop through regionalization functions and scenarios
@@ -70,12 +72,14 @@ for func1 in funcs:
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmeans")
         elif func1 == "kmedoids_clust":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmedoids")
+        elif func1 == "dbscan_clust":
+            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "dbscan")
         elif func1 == "gower_dist":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "gower")
         elif func1 == "random_forest":
             dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "random_forest")        
         else:
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0)  
+            print("WARNING: " + func1 + " is not supported!")  
             
         print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  
         
