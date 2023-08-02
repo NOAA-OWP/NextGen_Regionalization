@@ -10,9 +10,10 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
     import pandas as pd
     import numpy as np
     import apply_donor_constraints
-    from sklearn.cluster import KMeans, DBSCAN
+    from sklearn.cluster import KMeans, DBSCAN, Birch
     from sklearn_extra.cluster import KMedoids
     import math
+    import hdbscan
 
     import my_utils
 
@@ -88,8 +89,10 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
             # while there exist receiver catchments that require further clustering
             # proceed with clustering, iteratively
             #while sum(myFlag[(ndonor):(ndonor+nreceiver-1)]==0) >= 1:
-            while sum(myFlag[(ndonor):(ndonor+nreceiver)]==0) >= 1:
-                print('total='+str(len(myFlag)) +', sum = ' + str(sum(myFlag[(ndonor):(ndonor+nreceiver)]==0)))
+            while sum(myFlag[-nreceiver:]==0) >= 1:
+                print("*** Total unclustered receivers: " + str(sum(myFlag[-nreceiver:]==0)))
+                print("*** Total noisy receivers: " + str(sum(myFlag[-nreceiver:]==-1)))
+                #print('total='+str(len(myFlag)) +', sum = ' + str(sum(myFlag[(ndonor):(ndonor+nreceiver)]==0)))
                 # for each cluster that has more than the preset max. number of donors, break it into smaller clusters
                 clusts = [k for k, v in dtCluster.items() if v > config['pars'][method]['nDonorMax']]
                 for i1 in clusts:
@@ -140,15 +143,56 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                             
                     elif method == 'dbscan':
                         fit1 = DBSCAN(eps=config['pars'][method]['esp'],min_samples=config['pars'][method]['minSamples']).fit(mydata1)
+                    
+                    elif method == 'hdbscan':
+                        fit1 = hdbscan.HDBSCAN(min_cluster_size=config['pars'][method]['minClusterSize']).fit(mydata1)
+                        c1 = np.unique(fit1.labels_[:ndonor1], return_counts=False); c1 = np.sort(c1[c1!=-1])
+                        labels_ = np.ones(len(fit1.labels_)) * (-1)
+                        for ii,vv in enumerate(c1):
+                            labels_[np.where(fit1.labels_==vv)] = ii
+                        fit1.labels_ = labels_
+                        c0 = np.unique(labels_, return_counts=False); c0 = np.sort(c0[c0!=-1])
+                        nrec_donor = sum(labels_[ndonor1:] >= 0)
+                        nrec_no_donor = sum(labels_[ndonor1:] == -1)
+                        print('i1='+ str(i1) + ', n_clust=' + str(len(c0)) + ', nrec_donor=' + str(nrec_donor) + ', nrec_no_donor=',str(nrec_no_donor))
+                        #import sys; sys.exit()
+                    elif method == 'birch':
                         
+                        for thresh in np.arange(config['pars'][method]['minThresh'],config['pars'][method]['maxThresh']+0.1,0.1):
+                            for kk in range(config['pars'][method]['maxResample']):
+                                mydata2 = mydata1.sample(frac=1)
+                                fit1 = Birch(branching_factor=config['pars'][method]['branching_factor'],n_clusters=None,
+                                         threshold=thresh).fit(mydata2)
+                                fit1.labels_ = fit1.labels_[[mydata2.index.get_loc(x) for x in mydata1.index]]
+                                u1 = np.unique(fit1.labels_[:ndonor1], return_counts=False)
+                                n_clust = len(np.unique(fit1.labels_, return_counts=False))
+                                nrec_donor = sum(np.in1d(fit1.labels_[ndonor1:], u1))
+                                #print("thresh=" + str(round(thresh,1)) + ', resample='+str(kk) + ', n_clust=' + str(n_clust) + ', nrec_donor=' + str(nrec_donor))
+                                if ((n_clust>1) and (nrec_donor==nreceiver1)):
+                                    break
+                            if ((n_clust>1) and (nrec_donor==nreceiver1)):
+                                break                                
+                        
+                        while n_clust<=1:
+                            mydata2 = mydata1.sample(frac=1)
+                            fit1 = Birch(branching_factor=config['pars'][method]['branching_factor'],n_clusters=None,
+                                         threshold=thresh).fit(mydata2) 
+                            fit1.labels_ = fit1.labels_[[mydata2.index.get_loc(x) for x in mydata1.index]]
+                            u1 = np.unique(fit1.labels_[:ndonor1], return_counts=False)
+                            n_clust = len(np.unique(fit1.labels_, return_counts=False))
+                            nrec_donor = sum(np.in1d(fit1.labels_[ndonor1:], u1))
+                        
+                        print("thresh=" + str(round(thresh,1)) + ', resample='+str(kk) + ', n_clust=' + str(n_clust) + ', nrec_donor=' + str(nrec_donor))                                                                                              
+                                                                    
                     # assign cluster number to the subclusters; first subcluster gets the parent cluster number
                     tmp1 = fit1.labels_ + 1 
                     tmp1[fit1.labels_==0] = i1
                     # the remaining subclusters become new members of the parent group
                     tmp1[fit1.labels_>0] = tmp1[fit1.labels_>0]+myCluster.max() - 1
                     myCluster[idx1] = tmp1
-                    unique, counts = np.unique(myCluster[:ndonor], return_counts=True)
-                    dtCluster = dict(zip(unique, counts))                              
+                    unique, counts = np.unique(myCluster[:ndonor], return_counts=True) 
+                    dtCluster = dict(zip(unique, counts))
+                                                                                  
                     
                 # determine which clusters do not need further clustering 
                 # and change the flag to 1; if the number of potentail donors in a cluster is 
@@ -157,7 +201,14 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                 dtCluster = dict(zip(unique, counts))
                 clusts = [k for k, v in dtCluster.items() if v <= config['pars'][method]['nDonorMax']]
                 idx0 = np.where(np.isin(myCluster, clusts))
-                myFlag[idx0] = 1                  
+                myFlag[idx0] = 1    
+                myFlag[myCluster==0] = -1
+                print(np.unique(myCluster,return_counts=True))   
+                print(np.unique(myCluster[:ndonor],return_counts=True))   
+                print("Number of receivers with donors assigned: " + str(sum(myFlag[-nreceiver:]==1)) + '\n')       
+                
+                if sum(myFlag[-nreceiver:]==1) > 5000:
+                    import sys; sys.exit()      
                     
             ###### assign donors based on clusters and spatial distance and apply additional constrains
             for rec1 in receivers:

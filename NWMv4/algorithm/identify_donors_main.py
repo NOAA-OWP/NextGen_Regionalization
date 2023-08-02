@@ -46,41 +46,32 @@ else:
     pass
     #distSpatial0 = compute_dist_spatial(f1, subset(dtAttrAll,tag=="donor")$id, subset(dtAttrAll,tag=="receiver")$id)
 
-# generate the donor-receiver pairing for the defined attr scenarios using different algorithms (functions)
-# which are assembled in a dictionary 
+
+# different attribute scenarios
 scenarios = list(config['attrs'].keys())
 scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
-funcs = ['gower_dist','kmeans_clust','kmedoids_clust','random_forest']
-funcs = ['dbscan_clust']
 scenarios = ['hlr', 'camels']
-functions = {'random_forest': funcs_dist,
-             'gower_dist': funcs_dist,
-             'kmeans_clust': funcs_clust,
-             'kmedoids_clust': funcs_clust,
-             'dbscan_clust': funcs_clust,
-             }
 
-# loop through regionalization functions and scenarios
+# different regionalization algorithms
+functions = {'urf': funcs_dist,
+             'gower': funcs_dist,
+             'kmeans': funcs_clust,
+             'kmedoids': funcs_clust,
+             'dbscan': funcs_clust,
+             'hdbscan': funcs_clust,
+             'birch': funcs_clust,
+             }
+funcs = functions.keys()
+funcs = ['hdbscan']
+
+# loop through regionalization algorithms and scenarios to generate donor-receiver pairings
 for func1 in funcs:
     for scenario in scenarios:
         outfile = '../output/donor_' + scenario + '_' + func1 + '.csv'
 
-        print("\n======== processing donors: " + func1 + "  " + scenario +" =============\n")
-        
+        print("\n======== processing donors: " + func1 + "  " + scenario +" =============\n")       
         start_time = time.time()
-        if func1 == "kmeans_clust":
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmeans")
-        elif func1 == "kmedoids_clust":
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "kmedoids")
-        elif func1 == "dbscan_clust":
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "dbscan")
-        elif func1 == "gower_dist":
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "gower")
-        elif func1 == "random_forest":
-            dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, "random_forest")        
-        else:
-            print("WARNING: " + func1 + " is not supported!")  
-            
+        dtDonorAll = functions[func1].func(config, dtAttrAll,scenario, distSpatial0, func1)           
         print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  
         
         # save donor receiver pairing to csv file    
