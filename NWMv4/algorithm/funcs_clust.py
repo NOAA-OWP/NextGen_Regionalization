@@ -9,7 +9,7 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
 
     import pandas as pd
     import numpy as np
-    import apply_donor_constraints
+    #import apply_donor_constraints
     from sklearn.cluster import KMeans, DBSCAN, Birch
     from sklearn_extra.cluster import KMedoids
     import math
@@ -90,9 +90,6 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
             # proceed with clustering, iteratively
             #while sum(myFlag[(ndonor):(ndonor+nreceiver-1)]==0) >= 1:
             while sum(myFlag[-nreceiver:]==0) >= 1:
-                print("*** Total unclustered receivers: " + str(sum(myFlag[-nreceiver:]==0)))
-                print("*** Total noisy receivers: " + str(sum(myFlag[-nreceiver:]==-1)))
-                #print('total='+str(len(myFlag)) +', sum = ' + str(sum(myFlag[(ndonor):(ndonor+nreceiver)]==0)))
                 # for each cluster that has more than the preset max. number of donors, break it into smaller clusters
                 clusts = [k for k, v in dtCluster.items() if v > config['pars'][method]['nDonorMax']]
                 for i1 in clusts:
@@ -181,66 +178,29 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                             u1 = np.unique(fit1.labels_[:ndonor1], return_counts=False)
                             n_clust = len(np.unique(fit1.labels_, return_counts=False))
                             nrec_donor = sum(np.in1d(fit1.labels_[ndonor1:], u1))
-                        
-                        print("thresh=" + str(round(thresh,1)) + ', resample='+str(kk) + ', n_clust=' + str(n_clust) + ', nrec_donor=' + str(nrec_donor))                                                                                              
-                                                                    
+                                                    
                     # assign cluster number to the subclusters; first subcluster gets the parent cluster number
                     tmp1 = fit1.labels_ + 1 
                     tmp1[fit1.labels_==0] = i1
                     # the remaining subclusters become new members of the parent group
                     tmp1[fit1.labels_>0] = tmp1[fit1.labels_>0]+myCluster.max() - 1
                     myCluster[idx1] = tmp1
-                    unique, counts = np.unique(myCluster[:ndonor], return_counts=True) 
-                    dtCluster = dict(zip(unique, counts))
+                    values, counts = np.unique(myCluster[:ndonor], return_counts=True)
+                    dtCluster = dict(zip(values, counts))
                                                                                   
                     
                 # determine which clusters do not need further clustering 
                 # and change the flag to 1; if the number of potentail donors in a cluster is 
                 # smaller than the defined max number, then no further clustering is needed
-                unique, counts = np.unique(myCluster[:ndonor], return_counts=True)
-                dtCluster = dict(zip(unique, counts))
+                values, counts = np.unique(myCluster[:ndonor], return_counts=True)
+                dtCluster = dict(zip(values, counts))
                 clusts = [k for k, v in dtCluster.items() if v <= config['pars'][method]['nDonorMax']]
                 idx0 = np.where(np.isin(myCluster, clusts))
                 myFlag[idx0] = 1    
-                myFlag[myCluster==0] = -1
-                print(np.unique(myCluster,return_counts=True))   
-                print(np.unique(myCluster[:ndonor],return_counts=True))   
-                print("Number of receivers with donors assigned: " + str(sum(myFlag[-nreceiver:]==1)) + '\n')       
-                
-                if sum(myFlag[-nreceiver:]==1) > 5000:
-                    import sys; sys.exit()      
+                myFlag[myCluster==0] = -1    
                     
             ###### assign donors based on clusters and spatial distance and apply additional constrains
-            for rec1 in receivers:
-                i1 = [ receivers.index(x)+1 for x in receivers if x == rec1 ][0]
-                
-                if math.isnan(i1):
-                    continue
-                c1 = myCluster[i1+ndonor-1]
-                donors1 = [donors[:ndonor][i] for i in np.where(myCluster[:ndonor]==c1)[0]]       
-                dists1 = dist_spatial.loc[rec1,donors1]
-        
-                # apply additional donor constraints
-                donors1, dists1 = apply_donor_constraints.func(rec1, donors1, dists1, config['pars'], dtAttrAll)
-                
-                # order donors by spatial distance
-                ix1 = np.argsort(dists1)
-                dists1 = dists1[ix1]
-                donors1 = donors1[ix1]
-                
-                # if the number of donors for a given receiver is greater than nDonorMax, ignore the additional donors
-                nd_max = min(len(dists1),config['pars'][method]['nDonorMax'])
-                dists1 = dists1[range(nd_max)]
-                donors1 = donors1[range(nd_max)]
-
-                # add the donor/receiver pair to the pairing table    
-                if len(donors1)>0:
-                    pair1 = {'id': rec1, 'tag': scenario, 'donor': donors1[0],
-                        'distSpatial': dists1[0],
-                        'donors': ','.join(donors1), 
-                        'distSpatials': ','.join(map(str,pd.Series(dists1)))}
-                    dtDonorAll = pd.concat((dtDonorAll, pd.DataFrame(pair1,index=[0])),axis=0)
-            # end of loop rec1
+            dtDonorAll = pd.concat((dtDonorAll, my_utils.assign_donors(scenario, donors, receivers, myCluster, config['pars']['general'], dist_spatial, dtAttrAll)),axis=0)
         # end of loop snow1
     # end of loop kround
 

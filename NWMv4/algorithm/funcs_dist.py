@@ -7,7 +7,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
 
     import pandas as pd
     import numpy as np
-    import apply_donor_constraints
+    #import apply_donor_constraints
     import sys
     from unsupervised_random_forest import urf
     import time
@@ -124,7 +124,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     donor1 = dist1.index.tolist()
                 
                     # apply additional donor constraints
-                    donor1, dist1 = apply_donor_constraints.func(rec1, donor1, dist1, config['pars'], dtAttrAll)
+                    donor1, dist1 = my_utils.apply_donor_constraints(rec1, donor1, dist1, config['pars'], dtAttrAll)
                 
                     # if donors remain
                     if len(donor1)>0:          
@@ -152,7 +152,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     dist0 = dist_spatial.loc[rec1,]
                 
                     # apply additional donor constraints
-                    donor0, dist0 = apply_donor_constraints.func(rec1, donor0, dist0, config['pars'], dtAttrAll)
+                    donor0, dist0 = my_utils.apply_donor_constraints(rec1, donor0, dist0, config['pars'], dtAttrAll)
                 
                     # choose the donor that is spatially closest
                     donor_best1 = donor1 = donor0[np.where(dist0==min(dist0))]
