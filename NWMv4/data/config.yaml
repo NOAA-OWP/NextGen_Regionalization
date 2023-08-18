@@ -8,6 +8,15 @@ attrs:
           low_prec_freq, high_prec_dur, low_prec_dur, forest_frac, gvf_max, gvf_diff,
           lai_max, lai_diff, geo_porosity, geo_permeability, sand_frac, clay_frac,
           soil_porosity, soil_conductivity, soil_depth]
+
+### hydrofabric files 
+hydrofabric:
+  # whether receiver and donor catchments share the same hydrofabric (version)
+  shared: FALSE
+  # path to hydrofabric file for receivers
+  pathReceivers:
+  # path to hydrofabric file for donors
+  pathDonors:
     
 ### algorithm parameters
 pars:
@@ -24,6 +33,11 @@ pars:
       forest_frac: 0.5 
       urban_frac: 0.5 
       cropland_frac: 0.5 
+    # maximum number of donors to keep that satisfy the attribute distance requirement
+    nDonorMax: 3
+    # minimum fraction of total variance explained by PCA components
+    minVarPCA: 0.8
+    
   ## parameters specific to gower 
   gower:
     # minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
@@ -32,10 +46,27 @@ pars:
     maxAttrDist: 0.25
     # starting distance (neighbourhood) for searching donors (km)
     minSpaDist: 200
-    # maximum umber of donors to keep that satisfy the attribute distance requirement
+    # maximum number of donors to keep that satisfy the attribute distance requirement
     nDonorMax: 3
     # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
     zeroSpaDist: 1
+  urf: #unsupervised random forest
+    # number of jobs to use for parallel computation of distance
+    njobs: 5
+    # number of trees in the forest
+    nTrees: 500
+    # the maximum depth of each tree
+    maxDepth: 3
+    # minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
+    minAttrDist: 0.1
+    # maximum attr distance (donors with distance larger than this value are discarded, unless no donor smaller than this threshold is available)
+    maxAttrDist: 0.25
+    # starting distance (neighbourhood) for searching donors (km)
+    minSpaDist: 200
+    # maximum number of donors to keep that satisfy the attribute distance requirement
+    nDonorMax: 3
+    # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
+    zeroSpaDist: 1    
   ## parameters specific to the K-means approach
   kmeans:
     # number of donor basins in a cluster when no further clustering is needed
@@ -54,11 +85,19 @@ pars:
     nIterMax: 100
     # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
     init: heuristic
-  random_forest:
-    # number of trees in the forest
-    nTrees: 500
-    # the maximum depth of each tree
-    maxDepth: 3
-    # clustering algorithm (choose from kmeans or kmedoids)
-    clustAlg: kmeans
+  hdbscan:
+    # number of donor basins in a cluster when no further clustering is needed
+    nDonorMax: 20
+    # minimum cluster size (to avoid being considered noise)
+    minClusterSize: 3
+  birch:
+    # number of donor basins in a cluster when no further clustering is needed
+    nDonorMax: 3
+    # branching factor
+    branching_factor: 50
+    # min and max threshold parameters - the algorithm will iterate through threshold between these to identify a suitable threshold
+    minThresh: 1.5
+    maxThresh: 4.0
+    # maximum number of times to resample the data (since order of objects impacts the clustering results)   
+    maxResample: 20 
     
