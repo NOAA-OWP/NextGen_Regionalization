@@ -50,8 +50,8 @@ else:
 # different attribute scenarios
 scenarios = list(config['attrs'].keys())
 scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
-scenarios = ['hlr', 'camels']
-scenarios = ['hlr']
+#scenarios = ['camels']
+#scenarios = ['hlr']
 
 # different regionalization algorithms
 functions = {'urf': funcs_dist,
@@ -64,7 +64,8 @@ functions = {'urf': funcs_dist,
              }
 funcs = functions.keys()
 funcs = ['hdbscan']
-funcs = ['kmeans']
+funcs = ['kmedoids']
+funcs = ['birch']
 
 # loop through regionalization algorithms and scenarios to generate donor-receiver pairings
 for func1 in funcs:

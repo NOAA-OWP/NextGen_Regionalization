@@ -2,6 +2,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA    
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
     
 def get_valid_attrs(recs0, recs1, dtAttr0, attrs, config):
    
@@ -21,26 +22,23 @@ def get_valid_attrs(recs0, recs1, dtAttr0, attrs, config):
             print("Using all attributes")
         
     # ignore donors & receivers with NA attribute values
-    dtAttr.dropna(subset=[x for x in attrs if x not in vars0], inplace=True)
+    dtAttr = dtAttr.dropna(subset=[x for x in attrs if x not in vars0], inplace=False)
     
-    if dtAttr.empty:
+    if dtAttr.shape[0]==0:
         print("WARNING: no valid attributes found for the following receivers: ")
         print(dtAttr['id'].tolist())
        
     return dtAttr
 
-def apply_pca(data0):
+def apply_pca(data0, min_var=0.8):
     
     # standardize the data        
     scaled_data = StandardScaler().fit_transform(data0)
 
-    # iteratively increase no of principle componenets to make sure 
-    # the total explained variance is greater than 80%
-    for n1 in range(1,len(scaled_data)):
-        pca = PCA(n_components = n1)
-        pca.fit(scaled_data)
-        if sum(pca.explained_variance_ratio_)>=0.8:
-            break
+    # perform PCA given the required minimum total explained variance
+    pca = PCA(min_var)
+    pca.fit(scaled_data)
+    n1 = pca.n_components_
         
     print("Number of PCs selected: " + str(n1))
     print("PCA total portion of variance explained ... " + str(sum(pca.explained_variance_ratio_)))
@@ -65,8 +63,6 @@ def apply_pca(data0):
 def apply_donor_constraints(rec, donors, dists, pars, dtAttr):
   
     # 1. narrow down to donors with the same snowiness category
-    #snowy = dtAttr['snowy'][(dtAttr['id']==rec) & (dtAttr['tag']=='receiver')]
-    #snowy1 = dtAttr['snowy'][(dtAttr['id'] in donors) & (dtAttr['tag']=='donor')]
     snowy = dtAttr.query("id == @rec & tag=='receiver'")['snowy']
     snowy1 = dtAttr.query("id in @donors & tag=='donor'")['snowy']
     ix1 = snowy1.isin(snowy)
@@ -92,8 +88,6 @@ def apply_donor_constraints(rec, donors, dists, pars, dtAttr):
     # 4. further narrow down to donors in the same HSG
     hsg = dtAttr.query("id==@rec & tag=='receiver'")['hsg']
     hsg1 = dtAttr.query("id in @donors & tag=='donor'")['hsg']
-    #hsg = dtAttr['hsg'][(dtAttr['id']==rec) & (dtAttr['tag']=='receiver')]
-    #hsg1 = dtAttr['hsg'][(dtAttr['id'] in donors) & (dtAttr['tag']=='donor')]
     ix1 = hsg1.isin(hsg)
     if sum(ix1) > 0:
         dists = np.array(dists)[ix1]
@@ -102,26 +96,20 @@ def apply_donor_constraints(rec, donors, dists, pars, dtAttr):
     return donors, dists
 
 ###### assign donors based on clusters and spatial distance and apply additional constrains
-def assign_donors(scenario, donors, receivers, clusters, pars, dist_spatial, dtAttr):
+def assign_donors(scenario, donors, receivers,pars, dist_spatial, dtAttr):
     df_donor = pd.DataFrame()
-    for i1, rec1 in enumerate(receivers):
-        #i1 = [ receivers.index(x)+1 for x in receivers if x == rec1 ][0]
-        
-        #if math.isnan(i1):
-        #    continue
-        c1 = clusters[i1+len(donors)]
-        #donors1 = donors[clusters[:len(donors)]==c1]
-        donors1 = [donors[i] for i,c in enumerate(clusters[:len(donors)]) if c==c1]
-        #donors1 = [donors[:len(donors)][i] for i in np.where(clusters[:len(donors)]==c1)[0]]       
-        dists1 = dist_spatial.loc[rec1,donors1]
+    for rec1 in receivers:
+
+        # get spatial distances
+        dists1 = dist_spatial.loc[rec1,donors]
 
         # apply additional donor constraints
-        donors1, dists1 = apply_donor_constraints(rec1, donors1, dists1, pars, dtAttr)
+        donors1, dists1 = apply_donor_constraints(rec1, donors, dists1, pars, dtAttr)
         
         # order donors by spatial distance
         ix1 = np.argsort(dists1)
         dists1 = dists1[ix1]
-        donors1 = donors1[ix1]
+        donors1 = np.array(donors1)[ix1]
         
         # if the number of donors for a given receiver is greater than nDonorMax, ignore the additional donors
         nd_max = min(len(dists1),pars['nDonorMax'])
@@ -135,5 +123,36 @@ def assign_donors(scenario, donors, receivers, clusters, pars, dist_spatial, dtA
                 'donors': ','.join(donors1), 
                 'distSpatials': ','.join(map(str,pd.Series(dists1)))}
             df_donor = pd.concat((df_donor, pd.DataFrame(pair1,index=[0])),axis=0)
-    # end of loop rec1
+ 
     return df_donor
+
+def plot_clusters(data1,labels,ndonor):
+    fig = plt.figure(figsize=(20, 14))
+    cols_all = [[0,1],[0,2],[3,4],[3,5]]
+    for i1, cols in enumerate(cols_all):
+        
+        if max(cols) > data1.shape[1]:
+            break
+        ax = fig.add_subplot(2,2,i1+1)
+        
+        # receiver - noise
+        d1 = labels[ndonor:] == -1
+        plt.scatter(data1.iloc[:,cols[0]][ndonor:][d1],data1.iloc[:,cols[1]][ndonor:][d1],c='grey',marker='.')
+
+        # receiver non-noise
+        d1 = labels[ndonor:] != -1
+        plt.scatter(data1.iloc[:,cols[0]][ndonor:][d1],data1.iloc[:,cols[1]][ndonor:][d1],c=labels[ndonor:][d1],cmap='rainbow',marker='.')
+        plt.colorbar()
+
+        # donor - noise
+        d1 = labels[:ndonor] == -1
+        plt.scatter(data1.iloc[:,cols[0]][:ndonor][d1],data1.iloc[:,cols[1]][:ndonor][d1],c='black',marker='x',s=100)
+
+        # donor non-noise
+        d1 = labels[:ndonor] != -1
+        plt.scatter(data1.iloc[:,cols[0]][:ndonor][d1],data1.iloc[:,cols[1]][:ndonor][d1],c='green',marker='x',s=100)
+        
+        plt.title(data1.columns[cols[1]] + ' vs ' + data1.columns[cols[0]], fontsize=20, fontweight='bold')
+
+    plt.subplots_adjust(left=0.07, bottom=0.07, right=0.95, top=0.93, hspace=0.15,wspace=0.03)
+    plt.show()
