@@ -87,8 +87,12 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
             print(str(len(recs)) + " receivers to be processed this round")     
 
             # loop through all the receivers to be processed
-            for rec1 in recs:
-
+            for ii, rec1 in enumerate(recs):
+                
+                # all donors in the same snow category as the receiver
+                snow1 = dtAttr['snowy'][(dtAttr['id']==rec1) & (dtAttr['tag']=='receiver')].squeeze()
+                donors0 = dtAttr[(dtAttr['tag']=='receiver') & (dtAttr['snowy']==snow1)]['id'].to_list()
+                
                 # find donors within the defined buffer iteratively so that closest donors 
                 # with attr distance below the predefined value can be found
                 buffer = config['pars'][method]['minSpaDist'] - 100
@@ -105,7 +109,10 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     else:
                         # otherwise, narrow down to donors within the buffer
                         donors1 = s1.loc[s1<=buffer].index.tolist()
-                                
+                    
+                    # potential donors in the same snowy category
+                    donors1 = list(set(donors1).intersection(set(donors0))) 
+                               
                     # potential donors with dist <= maxAttrDist
                     dist1 = distAttr0.loc[rec1, donors1]
                     ix1 = [x for x in dist1.index if dist1[x] <= config['pars'][method]['maxAttrDist']]
@@ -124,7 +131,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     donor1 = dist1.index.tolist()
                 
                     # apply additional donor constraints
-                    donor1, dist1 = my_utils.apply_donor_constraints(rec1, donor1, dist1, config['pars'], dtAttrAll)
+                    donor1, dist1 = my_utils.apply_donor_constraints(rec1, donor1, dist1, config['pars']['general'], dtAttrAll)
                 
                     # if donors remain
                     if len(donor1)>0:          
@@ -152,12 +159,15 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     dist0 = dist_spatial.loc[rec1,]
                 
                     # apply additional donor constraints
-                    donor0, dist0 = my_utils.apply_donor_constraints(rec1, donor0, dist0, config['pars'], dtAttrAll)
+                    donor0, dist0 = my_utils.apply_donor_constraints(rec1, donor0, dist0, config['pars']['general'], dtAttrAll)
                 
                     # choose the donor that is spatially closest
-                    donor_best1 = donor1 = donor0[np.where(dist0==min(dist0))]
+                    donor1 = donor0[dist0==min(dist0)]
+                    if len(donor1)>1 :
+                        donor_best1 = donor1[0]  
+                    donor1 = [donor_best1]                  
                     distSpatial_best1 = distSpatial1 = min(dist0)
-                    distAttr_best1 = distAttr1 = distAttr0.loc[rec1,donor1]
+                    distAttr_best1 = distAttr1 = distAttr0.loc[rec1,donor_best1]
                     tag1 = "proximity"
                 
                 # add the donor/receiver pair to the pairing table    
