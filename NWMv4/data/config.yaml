@@ -14,9 +14,9 @@ hydrofabric:
   # whether receiver and donor catchments share the same hydrofabric (version)
   shared: FALSE
   # path to hydrofabric file for receivers
-  pathReceivers:
+  pathReceivers: ../../datasets/gpkg_v0/catchment_data.geojson
   # path to hydrofabric file for donors
-  pathDonors:
+  pathDonors: ../../datasets/gpkg_v1.2/catchment_data.geojson
     
 ### algorithm parameters
 pars:
@@ -40,6 +40,8 @@ pars:
     
   ## parameters specific to gower 
   gower:
+    # whether to use the gower method for the current run
+    run: TRUE
     # minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
     minAttrDist: 0.1
     # maximum attr distance (donors with distance larger than this value are discarded, unless no donor smaller than this threshold is available)
@@ -51,6 +53,7 @@ pars:
     # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
     zeroSpaDist: 1
   urf: #unsupervised random forest
+    run: TRUE
     # number of jobs to use for parallel computation of distance
     njobs: 5
     # number of trees in the forest
@@ -69,6 +72,7 @@ pars:
     zeroSpaDist: 1    
   ## parameters specific to the K-means approach
   kmeans:
+    run: TRUE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # number of maximum iterations
@@ -79,6 +83,7 @@ pars:
     nInit: 3
   ## parameters specific to the K-mediods approach
   kmedoids:
+    run: TRUE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # maximum number of iterations
@@ -86,11 +91,13 @@ pars:
     # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
     init: heuristic
   hdbscan:
+    run: TRUE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 20
     # minimum cluster size (to avoid being considered noise)
     minClusterSize: 3
   birch:
+    run: TRUE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # branching factor
