@@ -1,35 +1,33 @@
-# This function performs donor-receiver pairing using either Gower's distance (method = "gower_dist") or 
-#   the distance computed by unsurpervised random forest classification (method = "random_forest")
+# This function performs donor-receiver pairing using either Gower's distance (method = "gower") or 
+#   the distance computed by unsurpervised random forest classification (method = "urf")
 #
-def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
+def func(config, dfAttrAll,scenario, dist_spatial,method="gower"):
     
     print("calling function funcs_dist using the " + str(method) + " approach ...")
 
     import pandas as pd
     import numpy as np
-    #import apply_donor_constraints
     import sys
     from unsupervised_random_forest import urf
     import time
-    
     import my_utils
     
-    dtDonorAll = pd.DataFrame()
+    dfDonorAll = pd.DataFrame()
 
-    # two rounds of processing, first with attrs defined by the selected scenario (i.e., 'main'), 
+    # two rounds of processing, first with attributes defined by the selected scenario (i.e., 'hlr'), 
     # and then with 'base' attrs for catchments with no donors found in 1st round
     attrs1 = {'main': config['attrs'][scenario],
             'base': config['attrs']['base']}
     for run1 in attrs1: # attr round
         # check if donors are identified for all receivers
-        recs0 = dtAttrAll.query("tag=='receiver'")['id'].values
-        if dtDonorAll.shape[1] > 0:
-            recs0 = [value for value in recs0 if value not in dtDonorAll["id"].values]
+        recs0 = dfAttrAll.query("tag=='receiver'")['id'].values
+        if dfDonorAll.shape[1] > 0:
+            recs0 = [value for value in recs0 if value not in dfDonorAll["id"].values]
         if len(recs0)==0:
             continue
     
         # reduce the attribute table to attributes for the current round
-        dtAttr0 = dtAttrAll[config['non_attr_cols']+attrs1[run1]]
+        dfAttr0 = dfAttrAll[config['non_attr_cols']+attrs1[run1]]
 
         # iteratively process all the receivers to handle data gaps so that 
         # receivers with the same missing attributes are processed in the same round
@@ -40,14 +38,14 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
             print("\n------------------------" + run1 + " attributes,  Round " + str(kround) + "--------------------")   
                        
             # figure out valid attributes to use this round
-            dtAttr = my_utils.get_valid_attrs(recs0, recs1, dtAttr0, attrs1[run1], config)
+            dfAttr = my_utils.get_valid_attrs(recs0, recs1, dfAttr0, attrs1[run1], config)
 
             # apply principal component analysis
-            myscores, weights = my_utils.apply_pca(dtAttr.drop(config['non_attr_cols'], axis=1)) 
+            myscores, weights = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1)) 
             
             # donors and receivers for this round
-            donorsAll1 = dtAttr.query("tag=='donor'")['id'].tolist()
-            receiversAll1 = dtAttr.query("tag=='receiver'")['id'].tolist()
+            donorsAll1 = dfAttr.query("tag=='donor'")['id'].tolist()
+            receiversAll1 = dfAttr.query("tag=='receiver'")['id'].tolist()
 
             time1 = time.time()
             if method == 'gower':
@@ -65,9 +63,9 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     df1 = ((scores_donor - scores_receiver).abs()/rng2*wgt2).sum(axis=1)
                     distAttr0 = pd.concat((distAttr0,df1),axis=1)
                     
-            elif method == 'random_forest':
+            elif method == 'urf':
                 # compute attribute distance using unsupervised random forecast classification
-                myscores = dtAttr.drop(config['non_attr_cols'], axis=1)
+                myscores = dfAttr.drop(config['non_attr_cols'], axis=1)
                 rf1 = urf(n_trees=config['pars'][method]['nTrees'], max_depth=config['pars'][method]['maxDepth'])
                 distAttr0 = pd.DataFrame(rf1.get_distance(myscores.to_numpy(),njob=config['pars'][method]['njobs'])) 
                 distAttr0 = distAttr0.iloc[len(donorsAll1):,:len(donorsAll1)] 
@@ -90,8 +88,8 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
             for ii, rec1 in enumerate(recs):
                 
                 # all donors in the same snow category as the receiver
-                snow1 = dtAttr['snowy'][(dtAttr['id']==rec1) & (dtAttr['tag']=='receiver')].squeeze()
-                donors0 = dtAttr[(dtAttr['tag']=='receiver') & (dtAttr['snowy']==snow1)]['id'].to_list()
+                snow1 = dfAttr['snowy'][(dfAttr['id']==rec1) & (dfAttr['tag']=='receiver')].squeeze()
+                donors0 = dfAttr[(dfAttr['tag']=='receiver') & (dfAttr['snowy']==snow1)]['id'].to_list()
                 
                 # find donors within the defined buffer iteratively so that closest donors 
                 # with attr distance below the predefined value can be found
@@ -131,7 +129,7 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                     donor1 = dist1.index.tolist()
                 
                     # apply additional donor constraints
-                    donor1, dist1 = my_utils.apply_donor_constraints(rec1, donor1, dist1, config['pars']['general'], dtAttrAll)
+                    donor1, dist1 = my_utils.apply_donor_constraints(rec1, donor1, dist1, config['pars']['general'], dfAttrAll)
                 
                     # if donors remain
                     if len(donor1)>0:          
@@ -155,11 +153,11 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                 tag1 = run1
                 if len(donor1)==0 and run1=="base":                       
                     # get all donors and their spatial distance to the receiver
-                    donor0 = dtAttrAll.query("tag=='donor'")['id']
+                    donor0 = dfAttrAll.query("tag=='donor'")['id']
                     dist0 = dist_spatial.loc[rec1,]
                 
                     # apply additional donor constraints
-                    donor0, dist0 = my_utils.apply_donor_constraints(rec1, donor0, dist0, config['pars']['general'], dtAttrAll)
+                    donor0, dist0 = my_utils.apply_donor_constraints(rec1, donor0, dist0, config['pars']['general'], dfAttrAll)
                 
                     # choose the donor that is spatially closest
                     donor1 = donor0[dist0==min(dist0)]
@@ -178,6 +176,6 @@ def func(config, dtAttrAll,scenario, dist_spatial,method="gower"):
                         'donors': ','.join(donor1), 
                         'distAttrs': ','.join(map(str,pd.Series(np.round(distAttr1,3)))),
                         'distSpatials': ','.join(map(str,pd.Series(distSpatial1)))}
-                    dtDonorAll = pd.concat((dtDonorAll, pd.DataFrame(pair1,index=[0])),axis=0)
+                    dfDonorAll = pd.concat((dfDonorAll, pd.DataFrame(pair1,index=[0])),axis=0)
     
-    return dtDonorAll
+    return dfDonorAll

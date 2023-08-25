@@ -6,7 +6,11 @@
 #   BIRCH (method = "birch") - Balanced Iterative Reducing & Clustering with Hierarchy. Scalable for large datasets. 
 #      Order of points in the dataset influences the outcome. Hence interative resampling is implemented here.
 
-def func(config, dtAttrAll,scenario, dist_spatial, method):
+# Notes:
+#   1) the clustering is done in multiple rounds to handle data gaps in attributes
+#   2) snow and non-snow basins are processed separately
+
+def func(config, dfAttrAll,scenario, dist_spatial, method):
     
     print("perform clustering using " + str(method) + " approach ...")
 
@@ -17,17 +21,18 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
     import hdbscan
     import my_utils
 
-    dfDonorAll= pd.DataFrame()    
+    dfDonorAll = pd.DataFrame()    
 
-    # attributes to be used
-    attrs1 = config['attrs'][scenario]
-
-    # all receivers to find donors for
-    recs0 = dtAttrAll.query("tag=='receiver'")['id'].values
+    # all receivers to find donor for
+    recs0 = dfAttrAll.query("tag=='receiver'")['id'].values
     print('\n Total number of receivers to be paired with donors: ' + str(len(recs0)))
 
-    # reduce the attribute table to attributes
-    dtAttr0 = dtAttrAll[config['non_attr_cols']+attrs1]
+    # attributes to be used for the current run
+    attrs1 = config['attrs'][scenario]
+    
+    # reduce attribute table to the attributes for the current run
+    # note in the attribute table, donors are listed first, followed by receivers
+    dfAttr0 = dfAttrAll[config['non_attr_cols']+attrs1]
 
     # iteratively process all the receivers to handle data gaps (becasuse some attributes may be missing for some catchments)
     kround = 0
@@ -36,6 +41,8 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
         recs = list()
         if dfDonorAll.shape[0]>0:
             recs = np.unique(dfDonorAll['id'])
+            
+        # when all receivers are paired with donors, exit
         if len([x for x in recs0 if x in recs]) == len(recs0):
             break
         
@@ -43,23 +50,24 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
         print("\n------------------------" + scenario + " attributes,  Round " + str(kround) + "--------------------")
 
         # figure out valid attributes to use this round
-        dtAttr = my_utils.get_valid_attrs(recs0, recs, dtAttr0, attrs1, config)
+        dfAttr = my_utils.get_valid_attrs(recs0, recs, dfAttr0, attrs1, config)
 
         # apply principal component analysis
-        myscores, weights = my_utils.apply_pca(dtAttr.drop(config['non_attr_cols'], axis=1))    
+        myscores, weights = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1))
+        del weights    # weights are not used for clustering methods
 
         # process snowy and non-snowy catchments sparately
-        for snow1 in np.unique(dtAttr['snowy']):
+        for snow1 in np.unique(dfAttr['snowy']):
       
             str1 = "non-snowy"
             if snow1:
                 str1 = "snowy"
 
             # the current snowy group
-            dtAttr1 = dtAttr.query("snowy==@snow1")
-            scores1 = myscores[(dtAttr['snowy']==snow1).values]
-            donors = dtAttr1.query("tag=='donor'")['id'].tolist()
-            receivers = dtAttr1.query("tag=='receiver'")['id'].tolist()
+            dfAttr1 = dfAttr.query("snowy==@snow1")
+            scores1 = myscores[(dfAttr['snowy']==snow1).values]
+            donors = dfAttr1.query("tag=='donor'")['id'].tolist()
+            receivers = dfAttr1.query("tag=='receiver'")['id'].tolist()
 
             # receivers to be processed in this round
             recs1 = receivers.copy()
@@ -70,7 +78,7 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                 continue
 
             # define starting labels
-            labels = np.zeros(scores1.shape[0]) # start with a single cluser (label = 0)
+            labels = np.zeros(scores1.shape[0]) # start with a single cluster (label = 0)
             label_done = -99 # label = -99 indicates donor identified
             
             # for those already processed, assign "label_done"
@@ -79,13 +87,14 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
             
             # identify donors iteratively
             dfDonorSnow = pd.DataFrame() # data frame to hold donor table for the current snowy group
-            iter1 = 0
+            iter1 = iter2 = 0
             nrec_with_donor0 = dfDonorSnow.shape[0]
             while dfDonorSnow.shape[0] < len(recs1):
                 
                 iter1 = iter1 + 1
                 
-                label_rec, count_rec = np.unique(labels[len(donors):], return_counts=True) # receiver clusters
+                # get receiver clusters (and ignore those already processed)
+                label_rec, count_rec = np.unique(labels[len(donors):], return_counts=True) 
                 count_rec = count_rec[label_rec != label_done]; label_rec = label_rec[label_rec != label_done]                           
                 
                 # make a copy of current labels (which will change during the iteration of clusters)
@@ -124,8 +133,10 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                             elif method == 'hdbscan':
                                 fit1 = hdbscan.HDBSCAN(min_samples=11,min_cluster_size=config['pars'][method]['minClusterSize'],allow_single_cluster=False).fit(mydata1)
 
-                            elif method == 'birch':                    
+                            elif method == 'birch':
+                                # explore a range of threshold values to identify a proper threshold parameter for BIRCH                    
                                 for thresh in np.arange(config['pars'][method]['minThresh'],config['pars'][method]['maxThresh']+0.1,0.1):
+                                    # shuffle the donor/receiver positions in the data to get optimal results, via resampling
                                     for kk in range(config['pars'][method]['maxResample']):
                                         mydata2 = mydata1.sample(frac=1)
                                         fit1 = Birch(branching_factor=config['pars'][method]['branching_factor'],n_clusters=None,
@@ -134,56 +145,54 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                                         u1 = np.unique(fit1.labels_[:len(donors1)], return_counts=False)
                                         n_clust = len(np.unique(fit1.labels_, return_counts=False))
                                         nrec_donor = sum(np.in1d(fit1.labels_[len(donors1):], u1))
+                                        
+                                        # if a donor is identified for all receivers, quit the iteration loop
                                         if ((n_clust>1) and (nrec_donor==len(receivers1))):
                                             break
                                     if ((n_clust>1) and (nrec_donor==len(receivers1))):
                                         break   
-                                # if n_clust==1:
-                                #     print("*** Warning: only one cluster formed - cannot subset further - assign donors now ***")
                             
                             fit1.labels_ = fit1.labels_ + 2 # add 2 to the cluster labels because hdbscan cluster starts with -1
                             labels[idx0] = fit1.labels_ + labels.max()
-                            label_rec1, count_rec1 = np.unique(fit1.labels_[len(donors1):], return_counts=True) # receiver clusters
-                            label_don1, count_don1 = np.unique(fit1.labels_[:len(donors1)], return_counts=True) # donor clusters
-                            
-                            # print("donor clusters: " + str(label_don1))
-                            # print("donor cluster counts: " + str(count_don1))
-                            # print("receiver clusters: " + str(label_rec1))
-                            # print("receiver cluster counts: " + str(count_rec1))
+                            label_rec1 = np.unique(fit1.labels_[len(donors1):], return_counts=False) # receiver clusters
+                            label_don1 = np.unique(fit1.labels_[:len(donors1)], return_counts=False) # donor clusters
                                                                                   
                             # for receivers in clusters without donors, or clusters that cannot be subset further,
                             # choose donors from those in the parent cluster (donors1)
                             l1 = [x for x in label_rec1 if x not in label_don1]
-                            # n_clust = len(np.unique(fit1.labels_, return_counts=False))
-                            # if n_clust==1:
-                            #     l1 = label_rec1
                             if len(l1) > 0:                                
                                 recs3 = [x for ii,x in enumerate(receivers1) if fit1.labels_[len(donors1):][ii] in l1]
-                                dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs3, config['pars']['general'], dist_spatial, dtAttrAll)),axis=0)
+                                dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs3, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)
                                 labels[[receivers.index(x)+len(donors) for x in recs3]] = label_done
                                                     
                         else:
                             # for receivers in clusters with number of donors smaller than 'nDonorMax', no further clustering is needed
                             # identify donors from the current cluster
-                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs2, config['pars']['general'], dist_spatial, dtAttrAll)),axis=0)
+                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)
                             labels[labels == ll] = label_done  
                     
                     # for receivers in clusters without donors, chooses from all donors based on spatial proximity        
                     else: 
-                        dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dtAttrAll)),axis=0)            
+                        dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)            
                         labels[labels == ll] = label_done           
                 # end cluster loop
                 
-                # Algorithm converged
-                if (nrec_with_donor0 == dfDonorSnow.shape[0]) & (iter1 > 30): 
-                    if dfDonorSnow.shape[0] == 0:
-                        recs2 = recs1.copy()
-                    else:
-                        recs2 = [x for x in recs1 if x not in dfDonorSnow['id'].tolist()]
-                    if len(recs2) > 0:
-                        print("\nAlgorithm converged without donors identified for " + str(len(recs2)) + " receivers ... use proximity for these receivers")
-                        dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dtAttrAll)),axis=0) 
-                    break   
+                # check if algorithm converges (based on number of receivers with donors identified)
+                if nrec_with_donor0 != dfDonorSnow.shape[0]: 
+                    iter2 = 0
+                else:
+                    iter2 = iter2 + 1   
+                    # if the number of receivers with donors identified has not changed in the last 5 iterations,      
+                    # consider the algorithm converging            
+                    if iter2 > 5: 
+                        if dfDonorSnow.shape[0] == 0:
+                            recs2 = recs1.copy()
+                        else:
+                            recs2 = [x for x in recs1 if x not in dfDonorSnow['id'].tolist()]
+                        if len(recs2) > 0:
+                            print("\nAlgorithm converged without donors identified for " + str(len(recs2)) + " receivers ... use proximity for these receivers")
+                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0) 
+                        break   
                         
                 # update progress on donor-receiver paring
                 if iter1 > 1: 
@@ -197,6 +206,7 @@ def func(config, dtAttrAll,scenario, dist_spatial, method):
                 nrec_with_donor0 = dfDonorSnow.shape[0]
                 
             # end while (iteration) loop
+            
             # add to the final donor table
             dfDonorAll = pd.concat((dfDonorAll, dfDonorSnow),axis=0)
             
