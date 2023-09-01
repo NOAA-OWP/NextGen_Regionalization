@@ -70,11 +70,13 @@ else:
                                                        donors=donorsAll, receivers=receiversAll)
     distSpatial0.to_csv(f1, index=True, header=True)
 
-# different attribute scenarios
-scenarios = list(config['attrs'].keys())
-scenarios.remove('base') # the base scenario is only used together with CAMELS or HLR
+# attribute scenarios
+scenarios = list(config['scenarios'].keys())
 
-# different pairing/regionalization algorithms
+# run only those scenarios specified to run in config file
+scenarios =[x for x in scenarios if config['scenarios'][x]]
+
+# pairing/regionalization algorithms
 functions = {'urf': funcs_dist,
              'gower': funcs_dist,
              'kmeans': funcs_clust,
@@ -92,7 +94,11 @@ for func1 in funcs:
     for scenario in scenarios:
         outfile = '../output/donor_' + scenario + '_' + func1 + '.csv'
         if os.path.exists(outfile):
-            continue
+            print('Pair file already exist: ' + str(outfile))
+            value = input("Rerun? Enter Y/y to rerun or any other key to skip: ")
+            if ((value == '') or (value.upper()[0] != "Y")):
+                print('Skip the current run: ' + func1 + ' ' + scenario)
+                continue
 
         print("\n======== processing donors: " + func1 + "  " + scenario +" =============\n")       
         start_time = time.time()

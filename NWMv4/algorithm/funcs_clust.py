@@ -53,8 +53,7 @@ def func(config, dfAttrAll,scenario, dist_spatial, method):
         dfAttr = my_utils.get_valid_attrs(recs0, recs, dfAttr0, attrs1, config)
 
         # apply principal component analysis
-        myscores, weights = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1))
-        del weights    # weights are not used for clustering methods
+        myscores, _ = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1))
 
         # process snowy and non-snowy catchments sparately
         for snow1 in np.unique(dfAttr['snowy']):

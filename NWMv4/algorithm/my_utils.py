@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import geopandas as gpd
 
-# get the valid attributes to be processed this round based on the valid attributes of the first receiver
+# get the valid attributes to be processed based on the valid attributes of the first receiver
 def get_valid_attrs(recs0, recs1, dfAttr0, attrs, config):
    
     dt1 = dfAttr0.query("tag == 'receiver'")
@@ -31,7 +31,7 @@ def get_valid_attrs(recs0, recs1, dfAttr0, attrs, config):
        
     return dfAttr
 
-# apply Principal Componenet Analysis
+# apply Principal Componenet Analysis to the attributes
 def apply_pca(data0, min_var=0.8):
     
     # standardize the data        
@@ -61,7 +61,7 @@ def apply_pca(data0, min_var=0.8):
     # return scores and weights 
     return x_pca, w1
 
-# apply a few constraints to donors identified (e.g., via Gower's distance or techniques)
+# apply a few additional constraints to donors identified (e.g., via Gower's distance or other techniques)
 def apply_donor_constraints(rec, donors, dists, pars, dfAttr):
   
     # 1. narrow down to donors with the same snowiness category

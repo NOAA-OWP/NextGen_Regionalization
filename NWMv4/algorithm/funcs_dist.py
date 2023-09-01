@@ -41,7 +41,10 @@ def func(config, dfAttrAll,scenario, dist_spatial,method="gower"):
             dfAttr = my_utils.get_valid_attrs(recs0, recs1, dfAttr0, attrs1[run1], config)
 
             # apply principal component analysis
-            myscores, weights = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1)) 
+            if ((method=="urf") and (config['pars'][method]['pca'])):
+                myscores, weights = my_utils.apply_pca(dfAttr.drop(config['non_attr_cols'], axis=1)) 
+            else:
+                myscores = dfAttr.drop(config['non_attr_cols'], axis=1)
             
             # donors and receivers for this round
             donorsAll1 = dfAttr.query("tag=='donor'")['id'].tolist()
