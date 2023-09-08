@@ -8,11 +8,13 @@ compute_dist_spatial <- function(file1,donors,receivers) {
   shps_rec <- st_read(paste0("../../datasets/gpkg_",ver_receiver,"/catchment_data.geojson"))
   ix1 <- match(receivers, shps_rec$id)
   shps_rec <- shps_rec[ix1,]
+  shps_don <- shps_don %>% st_transform(3857) #convert from lat/lon to utm for calculating distance
   
   # donor shapefile
   shps_don <- st_read(paste0("../../datasets/gpkg_",ver_donor,"/catchment_data.geojson"))
   ix1 <- match(donors, shps_don$id)
   shps_don <- shps_don[ix1,]  
+  shps_rec <- shps_rec %>% st_transform(3857) #convert from lat/lon to utm for calculating distance
 
   # compute centroids
   sf_use_s2(FALSE)

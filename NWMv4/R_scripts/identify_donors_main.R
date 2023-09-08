@@ -1,8 +1,23 @@
-# Create donor-receiver pairing using Principal Component Analysis (PCA) and 
-#    Gower's distance, using different sets of attributes (HLR or CAMELS) 
-# Multiple rounds are conducted to handle spatial gaps (NA values) in some attributes 
+# Create donor-receiver pairing based on physical similarity, supplemented with spatial proximity. 
+# Currently implemented pairing methods include:
+#   1) Similarity metrics:
+#        1.1 Gower’s distance
+#        1.2 Unsupervised Random Forest (URF)
+#   2) Clustering
+#        2.1 K-means clustering
+#        2.2 K-medoids clustering
+#        2.3 Hierarchical Density-Based Spatial Clustering of Applications with noise (HDBSCAN)
+#        2.4 Balanced Iterative Reducing & Clustering using Hierarchy (BIRCH). 
 #
-# This version allows donors and receivers to have different hydrofabric files
+# Physical similarity is computed from a set of hydroclimatic and physiographic characteristics 
+# defined by a conceptual framework. Currently implemented conceptual frameworks include:
+#   1) the Hydrologic Landscape Region (HLR)
+#   2) the Catchment Attributes and Meteorology for Large-Sample studies (CAMELS)
+# 
+# Notes:
+#   1) All methods except for URF employ Principal Component Analysis (PCA) to 
+#       reduce the dimension of the physical similarity problem  
+#   2) This version allows donors and receivers to have different hydrofabric files
 
 rm(list=ls())
 
