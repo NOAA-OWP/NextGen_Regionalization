@@ -60,6 +60,9 @@ dfAttrAll['snowy'] = dfAttrAll['snow_frac'].apply(lambda x: True if x >= config[
 # columns in the attrs table that are not actual attributes
 config['non_attr_cols'] = ["id","tag","snowy","hsg"]
 
+# add scenario for using all attributes
+config['attrs']['all'] = [x for x in dfAttrAll.columns.tolist() if x not in config['non_attr_cols']]
+
 # compute spatial distance between all receivers and donors if not already computed
 f1 = '../data/dist_spatial_donor_receiver.csv'
 if os.path.isfile(f1):

@@ -2,7 +2,7 @@
 ### attributes for different scenarios
 attrs:
   base: [elev_mean, aridity, forest_frac, sand_frac, geo_porosity]
-  HLR: [prcFlatLowland, prcFlatUpland, prcFlatTotal, relief, aridity, sand_frac, geo_permeability]  
+  hlr: [prcFlatLowland, prcFlatUpland, prcFlatTotal, relief, aridity, sand_frac, geo_permeability]  
   nwm21: [prcFlatLowland, prcFlatUpland, prcFlatTotal, relief, cidx, aridity, sand_frac, clay_frac,
         soil_depth, forest_frac, cropland_frac, urban_frac]
   camels: [slope, elev_mean, p_mean, pet_mean, aridity, snow_frac, high_prec_freq,
@@ -10,10 +10,11 @@ attrs:
           lai_max, lai_diff, geo_porosity, geo_permeability, sand_frac, clay_frac,
           soil_porosity, soil_conductivity, soil_depth]
 
-### scenarios to run
+### attribute scenarios to run
 scenarios:
   hlr: FALSE
   camels: TRUE
+  nwm21: FALSE
 
 ### hydrofabric files 
 hydrofabric:
