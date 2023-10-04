@@ -36,8 +36,8 @@ attrs$areasqkm <- huc[[str1]]
 message("circularity index")
 attrs$cidx <- attrs$areasqkm/(drop_units(st_length(st_cast(huc,"MULTILINESTRING")))/1000)^2*4*pi
 
-message(paste0("read elevation data into SpaRaster: ", file1))
 file1 <- paste0("../../datasets/elev/DEM/ned",h1,".tif")
+message(paste0("read elevation data into SpaRaster: ", file1))
 if (!file.exists(file1)) stop(paste0("File does not exist: ", file1))
 elev0 <- rast(file1)/100 # the original elevation data is in cm; convert to meters
 
