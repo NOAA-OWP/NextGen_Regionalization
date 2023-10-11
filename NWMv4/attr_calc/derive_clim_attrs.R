@@ -115,7 +115,7 @@ huc <- merge(huc, attrs, by="id", all=TRUE)
 # plot the attributes separately with legend
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc01_v",ver1,".png"),width = 5,height=5,units="in",res=300)
+  png(filename = paste0("figs/attr_",c1,"_huc",huc1,"_",ver1,".png"),width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }

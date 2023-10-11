@@ -10,21 +10,16 @@ library(raster)
 library(units)
 library(stars)
 
-vers <- "v1.2"
+source("correct_geojson.R")
+
+vers <- "1.2"
 hucs <- c("17")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
-message(paste0("read geojson ", ver1," ",h1))
-huc <- st_read(paste0("../../datasets/gpkg_",ver1,"/huc",h1,"/catchment_data.geojson"))
-
-# two of the catchments are GEOMETRYCOLLECTION (polygon + linestring), 
-# remove the linestring, otherwise zonal does not work
-huc1 <- huc[which(st_geometry_type(huc$geometry)=="GEOMETRYCOLLECTION"),]
-for (i1 in 1:nrow(huc1)) huc1$geometry[i1] <- huc1$geometry[i1][[1]][[1]]
-huc <- huc[which(st_geometry_type(huc$geometry)!="GEOMETRYCOLLECTION"),]
-huc <- rbind(huc,huc1)
-huc <- huc[order(huc$id),]
+message(paste0("read geojson v", ver1," huc",h1))
+huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
+huc <- correct_geojson(h1, huc)
 
 # initialize attribute data table
 attrs <- data.table(id = huc$id)
@@ -47,7 +42,7 @@ dt1 <- execute_zonal(slope,geom=huc,ID="id",join=FALSE)
 attrs <- merge(attrs, dt1, by="id", all.x=TRUE)
 
 message("compute mean elevation")
-dt1 <- execute_zonal(elev0,geom=huc,ID="id",join=FALSE)
+dt1 <- execute_zonal(elev0,geom=huc,ID="id",join=FALSE, progress=TRUE)
 names(dt1)[2] <- "elev_mean"
 attrs <- merge(attrs, dt1, by="id",all.x=TRUE)
 
@@ -104,7 +99,7 @@ for (c1 in cols) prc2[[c1]][is.na(prc2[[c1]])] <- 0
 dt1 <- merge(dt1,prc2[,c("id",cols),with=FALSE], all=TRUE)
 attrs <- merge(attrs,dt1[,c("id","prcFlatTotal","prcFlatLowland","prcFlatUpland","relief"),with=F],by="id",all.x=TRUE)
 message("save the attributes")
-save(attrs, file=paste0("output/topo_attr_huc",h1,"_",ver1,".Rdata"))
+save(attrs, file=paste0("output/topo_attr_huc",h1,"_v",ver1,".Rdata"))
 
 message("check attribtue summary")
 cols <- names(attrs)
@@ -122,7 +117,7 @@ huc <- merge(huc, attrs[,c("id",cols[!cols %in% names(huc)]),with=FALSE], by="id
 message("plot the attributes separately with legend")
 for (c1 in cols) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_",ver1,".png"),width = 5,height=5,units="in",res=300)
+  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_v",ver1,".png"),width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }
