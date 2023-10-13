@@ -5,7 +5,7 @@ rm(list=ls())
 library(data.table)
 
 ver1 <- "1.2" #hydrofabric version
-huc1 <- "17"
+huc1 <- "12"
 
 # hourly data for all forcing variables in individual csv files
 dir1 <- "/apd_common/For_Liu_lumped_AORC"
@@ -23,6 +23,7 @@ for (f1 in files) {
   cat1 <- gsub(".csv","",basename(f1))
   outfile <- paste0("../../datasets/AORC_hydrofabric_v",ver1,"/huc",huc1,"/aorc_hourly_",format(h1,"%Y%m%d%H",tz="UTC"),"_",format(h2,"%Y%m%d%H",tz="UTC"),"_",cat1,".Rdata")
   if (file.exists(outfile)) next
+  if (!dir.exists(dirname(outfile))) dir.create(dirname(outfile),recursive=TRUE)
 
   message(match(f1,files))
  

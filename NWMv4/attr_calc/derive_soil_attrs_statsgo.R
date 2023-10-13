@@ -10,18 +10,25 @@ library(stars)
 library(raster)
 source("correct_geojson.R")
 
-soil_raster <- TRUE #if soil property rasters already exist
+soil_raster <- FALSE #if soil property rasters already exist
 # attributes to compute
 pars <- c("soil_depth","soil_porosity","soil_conductivity","sand_frac","silt_frac","clay_frac","organic_frac","water_frac","other_frac")
 
-vers <- "1.2"
-hucs <- c("17")
+vers <- "2.0pre"
+hucs <- c("12")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
 message(paste0("read geojson v", ver1," huc",h1))
-huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
-huc <- correct_geojson(h1, huc)
+
+# version 1.2
+#huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
+#huc <- correct_geojson(h1, huc)
+
+# v2.0 pre-release
+huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",h1,".gpkg"),"divides")
+huc$id <- NULL
+names(huc)[names(huc)=="divide_id"] <- "id"
 
 attrs <- data.table(id=huc$id)
 fout <- paste0("output/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")

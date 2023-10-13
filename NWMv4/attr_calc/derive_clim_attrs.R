@@ -6,8 +6,8 @@ library(data.table)
 
 rm(list=ls())
 
-ver1 <- "1.2" #hydrofabric version
-huc1 <- "17"
+ver1 <- "2.0pre" #hydrofabric version
+huc1 <- "12"
 
 # hourly data for all forcing variables in individual csv files
 files <- list.files(paste0("../../datasets/AORC_hydrofabric_v",ver1,"/huc",huc1),full.names=TRUE)
@@ -24,10 +24,10 @@ if (file.exists(outfile))   load(outfile)
 
 for (f1 in files) {
   
-  message(match(f1,files))
-
   cat1 <- gsub(".Rdata","",strsplit(basename(f1),split="_")[[1]][5])
   if (nrow(attrs)>0) if (cat1 %in% attrs[['id']]) next
+
+  message(match(f1,files))
 
   df1 <- get(load(f1))
   df1$Time <- hours$Time
@@ -106,7 +106,10 @@ for (c1 in pars) {
   message(c1)
   print(summary(attrs[[c1]]))
 }
-huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",huc1,"/catchment_data.geojson"))
+#huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",huc1,"/catchment_data.geojson"))
+huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",huc1,".gpkg"),"divides")
+huc$id <- NULL
+names(huc)[names(huc)=="divide_id"] <- "id"
 huc <- merge(huc, attrs, by="id", all=TRUE)
 
 # plot the attributes (multiple panels, no legend)

@@ -12,17 +12,26 @@ library(stars)
 
 source("correct_geojson.R")
 
-vers <- "1.2"
-hucs <- c("17")
+vers <- "2.0pre"
+hucs <- c("12")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
 message(paste0("read geojson v", ver1," huc",h1))
-huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
-huc <- correct_geojson(h1, huc)
+
+# version 1.2
+#huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
+#huc <- correct_geojson(h1, huc)
+
+# v2.0 pre-release
+huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",h1,".gpkg"),"divides")
+huc$id <- NULL
+names(huc)[names(huc)=="divide_id"] <- "id"
 
 # initialize attribute data table
+fout <- paste0("output/topo_attr_huc",h1,"_v",ver1,".Rdata")
 attrs <- data.table(id = huc$id)
+if (file.exists(fout)) load(fout)
 
 str1 <- "areasqkm"
 if (!str1 %in% names(huc)) str1 <- "area_sqkm"
@@ -38,21 +47,23 @@ elev0 <- rast(file1)/100 # the original elevation data is in cm; convert to mete
 
 message("compute slope")
 slope <- terra::terrain(elev0,'slope',unit='radians')
-dt1 <- execute_zonal(slope,geom=huc,ID="id",join=FALSE)
+dt1 <- execute_zonal(slope,geom=huc,ID="id",join=FALSE, progress=TRUE)
 attrs <- merge(attrs, dt1, by="id", all.x=TRUE)
+save(attrs, file=fout)
 
 message("compute mean elevation")
 dt1 <- execute_zonal(elev0,geom=huc,ID="id",join=FALSE, progress=TRUE)
 names(dt1)[2] <- "elev_mean"
 attrs <- merge(attrs, dt1, by="id",all.x=TRUE)
+save(attrs, file=fout)
 
 # relief
 message("compute max elevation")
-dt1 <- execute_zonal(elev0,geom=huc,ID="id",fun="max",join=FALSE)
+dt1 <- execute_zonal(elev0,geom=huc,ID="id",fun="max",join=FALSE, progress=TRUE)
 names(dt1) <- c("id", "maxelev")
 
 message("compute min elevation")
-tmp <- execute_zonal(elev0,geom=huc,ID="id",fun="min",join=FALSE)
+tmp <- execute_zonal(elev0,geom=huc,ID="id",fun="min",join=FALSE, progress=TRUE)
 names(tmp) <- c("id", "minelev")
 dt1 <- merge(dt1,tmp,by="id",all=TRUE)
 
@@ -98,8 +109,7 @@ for (c1 in cols) prc2[[c1]][is.na(prc2[[c1]])] <- 0
 
 dt1 <- merge(dt1,prc2[,c("id",cols),with=FALSE], all=TRUE)
 attrs <- merge(attrs,dt1[,c("id","prcFlatTotal","prcFlatLowland","prcFlatUpland","relief"),with=F],by="id",all.x=TRUE)
-message("save the attributes")
-save(attrs, file=paste0("output/topo_attr_huc",h1,"_v",ver1,".Rdata"))
+save(attrs, file=fout)
 
 message("check attribtue summary")
 cols <- names(attrs)
