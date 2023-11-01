@@ -1,4 +1,5 @@
-#
+# sanity check to make sure all catchments in the gage gpkg file created by hfsubset can be found in the HUC gpkg 
+
 rm(list=ls())
 
 library(sf)
@@ -25,7 +26,7 @@ for (f1 in files) {
     cats <- sf1$divide_id
     cats1 <- cats[!cats %in% huc$divide_id]
     if (length(cats1)==0) dt_hucs <- rbind(dt_hucs,data.table(gage=gage1,huc=h1))
-    #if (length(cats1)>0) message(paste0(length(cats1)," out of ", length(cats)," catchments not found"))
+    if (length(cats1)>0) message(paste0(length(cats1)," out of ", length(cats)," catchments not found"))
 }}
 
 meta <- as.data.table(read.csv("data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))

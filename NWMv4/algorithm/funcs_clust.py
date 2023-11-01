@@ -161,18 +161,18 @@ def func(config, dfAttrAll,scenario, dist_spatial, method):
                             l1 = [x for x in label_rec1 if x not in label_don1]
                             if len(l1) > 0:                                
                                 recs3 = [x for ii,x in enumerate(receivers1) if fit1.labels_[len(donors1):][ii] in l1]
-                                dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs3, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)
+                                dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs3, config['pars']['general'], None, dist_spatial, dfAttrAll)),axis=0)
                                 labels[[receivers.index(x)+len(donors) for x in recs3]] = label_done
                                                     
                         else:
                             # for receivers in clusters with number of donors smaller than 'nDonorMax', no further clustering is needed
                             # identify donors from the current cluster
-                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)
+                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors(scenario, donors1, recs2, config['pars']['general'], None, dist_spatial, dfAttrAll)),axis=0)
                             labels[labels == ll] = label_done  
                     
                     # for receivers in clusters without donors, chooses from all donors based on spatial proximity        
                     else: 
-                        dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0)            
+                        dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], None, dist_spatial, dfAttrAll)),axis=0)            
                         labels[labels == ll] = label_done           
                 # end cluster loop
                 
@@ -190,7 +190,7 @@ def func(config, dfAttrAll,scenario, dist_spatial, method):
                             recs2 = [x for x in recs1 if x not in dfDonorSnow['id'].tolist()]
                         if len(recs2) > 0:
                             print("\nAlgorithm converged without donors identified for " + str(len(recs2)) + " receivers ... use proximity for these receivers")
-                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], dist_spatial, dfAttrAll)),axis=0) 
+                            dfDonorSnow = pd.concat((dfDonorSnow, my_utils.assign_donors('proximity', donors, recs2, config['pars']['general'], None, dist_spatial, dfAttrAll)),axis=0) 
                         break   
                         
                 # update progress on donor-receiver paring

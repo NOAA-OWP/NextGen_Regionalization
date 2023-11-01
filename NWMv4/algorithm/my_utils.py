@@ -98,7 +98,7 @@ def apply_donor_constraints(rec, donors, dists, pars, dfAttr):
     return donors, dists
 
 # assign donors based on clusters and spatial distance and apply additional constrains
-def assign_donors(scenario, donors, receivers,pars, dist_spatial, dfAttr):
+def assign_donors(scenario, donors, receivers,pars, dist_attr, dist_spatial, dfAttr):
     df_donor = pd.DataFrame()
     for rec1 in receivers:
 
@@ -108,15 +108,22 @@ def assign_donors(scenario, donors, receivers,pars, dist_spatial, dfAttr):
         # apply additional donor constraints
         donors1, dists1 = apply_donor_constraints(rec1, donors, dists1, pars, dfAttr)
         
+        # if applicable, choose donor with the smallest attribute distances
+        if dist_attr is not None:
+            ix1 = np.argsort(dist_attr)[range(min(len(dist_attr),pars['nDonorMax']))] 
+            dist_attr1 = dist_attr[ix1]
+            dists1 = dists1[ix1]
+            donors1 = donors1[ix1] 
+                       
         # order donors by spatial distance
         ix1 = np.argsort(dists1)
-        dists1 = dists1[ix1]
+        dists1 = dists1[ix1]        
         donors1 = np.array(donors1)[ix1]
         
-        # if the number of donors for a given receiver is greater than nDonorMax, ignore the additional donors
+        # if the number of donors is greater than nDonorMax, ignore the additional donors
         nd_max = min(len(dists1),pars['nDonorMax'])
         dists1 = dists1[range(nd_max)]
-        donors1 = donors1[range(nd_max)]
+        donors1 = donors1[range(nd_max)]        
 
         # add the donor/receiver pair to the pairing table    
         if len(donors1)>0:
@@ -124,6 +131,14 @@ def assign_donors(scenario, donors, receivers,pars, dist_spatial, dfAttr):
                 'distSpatial': dists1[0],
                 'donors': ','.join(donors1), 
                 'distSpatials': ','.join(map(str,pd.Series(dists1)))}
+            
+            # add attribute distance if applicable (e.g., for Gower & URF)
+            if dist_attr is not None:
+                dist_attr1 = np.array(dist_attr1)[ix1] # sort according to spatial distance
+                dist_attr1 = dist_attr1[range(nd_max)] # ignore unneeded donor (likely not necessary given the treatment above) 
+                pair1['distAttr'] = dist_attr1[0]
+                pair1['distAttrs'] = ','.join(map(str,pd.Series(dist_attr1)))
+                
             df_donor = pd.concat((df_donor, pd.DataFrame(pair1,index=[0])),axis=0)
  
     return df_donor
@@ -167,17 +182,23 @@ def calculate_spatial_distance(shp_file_rec, shp_file_don, donors, receivers):
     print('compute donor-receiver spatial distance ...')
     
     # read in shapefile as GeoDataFrame
-    shps_rec = gpd.read_file(shp_file_rec)
-    shps_don = gpd.read_file(shp_file_don)
+    shps_rec = gpd.read_file(shp_file_rec,layer="divides")
+    shps_don = gpd.read_file(shp_file_don,layer="divides")
     
     # filter donors and receiver GeoDataFrames to those needed
-    shps_rec = shps_rec[shps_rec['id'].isin(receivers)]
-    shps_don = shps_don[shps_don['id'].isin(donors)]
+    id_rec = 'id'
+    if 'divide_id' in shps_rec.columns:
+        id_rec = 'divide_id'
+    id_don = 'id'
+    if 'divide_id' in shps_don.columns:
+        id_don = 'divide_id'    
+    shps_rec = shps_rec[shps_rec[id_rec].isin(receivers)]
+    shps_don = shps_don[shps_don[id_don].isin(donors)]
     
     # reindex the GeoDataFrames by order of ids in donors and receivers
-    shps_rec = shps_rec.set_index('id')
+    shps_rec = shps_rec.set_index(id_rec)
     shps_rec = shps_rec.reindex(receivers)
-    shps_don = shps_don.set_index('id')
+    shps_don = shps_don.set_index(id_don)
     shps_don = shps_don.reindex(donors)
     
     # reproject from geodetic coordinates to meters (for distance calculation)

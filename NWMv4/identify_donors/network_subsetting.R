@@ -1,3 +1,5 @@
+# utility functions for network subsetting (for hydrofabric versions before v2.0 pre-release)
+
 get_edges_terms = function(flowpaths) {
   
   fline = select(st_drop_geometry(flowpaths), id, toid)
