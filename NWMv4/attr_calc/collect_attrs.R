@@ -67,5 +67,5 @@ dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 message("\nNumber of NA values for each attribute for huc", h1," v", ver1)
 for(c1 in names(dtAttrAll)) message(paste0(c1," ",sum(is.na(dtAttrAll[[c1]]))))
 
-save(dtAttrAll,file=paste0("output/all_attrs_huc",h1,"_v",ver1,".Rdata"))
+write.csv(dtAttrAll,file=paste0("output/all_attrs_huc",h1,"_v",ver1,".csv"),quote=FALSE,row.names=FALSE)
 }
