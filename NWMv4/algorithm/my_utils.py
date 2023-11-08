@@ -38,7 +38,7 @@ def apply_pca(data0, min_var=0.8):
     scaled_data = StandardScaler().fit_transform(data0)
 
     # perform PCA given the required minimum total explained variance
-    pca = PCA(min_var)
+    pca = PCA(min_var, svd_solver='auto',random_state=7777)
     pca.fit(scaled_data)
     n1 = pca.n_components_
         
@@ -110,10 +110,12 @@ def assign_donors(scenario, donors, receivers,pars, dist_attr, dist_spatial, dfA
         
         # if applicable, choose donor with the smallest attribute distances
         if dist_attr is not None:
+            ix0 = [donors.index(i) for i in donors1]
+            dist_attr = [dist_attr[i] for i in ix0]
             ix1 = np.argsort(dist_attr)[range(min(len(dist_attr),pars['nDonorMax']))] 
-            dist_attr1 = dist_attr[ix1]
+            dist_attr1 = np.array(dist_attr)[ix1]
             dists1 = dists1[ix1]
-            donors1 = donors1[ix1] 
+            donors1 = np.array(donors1)[ix1] 
                        
         # order donors by spatial distance
         ix1 = np.argsort(dists1)

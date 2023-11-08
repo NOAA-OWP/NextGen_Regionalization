@@ -27,7 +27,7 @@ import sys
 sys.path.append('../algorithm/')
 #sys.path.insert(1, '/home/***REMOVED***/NextGen_Regionalization/NWMv4/algorithm')
 import funcs_clust
-import funcs_dist
+import funcs_dist_new
 import my_utils
 
 # read configuration (algorithm parameters etc)
@@ -47,7 +47,7 @@ config = yaml.safe_load(config_str)
 # print(yaml.dump(config, default_flow_style=False)) 
 
 print('\n------------------------------')
-print('processing ' + config['huc'] + ', hydrofab version ' + config['huc'])
+print('processing ' + config['huc'] + ', hydrofab version ' + config['ver'])
 
 # check if donors and receivers share the same hydrofabric
 # if yes, use the defined receiver hydrofabric and attribute files for both receivers and donors
@@ -94,7 +94,7 @@ f1 = config['inputs']['file_distance']
 if os.path.isfile(f1):
     distSpatial0 = pd.read_csv(f1,index_col=0)
 else:
-    distSpatial0 = my_utils_new.calculate_spatial_distance(shp_file_rec=config['inputs']['file_hydrofab']['receiver'], 
+    distSpatial0 = my_utils.calculate_spatial_distance(shp_file_rec=config['inputs']['file_hydrofab']['receiver'], 
                                                        shp_file_don=config['inputs']['file_hydrofab']['donor'], 
                                                        donors=donorsAll, receivers=receiversAll)
     distSpatial0.to_csv(f1, index=True, header=True)
@@ -107,8 +107,8 @@ scenarios =[x for x in scenarios if config['scenarios'][x]]
 
 # pairing/regionalization algorithms
 functions = {
-             'urf': funcs_dist,
-             'gower': funcs_dist,
+             'gower': funcs_dist_new,
+             'urf': funcs_dist_new,
              'kmeans': funcs_clust,
              'kmedoids': funcs_clust,
              'hdbscan': funcs_clust,
@@ -133,8 +133,8 @@ for func1 in funcs:
         print("\n======== Identify donors for: " + func1 + "  " + scenario +" =============\n")       
         start_time = time.time()
         dfDonorAll = functions[func1].func(config, dfAttrAll,scenario, distSpatial0, func1)           
-        print("\nTotal processing time: --- %s seconds ---" % (time.time() - start_time))  
+        print("\nTotal processing time for (" + func1 + ", " + scenario +"): --- %s seconds ---" % (time.time() - start_time))  
         
         # save donor receiver pairing to csv file    
-        dfDonorAll.to_csv(outfile, index=False)
+        dfDonorAll.to_csv(outfile, index=False, float_format='%.3f')
 

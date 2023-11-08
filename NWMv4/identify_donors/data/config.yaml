@@ -1,26 +1,29 @@
 ####### NextGen regionalization configuration
 
 ### huc region:
-huc: huc17
+huc: huc12
 
 ### hydrfabric version (this refers receiver hydrofabric version if it's different for donors)
-ver: v1.2
+ver: v2.0pre
 
 ### attribute scenarios to run
 scenarios:
   hlr: TRUE
-  camels: TRUE
+  camels: FALSE
   nwm21: FALSE
   all: FALSE
 
 ### algorithms to run
 algorithms:
   gower: TRUE
-  urf: TRUE
-  kmeans: TRUE
-  kmedoids: TRUE
-  hdbscan: TRUE
-  birch: TRUE
+  urf: FALSE
+  kmeans: FALSE
+  kmedoids: FALSE
+  hdbscan: FALSE
+  birch: FALSE
+
+### number of parallel jobs to run
+njobs: 20
 
 ### attributes for different scenarios
 attrs:
@@ -88,8 +91,6 @@ pars:
   urf: #unsupervised random forest
     # whether to perform PCA prior to applying urf (preliminary testing indicates limited difference in results)
     pca: FALSE
-    # number of jobs to use for parallel computation of distance
-    njobs: 10
     # number of trees in the forest
     nTrees: 500
     # the maximum depth of each tree
