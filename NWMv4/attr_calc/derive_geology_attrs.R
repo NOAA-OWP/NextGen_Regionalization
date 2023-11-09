@@ -30,7 +30,7 @@ huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
 
 attrs <- data.table(id=huc$id)
-fout <- paste0("output/geo_attr_huc",h1,"_v",ver1,".Rdata")
+fout <- paste0("../output_attr/geo_attr_huc",h1,"_v",ver1,".Rdata")
 if (file.exists(fout)) attrs <- get(load(fout))
 
 # if the rasters do not exist yet, rasterize the shapefiles

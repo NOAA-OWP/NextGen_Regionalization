@@ -31,7 +31,7 @@ huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
 
 attrs <- data.table(id=huc$id)
-fout <- paste0("output/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")
+fout <- paste0("../output_attr/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")
 if (file.exists(fout)) attrs <- get(load(fout))
 
 # if soil property rasters do not already exist, rasterize the shapefile first

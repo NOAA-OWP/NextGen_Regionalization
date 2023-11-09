@@ -26,6 +26,6 @@ names(attrs)[2] <- "hsg"
 attrs$hsg <- factor(attrs$hsg, levels=c(1:4,11:14), labels=c("A","B","C",rep("D",5)))
 
 # save data
-save(attrs,file=paste0("output/hsg_attr_huc",h1,"_v",ver1,".Rdata"))
+save(attrs,file=paste0("../output_attr/hsg_attr_huc",h1,"_v",ver1,".Rdata"))
 
 }

@@ -29,7 +29,7 @@ huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
 
 # initialize attribute data table
-fout <- paste0("output/topo_attr_huc",h1,"_v",ver1,".Rdata")
+fout <- paste0("../output_attr/topo_attr_huc",h1,"_v",ver1,".Rdata")
 attrs <- data.table(id = huc$id)
 if (file.exists(fout)) load(fout)
 

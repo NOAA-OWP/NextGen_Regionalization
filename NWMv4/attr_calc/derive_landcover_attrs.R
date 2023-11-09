@@ -38,7 +38,7 @@ system.time({
   lc_prc <- exactextractr::exact_extract(nlcd,huc,fun="frac",append_cols = 'id', progress = TRUE,max_cells_in_memory=3e+07)
   lc_prc <- as.data.table(lc_prc)
 })
-save(lc_prc, file=paste0("output/nlcd_lc_perc_huc",h1,"_v",ver1,".Rdata"))
+save(lc_prc, file=paste0("../output_attr/nlcd_lc_perc_huc",h1,"_v",ver1,".Rdata"))
 
 # initialize the attribute data table
 attrs <- data.table(id=huc$id)
@@ -62,7 +62,7 @@ nlcd_cov <- l1[,.(nlcd_coverage=sum(value)),by=.(id)]
 attrs <- merge(attrs,nlcd_cov,by="id",all=TRUE)
 
 # save the computed attributes
-outfile <- paste0("output/landcover_attr_huc",h1,"_v",ver1,".Rdata")
+outfile <- paste0("../output_attr/landcover_attr_huc",h1,"_v",ver1,".Rdata")
 save(attrs,file=outfile)
 
 #USGS 24 class land cover (1km) used by the NWM;   

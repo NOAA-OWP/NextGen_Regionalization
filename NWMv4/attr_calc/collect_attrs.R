@@ -23,15 +23,15 @@ if ("divide_id" %in% names(huc)) {
 dtAttrAll <- data.table(id=huc$id)
 
 # climate attributes
-attrs <- get(load(paste0("output/clim_attr_huc",h1,"_v",ver1,".Rdata")))
+attrs <- get(load(paste0("../output_attr/clim_attr_huc",h1,"_v",ver1,".Rdata")))
 dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 
 # topo attributes
-attrs <- get(load(paste0("output/topo_attr_huc",h1,"_v",ver1,".Rdata")))
+attrs <- get(load(paste0("../output_attr/topo_attr_huc",h1,"_v",ver1,".Rdata")))
 dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 
 # soil attributes (STATSGO)
-attrs <- get(load(paste0("output/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")))
+attrs <- get(load(paste0("../output_attr/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")))
 pars <- names(attrs)
 pars <- pars[!grepl("_coverage",pars)]
 pars <- pars[pars!="id"]
@@ -41,12 +41,12 @@ dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 names(dtAttrAll)[names(dtAttrAll)=="water_frac"] <- "water_soil" # to avoid using the same name from land cover
 
 # hydrologic soil group
-attrs <- get(load(paste0("output/hsg_attr_huc",h1,"_v",ver1,".Rdata")))
+attrs <- get(load(paste0("../output_attr/hsg_attr_huc",h1,"_v",ver1,".Rdata")))
 attrs <- attrs[,c("id","hsg"),with=FALSE]
 dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 
 # geology attributes
-attrs <- get(load(paste0("output/geo_attr_huc",h1,"_v",ver1,".Rdata")))
+attrs <- get(load(paste0("../output_attr/geo_attr_huc",h1,"_v",ver1,".Rdata")))
 pars <- names(attrs)
 pars <- pars[!grepl("_coverage",pars)]
 pars <- pars[pars!="id"]
@@ -55,7 +55,7 @@ attrs <- attrs[,c("id",pars),with=FALSE]
 dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 
 # landcover attributes (NLCD + NWM 1km)
-attrs <- get(load(paste0("output/landcover_attr_huc",h1,"_v",ver1,".Rdata")))
+attrs <- get(load(paste0("../output_attr/landcover_attr_huc",h1,"_v",ver1,".Rdata")))
 pars <- names(attrs)
 pars <- pars[grepl("_nlcd",pars)]
 pars <- gsub("_nlcd","",pars)
@@ -67,5 +67,5 @@ dtAttrAll <- merge(dtAttrAll,attrs,by="id",all.x=TRUE)
 message("\nNumber of NA values for each attribute for huc", h1," v", ver1)
 for(c1 in names(dtAttrAll)) message(paste0(c1," ",sum(is.na(dtAttrAll[[c1]]))))
 
-write.csv(dtAttrAll,file=paste0("output/all_attrs_huc",h1,"_v",ver1,".csv"),quote=FALSE,row.names=FALSE)
+write.csv(dtAttrAll,file=paste0("../output_attr/all_attrs_huc",h1,"_v",ver1,".csv"),quote=FALSE,row.names=FALSE)
 }

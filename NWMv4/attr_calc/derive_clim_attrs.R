@@ -19,7 +19,7 @@ h2 <- as.POSIXct(paste0(date2,"23"),format="%Y%m%d%H")
 hours <- data.table(Time=seq(h1,h2,by="hour"))
 
 attrs <- data.table()
-outfile <- paste0("output/clim_attr_huc",huc1,"_v",ver1,".Rdata")
+outfile <- paste0("../output_attr/clim_attr_huc",huc1,"_v",ver1,".Rdata")
 if (file.exists(outfile))   load(outfile)
 
 for (f1 in files) {
