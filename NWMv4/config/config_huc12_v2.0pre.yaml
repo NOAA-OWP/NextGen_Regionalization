@@ -1,4 +1,21 @@
 ####### NextGen regionalization configuration
+
+### attribute scenarios to run
+scenarios:
+  hlr: TRUE
+  camels: FALSE
+  nwm21: FALSE
+  all: FALSE
+
+### algorithms to run
+algorithms:
+  gower: FALSE
+  urf: FALSE
+  kmeans: TRUE
+  kmedoids: TRUE
+  hdbscan: TRUE
+  birch: TRUE
+
 ### attributes for different scenarios
 attrs:
   base: [elev_mean, aridity, forest_frac, sand_frac, geo_porosity]
@@ -10,20 +27,29 @@ attrs:
           lai_max, lai_diff, geo_porosity, geo_permeability, sand_frac, clay_frac,
           soil_porosity, soil_conductivity, soil_depth]
 
-### attribute scenarios to run
-scenarios:
-  hlr: FALSE
-  camels: TRUE
-  nwm21: FALSE
-
-### hydrofabric files 
-hydrofabric:
+### inputs
+inputs:
+  # huc region:
+  huc: huc12
+  # hydrfabric version
+  ver: v2.0pre
   # whether receiver and donor catchments share the same hydrofabric (version)
-  shared: FALSE
-  # path to hydrofabric file for receivers
-  pathReceivers: ../../datasets/gpkg_v0/catchment_data.geojson
-  # path to hydrofabric file for donors
-  pathDonors: ../../datasets/gpkg_v1.2/catchment_data.geojson
+  # if TRUE, the hydrofabric and attribute data files for receivers will be used for both receivers and donors
+  hydrofab_shared: TRUE
+  # file containing precalculated attribute data
+  # path to hydrofabric file
+  file_hydrofab: 
+    receiver: ../../datasets/gpkg_v2.0pre/nextgen_12.gpkg
+    donor: ../../datasets/gpkg_v2.0pre/nextgen_12.gpkg
+  file_attrs_data: 
+    receiver: ../attr_calc/output/all_attrs_huc12_v2.0pre.csv
+    donor: ../attr_calc/output/all_attrs_huc12_v2.0pre.csv
+  # file containing list of donor basins (USGS gage ID); this file contains all donors over conus
+  file_donor_list: data/donor_gages_nwmv30.csv
+  # crosswalk table linking gage ID to catchment IDs
+  file_crosswalk: data/crosswalk_gage_cat_huc12_v2.0pre.csv
+  # file containing donor/receiver spatial distances (row=receivers, col=donors); if file does not exist, it will be generated
+  file_distance: data/spatial_distance_donor_receiver_huc12_v2.0pre.csv
     
 ### algorithm parameters
 pars:
@@ -47,8 +73,6 @@ pars:
     
   ## parameters specific to gower 
   gower:
-    # whether to use the gower method for the current run
-    run: FALSE
     # minimum attr distance (if one or more donors with distance smaller than this threshold, stop searching)
     minAttrDist: 0.1
     # maximum attr distance (donors with distance larger than this value are discarded, unless no donor smaller than this threshold is available)
@@ -60,11 +84,10 @@ pars:
     # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
     zeroSpaDist: 1
   urf: #unsupervised random forest
-    run: TRUE
-    # conduct PCA prior to URF
+    # whether to perform PCA prior to applying urf (preliminary testing indicates limited difference in results)
     pca: FALSE
     # number of jobs to use for parallel computation of distance
-    njobs: 5
+    njobs: 10
     # number of trees in the forest
     nTrees: 500
     # the maximum depth of each tree
@@ -81,7 +104,6 @@ pars:
     zeroSpaDist: 1    
   ## parameters specific to the K-means approach
   kmeans:
-    run: FALSE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # number of maximum iterations
@@ -92,7 +114,6 @@ pars:
     nInit: 3
   ## parameters specific to the K-mediods approach
   kmedoids:
-    run: FALSE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # maximum number of iterations
@@ -100,13 +121,11 @@ pars:
     # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
     init: heuristic
   hdbscan:
-    run: FALSE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 20
     # minimum cluster size (to avoid being considered noise)
     minClusterSize: 3
   birch:
-    run: FALSE
     # number of donor basins in a cluster when no further clustering is needed
     nDonorMax: 3
     # branching factor
