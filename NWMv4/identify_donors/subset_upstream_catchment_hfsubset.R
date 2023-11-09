@@ -12,10 +12,10 @@ source("../attr_calc/correct_geojson.R")
 sf::sf_use_s2(FALSE)
 
 # v3 calibration basins
-gages <- as.character(get(load("data/all_nwmv30_gages_classified.Rdata"))$gage)
+gages <- as.character(get(load("../data/all_nwmv30_gages_classified.Rdata"))$gage)
 
 # domain meta for v3 calibration
-meta <- as.data.table(read.csv("data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
+meta <- as.data.table(read.csv("../data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
 meta <- meta[, c("gage_id", "lat", "lon"), with = FALSE]
 meta <- meta[!duplicated(meta$gage_id)]
 meta <- meta[gage_id %in% gages,]
@@ -47,4 +47,4 @@ for (g1 in gages1) {
     cats1 <- read_sf(outfile,"divides")
     cwt <- rbind(cwt,data.table(id=cats1$divide_id, toid=cats1$toid, type=cats1$type, areasqkm=cats1$areasqkm,gages=g1))
 }
-write.csv(cwt,file=paste0("data/crosswalk_gage_cat_huc",h1,"_", ver1,".csv"),quote=FALSE,row.names=FALSE)
+write.csv(cwt,file=paste0("../data/crosswalk_gage_cat_huc",h1,"_", ver1,".csv"),quote=FALSE,row.names=FALSE)

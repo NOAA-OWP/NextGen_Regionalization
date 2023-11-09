@@ -15,7 +15,7 @@ cw1 <- read_sf(gfile, "crosswalk")
 subcw <- subset(cw1, POI_TYPE=="Gages", select=c("id","toid","POI_ID","POI_VALUE"))
 
 # v3 calibration basins
-gages <- as.character(get(load("data/all_nwmv30_gages_classified.Rdata"))$gage)
+gages <- as.character(get(load("../data/all_nwmv30_gages_classified.Rdata"))$gage)
 
 # trace the network from the ngen ID associated with the gage
 df1 <- tibble()
@@ -43,4 +43,4 @@ st_write(df1, filename, "catchments")
 # save the crosswalk table
 cwt <- as.data.table(df1)
 cwt$geom <- NULL
-write.csv(cwt,file=paste0("data/crosswalk_gage_cat_huc",h1,"_", ver1,".csv"),quote=FALSE,row.names=FALSE)
+write.csv(cwt,file=paste0("../data/crosswalk_gage_cat_huc",h1,"_", ver1,".csv"),quote=FALSE,row.names=FALSE)

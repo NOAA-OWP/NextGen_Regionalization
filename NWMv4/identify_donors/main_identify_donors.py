@@ -31,7 +31,7 @@ import funcs_dist_new
 import my_utils
 
 # read configuration (algorithm parameters etc)
-with open('data/config.yaml', 'r') as stream:
+with open('../data/config.yaml', 'r') as stream:
     try:
         config = yaml.safe_load(stream)
     except yaml.YAMLError as exc:
@@ -122,7 +122,7 @@ funcs = [x for x in funcs if config['algorithms'][x]]
 # loop through regionalization algorithms and scenarios to generate donor-receiver pairings
 for func1 in funcs:
     for scenario in scenarios:
-        outfile = 'output/donor_' + scenario + '_' + func1 + '_' + config['huc']+'_'+config['ver']+'.csv'
+        outfile = '../output/donor_' + scenario + '_' + func1 + '_' + config['huc']+'_'+config['ver']+'.csv'
         if os.path.exists(outfile):
             print('Pair file already exist: ' + str(outfile))
             #value = input("Rerun? Enter Y/y to rerun or any other key to skip: ")

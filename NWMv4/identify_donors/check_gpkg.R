@@ -29,10 +29,10 @@ for (f1 in files) {
     if (length(cats1)>0) message(paste0(length(cats1)," out of ", length(cats)," catchments not found"))
 }}
 
-meta <- as.data.table(read.csv("data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
+meta <- as.data.table(read.csv("../data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
 meta <- meta[, c("gage_id", "lat", "lon"), with = FALSE]
 meta <- meta[!duplicated(meta$gage_id)]
 meta <- na.omit(meta)
 dt_hucs <- merge(dt_hucs, meta, by.x="gage",by.y="gage_id",all.x=TRUE)
 
-save(dt_hucs, file="data/list_gage_huc.Rdata")
+save(dt_hucs, file="../data/list_gage_huc.Rdata")

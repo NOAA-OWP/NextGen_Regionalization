@@ -7,7 +7,7 @@ ver1 <- "1.2"; h1 <- "17"
 ver1 <- "2.0pre"; h1 <- "12" 
 
 # v3 calib gages
-meta <- as.data.table(read.csv("data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
+meta <- as.data.table(read.csv("../data/Domain_Meta_NWM_v3.0.csv",stringsAsFactors=FALSE))
 meta <- meta[, c("gage_id", "lat", "lon","site_name"), with = FALSE]
 meta <- meta[!duplicated(meta$gage_id)]
 meta <- na.omit(meta)
