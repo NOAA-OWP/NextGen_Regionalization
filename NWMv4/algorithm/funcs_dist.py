@@ -5,7 +5,7 @@ from unsupervised_random_forest import urf
 import time
 import my_utils
 from joblib import Parallel, delayed
-from numba import njit
+#from numba import njit
 
 # This function performs donor-receiver pairing using either Gower's distance (method = "gower") or 
 #   the distance computed by unsurpervised random forest classification (method = "urf")
@@ -162,7 +162,7 @@ def identify_donor_slow (rec1, config, method, dfAttr, dfAttrAll, dist_spatial, 
     # get the spatially closest donor with some constraints
     if len(donors1)==0 and run1=="base":                       
         # get all donors and their spatial distance to the receiver
-        donor0 = dfAttrAll.query("tag=='donor'")['id']
+        donor0 = dfAttrAll.query("tag=='donor'")['id'].tolist()
         dist0 = dist_spatial.loc[rec1,]
 
         # assign donor

@@ -187,7 +187,7 @@ def calculate_spatial_distance(shp_file_rec, shp_file_don, donors, receivers):
     shps_rec = gpd.read_file(shp_file_rec,layer="divides")
     shps_don = gpd.read_file(shp_file_don,layer="divides")
     
-    # filter donors and receiver GeoDataFrames to those needed
+    # narrow down donors and receiver GeoDataFrames to those needed
     id_rec = 'id'
     if 'divide_id' in shps_rec.columns:
         id_rec = 'divide_id'
