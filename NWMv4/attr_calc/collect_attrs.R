@@ -9,8 +9,8 @@ library(sf)
 # data coverage threshold
 coverageTh <- 0.5
 
-vers <- c("2.0pre","1.2")
-hucs <- c("12","17")
+vers <- c("2.0")
+hucs <- c("01")
 for (ver1 in vers)  {
 
 # shapefile of catchments in HUC

@@ -56,6 +56,9 @@ class urf(object):
 
         return
 
+    """
+    Get the dissimilarity matrix produced by the random forest model to be used in the regionalization algorithm
+    """
     def get_distance(self,X,njob=1):
         self.get_Xs(X)
         rf_leafs, is_good = self.get_leafs()

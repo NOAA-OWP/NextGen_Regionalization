@@ -106,7 +106,10 @@ def assign_donors(scenario, donors, receivers,pars, dist_attr, dist_spatial, dfA
         dists1 = dist_spatial.loc[rec1,donors]
 
         # apply additional donor constraints
-        donors1, dists1 = apply_donor_constraints(rec1, donors, dists1, pars, dfAttr)
+        if dfAttr is None:
+            donors1 = donors.copy()
+        else:
+            donors1, dists1 = apply_donor_constraints(rec1, donors, dists1, pars, dfAttr)
         
         # if applicable, choose donor with the smallest attribute distances
         if dist_attr is not None:
@@ -179,33 +182,28 @@ def plot_clusters(data1,labels,ndonor):
 
 
 # calculate spatial distance between all donors and receivers
-def calculate_spatial_distance(shp_file_rec, shp_file_don, donors, receivers):
+def calculate_spatial_distance(shp_file, donors, receivers):
     
     print('compute donor-receiver spatial distance ...')
     
     # read in shapefile as GeoDataFrame
-    shps_rec = gpd.read_file(shp_file_rec,layer="divides")
-    shps_don = gpd.read_file(shp_file_don,layer="divides")
-    
-    # narrow down donors and receiver GeoDataFrames to those needed
-    id_rec = 'id'
-    if 'divide_id' in shps_rec.columns:
-        id_rec = 'divide_id'
-    id_don = 'id'
-    if 'divide_id' in shps_don.columns:
-        id_don = 'divide_id'    
-    shps_rec = shps_rec[shps_rec[id_rec].isin(receivers)]
-    shps_don = shps_don[shps_don[id_don].isin(donors)]
-    
-    # reindex the GeoDataFrames by order of ids in donors and receivers
-    shps_rec = shps_rec.set_index(id_rec)
-    shps_rec = shps_rec.reindex(receivers)
-    shps_don = shps_don.set_index(id_don)
-    shps_don = shps_don.reindex(donors)
-    
+    shps = gpd.read_file(shp_file,layer="divides")
+
     # reproject from geodetic coordinates to meters (for distance calculation)
-    shps_don = shps_don.to_crs(crs=3857)
-    shps_rec = shps_rec.to_crs(crs=3857)    
+    shps = shps.to_crs(crs=3857)
+        
+    # narrow down donors and receiver GeoDataFrames to those needed
+    id1 = 'id'
+    if 'divide_id' in shps.columns:
+        id1 = 'divide_id'  
+    shps_rec = shps[shps[id1].isin(receivers)]
+    shps_don = shps[shps[id1].isin(donors)]
+    
+    # reindex the GeoDataFrames by order of ids
+    shps_rec = shps_rec.set_index(id1)
+    shps_rec = shps_rec.reindex(receivers)
+    shps_don = shps_don.set_index(id1)
+    shps_don = shps_don.reindex(donors)
     
     # calculate centroids of donor and receiver catchments
     cent_don = shps_don['geometry'].centroid

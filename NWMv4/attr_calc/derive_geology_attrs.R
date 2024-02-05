@@ -13,8 +13,8 @@ source("correct_geojson.R")
 geol_raster <- FALSE # if geologic property raters already exist
 pars <- c("geo_porosity","geo_permeability")
 
-vers <- "2.0pre"
-hucs <- c("12")
+vers <- "2.0"
+hucs <- c("01")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
@@ -96,7 +96,9 @@ huc <- merge(huc,attrs,by="id",all=TRUE)
 # plot the attributes separately with legend
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_v",ver1,".png"),width = 5,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",c1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }

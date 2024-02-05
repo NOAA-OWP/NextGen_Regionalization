@@ -6,8 +6,8 @@ library(zonal)
 library(sf)
 library(data.table)
 
-vers <- c("2.0pre","1.2")
-hucs <- c("12","17")
+vers <- c("2.0")
+hucs <- c("01")
 for (ver1 in vers)  {
 
 # read in catchments in huc

@@ -4,8 +4,8 @@ rm(list=ls())
 
 library(data.table)
 
-ver1 <- "1.2" #hydrofabric version
-huc1 <- "12"
+ver1 <- "2.0" #hydrofabric version
+huc1 <- "01"
 
 # hourly data for all forcing variables in individual csv files
 dir1 <- "/apd_common/For_Liu_lumped_AORC"

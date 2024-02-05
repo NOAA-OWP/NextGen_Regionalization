@@ -12,8 +12,8 @@ library(stars)
 
 source("correct_geojson.R")
 
-vers <- "2.0pre"
-hucs <- c("12")
+vers <- "2.0"
+hucs <- c("01")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
@@ -23,7 +23,7 @@ message(paste0("read geojson v", ver1," huc",h1))
 #huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
 #huc <- correct_geojson(h1, huc)
 
-# v2.0 pre-release
+# v2.0 and v2.0 pre-release
 huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",h1,".gpkg"),"divides")
 huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
@@ -70,8 +70,7 @@ dt1 <- merge(dt1,tmp,by="id",all=TRUE)
 message("compute relief")
 dt1[,relief:=maxelev-minelev]
 
-#save(attrs, file="attrs.Rdata")
-#save(dt1, file="dt1.Rdata")
+save(dt1, file="dt1.Rdata")
 
 message("calculate the middle elevation raster")
 dt1[,midelev:=(minelev+maxelev)/2]
@@ -127,7 +126,9 @@ huc <- merge(huc, attrs[,c("id",cols[!cols %in% names(huc)]),with=FALSE], by="id
 message("plot the attributes separately with legend")
 for (c1 in cols) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_v",ver1,".png"),width = 5,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",c1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }

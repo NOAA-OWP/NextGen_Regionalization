@@ -15,7 +15,6 @@ scenarios:
 
 ### algorithms to run
 algorithms:
-  proximity: TRUE
   gower: TRUE
   urf: TRUE
   kmeans: TRUE
@@ -27,8 +26,6 @@ algorithms:
 njobs: 20
 
 ### attributes for different scenarios
-# Note 1) if "proximity" is chosen as the algorithm, attribute scenario is ignored, as donors are solely chosen based on spatial distance
-# Note 2) the "base" attributes are used as a supplementary scenario when the choosen scenario (e.g., hlr, camles, nwmv21, all) fails to identify a suitable donor 
 attrs:
   base: [elev_mean, aridity, forest_frac, sand_frac, geo_porosity]
   hlr: [prcFlatLowland, prcFlatUpland, prcFlatTotal, relief, aridity, sand_frac, geo_permeability]  
@@ -91,7 +88,7 @@ pars:
     # starting distance (neighbourhood) for searching donors (km)
     minSpaDist: 200
     # maximum number of donors to keep that satisfy the attribute distance requirement
-    nDonorMax: 10
+    nDonorMax: 3
     # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
     zeroSpaDist: 1
   
@@ -110,14 +107,14 @@ pars:
     # starting distance (neighbourhood) for searching donors (km)
     minSpaDist: 200
     # maximum number of donors to keep that satisfy the attribute distance requirement
-    nDonorMax: 10
+    nDonorMax: 3
     # distance (in km) threshold where receiver adopts a donor directly (i.e., donor/receiver overlapping each other)
     zeroSpaDist: 1    
   
   ## parameters specific to the K-means approach
   kmeans:
     # number of donor basins in a cluster when no further clustering is needed
-    nDonorMax: 30
+    nDonorMax: 3
     # number of maximum iterations
     nIterMax: 100
     # initialization method, choose from 'k-means++', 'random'
@@ -128,7 +125,7 @@ pars:
   ## parameters specific to the K-mediods approach
   kmedoids:
     # number of donor basins in a cluster when no further clustering is needed
-    nDonorMax: 30
+    nDonorMax: 3
     # maximum number of iterations
     nIterMax: 100
     # initialization method, choose from 'random', 'heuristic', 'k-medoids++', 'build'
@@ -137,7 +134,7 @@ pars:
   
   hdbscan:
     # number of donor basins in a cluster when no further clustering is needed
-    nDonorMax: 30
+    nDonorMax: 20
     # minimum cluster size (to avoid being considered noise)
     minClusterSize: 3
   

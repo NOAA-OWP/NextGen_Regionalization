@@ -1,0 +1,6020 @@
+nohup: ignoring input
+
+------------------------------
+processing huc17, hydrofab version 1.2
+Total number of catchments: 80929
+Total number of donor catchments: 13707
+Total number of receiver catchments: 68788
+Pair file already exist: ../output_donor/donor_camels_gower_huc17_v1.2.csv
+Skip the current run: gower camels
+Pair file already exist: ../output_donor/donor_hlr_gower_huc17_v1.2.csv
+Skip the current run: gower hlr
+Pair file already exist: ../output_donor/donor_camels_urf_huc17_v1.2.csv
+Skip the current run: urf camels
+Pair file already exist: ../output_donor/donor_hlr_urf_huc17_v1.2.csv
+Skip the current run: urf hlr
+
+======== Identify donors for: kmeans  camels =============
+
+perform clustering using kmeans approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------camels attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 6
+PCA total portion of variance explained ... 0.8196275131362075
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 6045
+{'camels': 6045}
+===== iter1=5 ======
+Using 14 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 8751
+{'camels': 8751}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 12876
+{'camels': 12876}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 18241
+{'camels': 18241}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 19123
+{'camels': 19123}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 22551
+{'camels': 22551}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 23246
+{'camels': 23246}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 25272
+{'camels': 25272}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 26938
+{'camels': 26938}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 27631
+{'camels': 27631}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 28802
+{'camels': 28802}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 29977
+{'camels': 29977}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 30959
+{'camels': 30959}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 31287
+{'camels': 31287}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 32578
+{'camels': 32578}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 33414
+{'camels': 33414}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 34255
+{'camels': 34255}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 34778
+{'camels': 34778}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 35683
+{'camels': 35683}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 36249
+{'camels': 36249}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 36712
+{'camels': 36712}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 37174
+{'camels': 37174}
+===== iter1=26 ======
+Using 15 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 37358
+{'camels': 37358}
+===== iter1=27 ======
+Using 4 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 37475
+{'camels': 37475}
+===== iter1=28 ======
+Using 2 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 37490
+{'camels': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 1522
+{'camels': 1522}
+===== iter1=5 ======
+Using 14 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 2053
+{'camels': 2053}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 2921
+{'camels': 2921}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 4916
+{'camels': 4916}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 5371
+{'camels': 5371}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 8672
+{'camels': 8672}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 9900
+{'camels': 9900}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 10773
+{'camels': 10773}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 12736
+{'camels': 12736}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 13698
+{'camels': 13698}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 14948
+{'camels': 14948}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 15516
+{'camels': 15516}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 15980
+{'camels': 15980}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 17299
+{'camels': 17299}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 19228
+{'camels': 19228}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 20023
+{'camels': 20023}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 20744
+{'camels': 20744}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 21348
+{'camels': 21348}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 21940
+{'camels': 21940}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 22379
+{'camels': 22379}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 22794
+{'camels': 22794}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 24172
+{'camels': 24172}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 24413
+{'camels': 24413}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 24724
+{'camels': 24724}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 25244
+{'camels': 25244}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 25557
+{'camels': 25557}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 26218
+{'camels': 26218}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 26475
+{'camels': 26475}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 26776
+{'camels': 26776}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 27157
+{'camels': 27157}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 27522
+{'camels': 27522}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 27882
+{'camels': 27882}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 28167
+{'camels': 28167}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 28407
+{'camels': 28407}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 28661
+{'camels': 28661}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 28869
+{'camels': 28869}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 29071
+{'camels': 29071}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 29248
+{'camels': 29248}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 29370
+{'camels': 29370}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 29487
+{'camels': 29487}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 29677
+{'camels': 29677}
+===== iter1=45 ======
+Using 11 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 29755
+{'camels': 29755}
+===== iter1=46 ======
+Using 1 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 29760
+{'camels': 29760}
+
+------------------------camels attributes,  Round 2--------------------
+Excluding 5 attributes: sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8439597681869782
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 150
+{'camels': 150}
+===== iter1=5 ======
+Using 14 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 150
+{'camels': 150}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 305
+{'camels': 305}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 317
+{'camels': 317}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 382
+{'camels': 382}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 430
+{'camels': 430}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 472
+{'camels': 472}
+===== iter1=11 ======
+Using 15 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 495
+{'camels': 495}
+===== iter1=12 ======
+Using 2 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 497
+{'camels': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 0
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 0
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 0
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 23
+{'camels': 23}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 140
+{'camels': 140}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 144
+{'camels': 144}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 171
+{'camels': 171}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 195
+{'camels': 195}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 213
+{'camels': 213}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 247
+{'camels': 247}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 262
+{'camels': 262}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 293
+{'camels': 293}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 360
+{'camels': 360}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 374
+{'camels': 374}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 448
+{'camels': 448}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 535
+{'camels': 535}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 574
+{'camels': 574}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 626
+{'camels': 626}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 676
+{'camels': 676}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 718
+{'camels': 718}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 766
+{'camels': 766}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 797
+{'camels': 797}
+===== iter1=27 ======
+Using 4 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 808
+{'camels': 808}
+
+------------------------camels attributes,  Round 3--------------------
+Excluding 2 attributes: geo_porosity,geo_permeability
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8237620777544364
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 7 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 6
+{'camels': 6}
+===== iter1=5 ======
+Using 8 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 67
+{'camels': 67}
+===== iter1=6 ======
+Using 10 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 96
+{'camels': 96}
+===== iter1=7 ======
+Using 9 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 113
+{'camels': 113}
+===== iter1=8 ======
+Using 10 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 133
+{'camels': 133}
+===== iter1=9 ======
+Using 8 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 136
+{'camels': 136}
+===== iter1=10 ======
+Using 6 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 141
+{'camels': 141}
+===== iter1=11 ======
+Using 2 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 143
+{'camels': 143}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 4--------------------
+Excluding 6 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.819911060938979
+
+======= 32 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 3 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 5 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 0
+===== iter1=6 ======
+Using 5 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 14
+{'camels': 14}
+===== iter1=7 ======
+Using 4 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 29
+{'camels': 29}
+===== iter1=8 ======
+Using 3 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 31
+{'camels': 31}
+===== iter1=9 ======
+Using 1 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 32
+{'camels': 32}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 5--------------------
+Excluding 7 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8008580423427237
+
+======= 58 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 5 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 7 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 40
+{'camels': 40}
+===== iter1=6 ======
+Using 7 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 41
+{'camels': 41}
+===== iter1=7 ======
+Using 9 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 47
+{'camels': 47}
+===== iter1=8 ======
+Using 7 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 53
+{'camels': 53}
+===== iter1=9 ======
+Using 3 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 53
+{'camels': 53}
+===== iter1=10 ======
+Using 4 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 55
+{'camels': 55}
+===== iter1=11 ======
+Using 3 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 57
+{'camels': 57}
+===== iter1=12 ======
+Using 1 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 58
+{'camels': 58}
+
+======= 0 snowy basins ========
+
+Total processing time for (kmeans, camels): --- 6914.636193037033 seconds ---
+
+======== Identify donors for: kmeans  hlr =============
+
+perform clustering using kmeans approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------hlr attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.8687072833399309
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 1014
+{'hlr': 1014}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 2731
+{'hlr': 2731}
+===== iter1=5 ======
+Using 10 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 8612
+{'hlr': 8612}
+===== iter1=6 ======
+Using 14 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 12158
+{'hlr': 12158}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 15217
+{'hlr': 15217}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 17921
+{'hlr': 17921}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 20110
+{'hlr': 20110}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 21981
+{'hlr': 21981}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 22793
+{'hlr': 22793}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 24193
+{'hlr': 24193}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 25579
+{'hlr': 25579}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 26862
+{'hlr': 26862}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 28256
+{'hlr': 28256}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 29142
+{'hlr': 29142}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 29776
+{'hlr': 29776}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 30596
+{'hlr': 30596}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 31095
+{'hlr': 31095}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 31708
+{'hlr': 31708}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 32311
+{'hlr': 32311}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 33211
+{'hlr': 33211}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 34120
+{'hlr': 34120}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 34773
+{'hlr': 34773}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 35719
+{'hlr': 35719}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 36222
+{'hlr': 36222}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 36569
+{'hlr': 36569}
+===== iter1=28 ======
+Using 18 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 37224
+{'hlr': 37224}
+===== iter1=29 ======
+Using 6 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 37426
+{'hlr': 37426}
+===== iter1=30 ======
+Using 2 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 37490
+{'hlr': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 208
+{'hlr': 208}
+===== iter1=5 ======
+Using 14 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 449
+{'hlr': 449}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 898
+{'hlr': 898}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 2621
+{'hlr': 2621}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 2999
+{'hlr': 2999}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 4743
+{'hlr': 4743}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 6463
+{'hlr': 6463}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 7288
+{'hlr': 7288}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 8153
+{'hlr': 8153}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 8522
+{'hlr': 8522}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 10364
+{'hlr': 10364}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 10660
+{'hlr': 10660}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 11067
+{'hlr': 11067}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 11457
+{'hlr': 11457}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 12975
+{'hlr': 12975}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 14778
+{'hlr': 14778}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 15191
+{'hlr': 15191}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 15457
+{'hlr': 15457}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 16125
+{'hlr': 16125}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 16547
+{'hlr': 16547}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 17280
+{'hlr': 17280}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 19355
+{'hlr': 19355}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 19942
+{'hlr': 19942}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 20295
+{'hlr': 20295}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 20923
+{'hlr': 20923}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 21236
+{'hlr': 21236}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 22007
+{'hlr': 22007}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 22628
+{'hlr': 22628}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 23304
+{'hlr': 23304}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 23540
+{'hlr': 23540}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 23834
+{'hlr': 23834}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 24148
+{'hlr': 24148}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 24489
+{'hlr': 24489}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 25295
+{'hlr': 25295}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 25657
+{'hlr': 25657}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 25973
+{'hlr': 25973}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 26556
+{'hlr': 26556}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 27370
+{'hlr': 27370}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 28357
+{'hlr': 28357}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 28509
+{'hlr': 28509}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 28990
+{'hlr': 28990}
+===== iter1=45 ======
+Using 20 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 29215
+{'hlr': 29215}
+===== iter1=46 ======
+Using 20 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 29553
+{'hlr': 29553}
+===== iter1=47 ======
+Using 18 processors ...
+
+---------------- iteration = 46 -------------
+Number of receivers with donors identified: 29720
+{'hlr': 29720}
+===== iter1=48 ======
+Using 6 processors ...
+
+---------------- iteration = 47 -------------
+Number of receivers with donors identified: 29745
+{'hlr': 29745}
+===== iter1=49 ======
+Using 3 processors ...
+
+---------------- iteration = 48 -------------
+Number of receivers with donors identified: 29753
+{'hlr': 29753}
+===== iter1=50 ======
+Using 2 processors ...
+
+---------------- iteration = 49 -------------
+Number of receivers with donors identified: 29760
+{'hlr': 29760}
+
+------------------------hlr attributes,  Round 2--------------------
+Excluding 1 attributes: sand_frac
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8390917968256657
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 71
+{'hlr': 71}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 188
+{'hlr': 188}
+===== iter1=5 ======
+Using 10 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 310
+{'hlr': 310}
+===== iter1=6 ======
+Using 15 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 364
+{'hlr': 364}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 375
+{'hlr': 375}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 382
+{'hlr': 382}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 412
+{'hlr': 412}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 441
+{'hlr': 441}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 479
+{'hlr': 479}
+===== iter1=12 ======
+Using 9 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 487
+{'hlr': 487}
+===== iter1=13 ======
+Using 6 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 495
+{'hlr': 495}
+===== iter1=14 ======
+Using 2 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 496
+{'hlr': 496}
+===== iter1=15 ======
+Using 1 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 497
+{'hlr': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 21
+{'hlr': 21}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 27
+{'hlr': 27}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 37
+{'hlr': 37}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 47
+{'hlr': 47}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 59
+{'hlr': 59}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 61
+{'hlr': 61}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 147
+{'hlr': 147}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 166
+{'hlr': 166}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 186
+{'hlr': 186}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 206
+{'hlr': 206}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 229
+{'hlr': 229}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 241
+{'hlr': 241}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 293
+{'hlr': 293}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 316
+{'hlr': 316}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 353
+{'hlr': 353}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 440
+{'hlr': 440}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 473
+{'hlr': 473}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 491
+{'hlr': 491}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 508
+{'hlr': 508}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 530
+{'hlr': 530}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 550
+{'hlr': 550}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 571
+{'hlr': 571}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 605
+{'hlr': 605}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 632
+{'hlr': 632}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 649
+{'hlr': 649}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 682
+{'hlr': 682}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 704
+{'hlr': 704}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 719
+{'hlr': 719}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 755
+{'hlr': 755}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 776
+{'hlr': 776}
+===== iter1=35 ======
+Using 17 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 800
+{'hlr': 800}
+===== iter1=36 ======
+Using 5 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 808
+{'hlr': 808}
+
+------------------------hlr attributes,  Round 3--------------------
+Excluding 1 attributes: geo_permeability
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8469856129692905
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 36
+{'hlr': 36}
+===== iter1=5 ======
+Using 7 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 72
+{'hlr': 72}
+===== iter1=6 ======
+Using 11 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 75
+{'hlr': 75}
+===== iter1=7 ======
+Using 14 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 99
+{'hlr': 99}
+===== iter1=8 ======
+Using 15 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 112
+{'hlr': 112}
+===== iter1=9 ======
+Using 14 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 123
+{'hlr': 123}
+===== iter1=10 ======
+Using 11 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 132
+{'hlr': 132}
+===== iter1=11 ======
+Using 6 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 139
+{'hlr': 139}
+===== iter1=12 ======
+Using 2 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 140
+{'hlr': 140}
+===== iter1=13 ======
+Using 1 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 143
+{'hlr': 143}
+
+======= 0 snowy basins ========
+
+------------------------hlr attributes,  Round 4--------------------
+Excluding 2 attributes: sand_frac,geo_permeability
+Number of PCs selected: 2
+PCA total portion of variance explained ... 0.8064908655414407
+
+======= 90 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 39
+{'hlr': 39}
+===== iter1=4 ======
+Using 3 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 39
+{'hlr': 39}
+===== iter1=5 ======
+Using 6 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 69
+{'hlr': 69}
+===== iter1=6 ======
+Using 4 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 69
+{'hlr': 69}
+===== iter1=7 ======
+Using 7 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 73
+{'hlr': 73}
+===== iter1=8 ======
+Using 9 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 82
+{'hlr': 82}
+===== iter1=9 ======
+Using 6 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 83
+{'hlr': 83}
+===== iter1=10 ======
+Using 5 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 88
+{'hlr': 88}
+===== iter1=11 ======
+Using 1 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 90
+{'hlr': 90}
+
+======= 0 snowy basins ========
+
+Total processing time for (kmeans, hlr): --- 7141.595577716827 seconds ---
+
+======== Identify donors for: kmedoids  camels =============
+
+perform clustering using kmedoids approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------camels attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 6
+PCA total portion of variance explained ... 0.8196275131362075
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 11297
+{'camels': 11297}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 12896
+{'camels': 12896}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 15213
+{'camels': 15213}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 17974
+{'camels': 17974}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 18865
+{'camels': 18865}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 20689
+{'camels': 20689}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 23356
+{'camels': 23356}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 23745
+{'camels': 23745}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 24859
+{'camels': 24859}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 26163
+{'camels': 26163}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 26925
+{'camels': 26925}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 27832
+{'camels': 27832}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 29048
+{'camels': 29048}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 31017
+{'camels': 31017}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 31855
+{'camels': 31855}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 32796
+{'camels': 32796}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 34017
+{'camels': 34017}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 34604
+{'camels': 34604}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 34839
+{'camels': 34839}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 35823
+{'camels': 35823}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 36586
+{'camels': 36586}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 37101
+{'camels': 37101}
+===== iter1=27 ======
+Using 17 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 37296
+{'camels': 37296}
+===== iter1=28 ======
+Using 8 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 37429
+{'camels': 37429}
+===== iter1=29 ======
+Using 4 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 37446
+{'camels': 37446}
+===== iter1=30 ======
+Using 4 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 37476
+{'camels': 37476}
+===== iter1=31 ======
+Using 2 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 37490
+{'camels': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 830
+{'camels': 830}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 4883
+{'camels': 4883}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 6691
+{'camels': 6691}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 8513
+{'camels': 8513}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 9420
+{'camels': 9420}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 11482
+{'camels': 11482}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 11903
+{'camels': 11903}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 12769
+{'camels': 12769}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 13585
+{'camels': 13585}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 15466
+{'camels': 15466}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 16120
+{'camels': 16120}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 16741
+{'camels': 16741}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 17288
+{'camels': 17288}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 18168
+{'camels': 18168}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 19139
+{'camels': 19139}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 19850
+{'camels': 19850}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 20242
+{'camels': 20242}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 20750
+{'camels': 20750}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 21595
+{'camels': 21595}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 21998
+{'camels': 21998}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 22596
+{'camels': 22596}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 22875
+{'camels': 22875}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 23494
+{'camels': 23494}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 23866
+{'camels': 23866}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 24191
+{'camels': 24191}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 24844
+{'camels': 24844}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 25617
+{'camels': 25617}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 26049
+{'camels': 26049}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 26362
+{'camels': 26362}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 26687
+{'camels': 26687}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 27042
+{'camels': 27042}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 27253
+{'camels': 27253}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 27500
+{'camels': 27500}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 28004
+{'camels': 28004}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 28190
+{'camels': 28190}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 28481
+{'camels': 28481}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 28762
+{'camels': 28762}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 28874
+{'camels': 28874}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 29066
+{'camels': 29066}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 29301
+{'camels': 29301}
+===== iter1=45 ======
+Using 20 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 29480
+{'camels': 29480}
+===== iter1=46 ======
+Using 20 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 29588
+{'camels': 29588}
+===== iter1=47 ======
+Using 20 processors ...
+
+---------------- iteration = 46 -------------
+Number of receivers with donors identified: 29691
+{'camels': 29691}
+===== iter1=48 ======
+Using 9 processors ...
+
+---------------- iteration = 47 -------------
+Number of receivers with donors identified: 29759
+{'camels': 29759}
+===== iter1=49 ======
+Using 1 processors ...
+
+---------------- iteration = 48 -------------
+Number of receivers with donors identified: 29760
+{'camels': 29760}
+
+------------------------camels attributes,  Round 2--------------------
+Excluding 5 attributes: sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8439597681869782
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 190
+{'camels': 190}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 190
+{'camels': 190}
+===== iter1=5 ======
+Using 11 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 265
+{'camels': 265}
+===== iter1=6 ======
+Using 18 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 295
+{'camels': 295}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 320
+{'camels': 320}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 367
+{'camels': 367}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 410
+{'camels': 410}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 454
+{'camels': 454}
+===== iter1=11 ======
+Using 17 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 476
+{'camels': 476}
+===== iter1=12 ======
+Using 9 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 493
+{'camels': 493}
+===== iter1=13 ======
+Using 4 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 497
+{'camels': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 0
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 0
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 5
+{'camels': 5}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 48
+{'camels': 48}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 54
+{'camels': 54}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 56
+{'camels': 56}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 79
+{'camels': 79}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 95
+{'camels': 95}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 212
+{'camels': 212}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 264
+{'camels': 264}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 291
+{'camels': 291}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 321
+{'camels': 321}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 322
+{'camels': 322}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 372
+{'camels': 372}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 404
+{'camels': 404}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 447
+{'camels': 447}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 468
+{'camels': 468}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 550
+{'camels': 550}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 577
+{'camels': 577}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 621
+{'camels': 621}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 652
+{'camels': 652}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 680
+{'camels': 680}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 761
+{'camels': 761}
+===== iter1=28 ======
+Using 14 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 774
+{'camels': 774}
+===== iter1=29 ======
+Using 10 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 796
+{'camels': 796}
+===== iter1=30 ======
+Using 7 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 804
+{'camels': 804}
+===== iter1=31 ======
+Using 3 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 808
+{'camels': 808}
+
+------------------------camels attributes,  Round 3--------------------
+Excluding 2 attributes: geo_porosity,geo_permeability
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8237620777544364
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 7 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 39
+{'camels': 39}
+===== iter1=5 ======
+Using 10 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 74
+{'camels': 74}
+===== iter1=6 ======
+Using 11 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 89
+{'camels': 89}
+===== iter1=7 ======
+Using 12 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 97
+{'camels': 97}
+===== iter1=8 ======
+Using 13 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 117
+{'camels': 117}
+===== iter1=9 ======
+Using 8 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 141
+{'camels': 141}
+===== iter1=10 ======
+Using 2 processors ...
+
+Algorithm converged without donors identified for 2 receivers ... use proximity for these receivers
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 4--------------------
+Excluding 6 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.819911060938979
+
+======= 32 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 2 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 3 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 3 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 0
+===== iter1=6 ======
+Using 5 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 2
+{'camels': 2}
+===== iter1=7 ======
+Using 5 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 14
+{'camels': 14}
+===== iter1=8 ======
+Using 3 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 30
+{'camels': 30}
+===== iter1=9 ======
+Using 1 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 32
+{'camels': 32}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 5--------------------
+Excluding 7 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8008580423427237
+
+======= 58 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 5 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 7 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 40
+{'camels': 40}
+===== iter1=6 ======
+Using 8 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 41
+{'camels': 41}
+===== iter1=7 ======
+Using 8 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 46
+{'camels': 46}
+===== iter1=8 ======
+Using 7 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 49
+{'camels': 49}
+===== iter1=9 ======
+Using 5 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 53
+{'camels': 53}
+===== iter1=10 ======
+Using 3 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 54
+{'camels': 54}
+===== iter1=11 ======
+Using 2 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 58
+{'camels': 58}
+
+======= 0 snowy basins ========
+
+Total processing time for (kmedoids, camels): --- 7193.068632602692 seconds ---
+
+======== Identify donors for: kmedoids  hlr =============
+
+perform clustering using kmedoids approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------hlr attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.8687072833399309
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 1474
+{'hlr': 1474}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 1474
+{'hlr': 1474}
+===== iter1=5 ======
+Using 12 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 5738
+{'hlr': 5738}
+===== iter1=6 ======
+Using 16 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 9930
+{'hlr': 9930}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 14859
+{'hlr': 14859}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 16770
+{'hlr': 16770}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 19803
+{'hlr': 19803}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 20739
+{'hlr': 20739}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 21615
+{'hlr': 21615}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 24008
+{'hlr': 24008}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 24872
+{'hlr': 24872}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 25398
+{'hlr': 25398}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 27071
+{'hlr': 27071}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 28487
+{'hlr': 28487}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 29001
+{'hlr': 29001}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 29705
+{'hlr': 29705}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 31126
+{'hlr': 31126}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 32355
+{'hlr': 32355}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 33095
+{'hlr': 33095}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 33677
+{'hlr': 33677}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 34782
+{'hlr': 34782}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 35182
+{'hlr': 35182}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 35641
+{'hlr': 35641}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 36115
+{'hlr': 36115}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 36588
+{'hlr': 36588}
+===== iter1=28 ======
+Using 13 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 36930
+{'hlr': 36930}
+===== iter1=29 ======
+Using 10 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 37210
+{'hlr': 37210}
+===== iter1=30 ======
+Using 4 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 37418
+{'hlr': 37418}
+===== iter1=31 ======
+Using 2 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 37490
+{'hlr': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 16 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 966
+{'hlr': 966}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 1209
+{'hlr': 1209}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 3244
+{'hlr': 3244}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 3264
+{'hlr': 3264}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 4413
+{'hlr': 4413}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 7790
+{'hlr': 7790}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 9629
+{'hlr': 9629}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 10317
+{'hlr': 10317}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 10964
+{'hlr': 10964}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 11944
+{'hlr': 11944}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 13212
+{'hlr': 13212}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 13761
+{'hlr': 13761}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 14287
+{'hlr': 14287}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 14834
+{'hlr': 14834}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 15617
+{'hlr': 15617}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 17568
+{'hlr': 17568}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 18064
+{'hlr': 18064}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 18560
+{'hlr': 18560}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 18881
+{'hlr': 18881}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 19308
+{'hlr': 19308}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 20317
+{'hlr': 20317}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 20789
+{'hlr': 20789}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 20945
+{'hlr': 20945}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 21400
+{'hlr': 21400}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 21775
+{'hlr': 21775}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 22150
+{'hlr': 22150}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 22682
+{'hlr': 22682}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 23222
+{'hlr': 23222}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 23712
+{'hlr': 23712}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 23977
+{'hlr': 23977}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 25008
+{'hlr': 25008}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 25548
+{'hlr': 25548}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 25912
+{'hlr': 25912}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 26600
+{'hlr': 26600}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 26742
+{'hlr': 26742}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 27246
+{'hlr': 27246}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 27826
+{'hlr': 27826}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 28234
+{'hlr': 28234}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 28423
+{'hlr': 28423}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 28677
+{'hlr': 28677}
+===== iter1=45 ======
+Using 20 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 29055
+{'hlr': 29055}
+===== iter1=46 ======
+Using 20 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 29377
+{'hlr': 29377}
+===== iter1=47 ======
+Using 17 processors ...
+
+---------------- iteration = 46 -------------
+Number of receivers with donors identified: 29602
+{'hlr': 29602}
+===== iter1=48 ======
+Using 11 processors ...
+
+---------------- iteration = 47 -------------
+Number of receivers with donors identified: 29688
+{'hlr': 29688}
+===== iter1=49 ======
+Using 8 processors ...
+
+---------------- iteration = 48 -------------
+Number of receivers with donors identified: 29720
+{'hlr': 29720}
+===== iter1=50 ======
+Using 6 processors ...
+
+---------------- iteration = 49 -------------
+Number of receivers with donors identified: 29739
+{'hlr': 29739}
+===== iter1=51 ======
+Using 4 processors ...
+
+---------------- iteration = 50 -------------
+Number of receivers with donors identified: 29751
+{'hlr': 29751}
+===== iter1=52 ======
+Using 2 processors ...
+
+---------------- iteration = 51 -------------
+Number of receivers with donors identified: 29754
+{'hlr': 29754}
+===== iter1=53 ======
+Using 2 processors ...
+
+---------------- iteration = 52 -------------
+Number of receivers with donors identified: 29760
+{'hlr': 29760}
+
+------------------------hlr attributes,  Round 2--------------------
+Excluding 1 attributes: sand_frac
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8390917968256657
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 89
+{'hlr': 89}
+===== iter1=5 ======
+Using 12 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 234
+{'hlr': 234}
+===== iter1=6 ======
+Using 18 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 370
+{'hlr': 370}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 372
+{'hlr': 372}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 383
+{'hlr': 383}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 431
+{'hlr': 431}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 442
+{'hlr': 442}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 460
+{'hlr': 460}
+===== iter1=12 ======
+Using 14 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 480
+{'hlr': 480}
+===== iter1=13 ======
+Using 7 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 488
+{'hlr': 488}
+===== iter1=14 ======
+Using 5 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 496
+{'hlr': 496}
+===== iter1=15 ======
+Using 1 processors ...
+
+Algorithm converged without donors identified for 1 receivers ... use proximity for these receivers
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 0
+===== iter1=5 ======
+Using 15 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 29
+{'hlr': 29}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 33
+{'hlr': 33}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 75
+{'hlr': 75}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 89
+{'hlr': 89}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 105
+{'hlr': 105}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 119
+{'hlr': 119}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 145
+{'hlr': 145}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 155
+{'hlr': 155}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 209
+{'hlr': 209}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 255
+{'hlr': 255}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 268
+{'hlr': 268}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 290
+{'hlr': 290}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 307
+{'hlr': 307}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 365
+{'hlr': 365}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 375
+{'hlr': 375}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 396
+{'hlr': 396}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 436
+{'hlr': 436}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 485
+{'hlr': 485}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 525
+{'hlr': 525}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 539
+{'hlr': 539}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 567
+{'hlr': 567}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 584
+{'hlr': 584}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 603
+{'hlr': 603}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 617
+{'hlr': 617}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 632
+{'hlr': 632}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 653
+{'hlr': 653}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 678
+{'hlr': 678}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 700
+{'hlr': 700}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 714
+{'hlr': 714}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 742
+{'hlr': 742}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 754
+{'hlr': 754}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 773
+{'hlr': 773}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 794
+{'hlr': 794}
+===== iter1=38 ======
+Using 9 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 802
+{'hlr': 802}
+===== iter1=39 ======
+Using 3 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 804
+{'hlr': 804}
+===== iter1=40 ======
+Using 1 processors ...
+
+Algorithm converged without donors identified for 4 receivers ... use proximity for these receivers
+
+------------------------hlr attributes,  Round 3--------------------
+Excluding 1 attributes: geo_permeability
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8469856129692905
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 8 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 37
+{'hlr': 37}
+===== iter1=5 ======
+Using 10 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 76
+{'hlr': 76}
+===== iter1=6 ======
+Using 10 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 85
+{'hlr': 85}
+===== iter1=7 ======
+Using 14 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 102
+{'hlr': 102}
+===== iter1=8 ======
+Using 14 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 111
+{'hlr': 111}
+===== iter1=9 ======
+Using 14 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 118
+{'hlr': 118}
+===== iter1=10 ======
+Using 14 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 129
+{'hlr': 129}
+===== iter1=11 ======
+Using 6 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 136
+{'hlr': 136}
+===== iter1=12 ======
+Using 4 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 139
+{'hlr': 139}
+===== iter1=13 ======
+Using 3 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 142
+{'hlr': 142}
+===== iter1=14 ======
+Using 1 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 143
+{'hlr': 143}
+
+======= 0 snowy basins ========
+
+------------------------hlr attributes,  Round 4--------------------
+Excluding 2 attributes: sand_frac,geo_permeability
+Number of PCs selected: 2
+PCA total portion of variance explained ... 0.8064908655414407
+
+======= 90 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 1 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 0
+===== iter1=3 ======
+Using 2 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 0
+===== iter1=4 ======
+Using 4 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 46
+{'hlr': 46}
+===== iter1=5 ======
+Using 4 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 46
+{'hlr': 46}
+===== iter1=6 ======
+Using 6 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 70
+{'hlr': 70}
+===== iter1=7 ======
+Using 6 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 70
+{'hlr': 70}
+===== iter1=8 ======
+Using 6 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 80
+{'hlr': 80}
+===== iter1=9 ======
+Using 4 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 82
+{'hlr': 82}
+===== iter1=10 ======
+Using 4 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 90
+{'hlr': 90}
+
+======= 0 snowy basins ========
+
+Total processing time for (kmedoids, hlr): --- 8156.095165967941 seconds ---
+
+======== Identify donors for: hdbscan  camels =============
+
+perform clustering using hdbscan approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------camels attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 6
+PCA total portion of variance explained ... 0.8196275131362075
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 3 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 148
+{'camels': 148}
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 5647
+{'camels': 5647}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 6148
+{'camels': 6148}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 6875
+{'camels': 6875}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 7166
+{'camels': 7166}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 8217
+{'camels': 8217}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 8942
+{'camels': 8942}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 9569
+{'camels': 9569}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 10216
+{'camels': 10216}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 10643
+{'camels': 10643}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 11854
+{'camels': 11854}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 12669
+{'camels': 12669}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 13879
+{'camels': 13879}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 16436
+{'camels': 16436}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 19401
+{'camels': 19401}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 19693
+{'camels': 19693}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 20445
+{'camels': 20445}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 23109
+{'camels': 23109}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 23528
+{'camels': 23528}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 24246
+{'camels': 24246}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 25242
+{'camels': 25242}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 27002
+{'camels': 27002}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 27759
+{'camels': 27759}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 28577
+{'camels': 28577}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 31684
+{'camels': 31684}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 32373
+{'camels': 32373}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 34180
+{'camels': 34180}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 35383
+{'camels': 35383}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 36190
+{'camels': 36190}
+===== iter1=31 ======
+Using 13 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 36753
+{'camels': 36753}
+===== iter1=32 ======
+Using 6 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 37490
+{'camels': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 267
+{'camels': 267}
+===== iter1=3 ======
+Using 6 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 3597
+{'camels': 3597}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 4126
+{'camels': 4126}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 4548
+{'camels': 4548}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 5027
+{'camels': 5027}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 5132
+{'camels': 5132}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 5730
+{'camels': 5730}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 6005
+{'camels': 6005}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 6449
+{'camels': 6449}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 6784
+{'camels': 6784}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 7316
+{'camels': 7316}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 7600
+{'camels': 7600}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 8321
+{'camels': 8321}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 8528
+{'camels': 8528}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 8886
+{'camels': 8886}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 9358
+{'camels': 9358}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 10154
+{'camels': 10154}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 10541
+{'camels': 10541}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 10958
+{'camels': 10958}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 11424
+{'camels': 11424}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 11865
+{'camels': 11865}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 12261
+{'camels': 12261}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 12934
+{'camels': 12934}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 13557
+{'camels': 13557}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 13914
+{'camels': 13914}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 14375
+{'camels': 14375}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 14980
+{'camels': 14980}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 15677
+{'camels': 15677}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 16676
+{'camels': 16676}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 17056
+{'camels': 17056}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 17894
+{'camels': 17894}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 18206
+{'camels': 18206}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 18637
+{'camels': 18637}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 19502
+{'camels': 19502}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 19717
+{'camels': 19717}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 20437
+{'camels': 20437}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 21396
+{'camels': 21396}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 21963
+{'camels': 21963}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 22519
+{'camels': 22519}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 23326
+{'camels': 23326}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 24026
+{'camels': 24026}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 24237
+{'camels': 24237}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 25299
+{'camels': 25299}
+===== iter1=45 ======
+Using 20 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 26327
+{'camels': 26327}
+===== iter1=46 ======
+Using 20 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 27689
+{'camels': 27689}
+===== iter1=47 ======
+Using 20 processors ...
+
+---------------- iteration = 46 -------------
+Number of receivers with donors identified: 27974
+{'camels': 27974}
+===== iter1=48 ======
+Using 20 processors ...
+
+---------------- iteration = 47 -------------
+Number of receivers with donors identified: 28203
+{'camels': 28203}
+===== iter1=49 ======
+Using 20 processors ...
+
+---------------- iteration = 48 -------------
+Number of receivers with donors identified: 28747
+{'camels': 28747}
+===== iter1=50 ======
+Using 20 processors ...
+
+---------------- iteration = 49 -------------
+Number of receivers with donors identified: 29201
+{'camels': 29201}
+===== iter1=51 ======
+Using 19 processors ...
+
+---------------- iteration = 50 -------------
+Number of receivers with donors identified: 29540
+{'camels': 29540}
+===== iter1=52 ======
+Using 9 processors ...
+
+---------------- iteration = 51 -------------
+Number of receivers with donors identified: 29651
+{'camels': 29651}
+===== iter1=53 ======
+Using 6 processors ...
+
+---------------- iteration = 52 -------------
+Number of receivers with donors identified: 29760
+{'camels': 29760}
+
+------------------------camels attributes,  Round 2--------------------
+Excluding 5 attributes: sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8439597681869782
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 5 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 202
+{'camels': 202}
+===== iter1=3 ======
+Using 6 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 208
+{'camels': 208}
+===== iter1=4 ======
+Using 9 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 340
+{'camels': 340}
+===== iter1=5 ======
+Using 12 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 397
+{'camels': 397}
+===== iter1=6 ======
+Using 9 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 435
+{'camels': 435}
+===== iter1=7 ======
+Using 9 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 470
+{'camels': 470}
+===== iter1=8 ======
+Using 7 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 479
+{'camels': 479}
+===== iter1=9 ======
+Using 5 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 488
+{'camels': 488}
+===== iter1=10 ======
+Using 2 processors ...
+
+Algorithm converged without donors identified for 9 receivers ... use proximity for these receivers
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 7
+{'camels': 7}
+===== iter1=3 ======
+Using 7 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 95
+{'camels': 95}
+===== iter1=4 ======
+Using 7 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 121
+{'camels': 121}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 179
+{'camels': 179}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 209
+{'camels': 209}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 273
+{'camels': 273}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 331
+{'camels': 331}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 376
+{'camels': 376}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 431
+{'camels': 431}
+===== iter1=11 ======
+Using 18 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 443
+{'camels': 443}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 468
+{'camels': 468}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 500
+{'camels': 500}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 533
+{'camels': 533}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 562
+{'camels': 562}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 611
+{'camels': 611}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 656
+{'camels': 656}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 708
+{'camels': 708}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 773
+{'camels': 773}
+===== iter1=20 ======
+Using 10 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 787
+{'camels': 787}
+===== iter1=21 ======
+Using 6 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 793
+{'camels': 793}
+===== iter1=22 ======
+Using 5 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 802
+{'camels': 802}
+===== iter1=23 ======
+Using 2 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 808
+{'camels': 808}
+
+------------------------camels attributes,  Round 3--------------------
+Excluding 2 attributes: geo_porosity,geo_permeability
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8237620777544364
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 54
+{'camels': 54}
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 54
+{'camels': 54}
+===== iter1=4 ======
+Using 5 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 97
+{'camels': 97}
+===== iter1=5 ======
+Using 4 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 143
+{'camels': 143}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 4--------------------
+Excluding 6 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.819911060938979
+
+======= 32 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 2 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 25
+{'camels': 25}
+===== iter1=3 ======
+Using 1 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 25
+{'camels': 25}
+===== iter1=4 ======
+Using 2 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 26
+{'camels': 26}
+===== iter1=5 ======
+Using 1 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 26
+{'camels': 26}
+===== iter1=6 ======
+Using 2 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 30
+{'camels': 30}
+===== iter1=7 ======
+Using 1 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 32
+{'camels': 32}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 5--------------------
+Excluding 7 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8008580423427237
+
+======= 58 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 3 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 31
+{'camels': 31}
+===== iter1=3 ======
+Using 6 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 48
+{'camels': 48}
+===== iter1=4 ======
+Using 5 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 48
+{'camels': 48}
+===== iter1=5 ======
+Using 6 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 52
+{'camels': 52}
+===== iter1=6 ======
+Using 4 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 52
+{'camels': 52}
+===== iter1=7 ======
+Using 4 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 53
+{'camels': 53}
+===== iter1=8 ======
+Using 3 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 55
+{'camels': 55}
+===== iter1=9 ======
+Using 2 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 57
+{'camels': 57}
+===== iter1=10 ======
+Using 1 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 58
+{'camels': 58}
+
+======= 0 snowy basins ========
+
+Total processing time for (hdbscan, camels): --- 6901.673201799393 seconds ---
+
+======== Identify donors for: hdbscan  hlr =============
+
+perform clustering using hdbscan approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------hlr attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.8687072833399309
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 3174
+{'hlr': 3174}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 3334
+{'hlr': 3334}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 3496
+{'hlr': 3496}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 3899
+{'hlr': 3899}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 4509
+{'hlr': 4509}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 6492
+{'hlr': 6492}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 7579
+{'hlr': 7579}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 8223
+{'hlr': 8223}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 10453
+{'hlr': 10453}
+===== iter1=11 ======
+Using 19 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 12538
+{'hlr': 12538}
+===== iter1=12 ======
+Using 14 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 13018
+{'hlr': 13018}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 15034
+{'hlr': 15034}
+===== iter1=14 ======
+Using 19 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 16515
+{'hlr': 16515}
+===== iter1=15 ======
+Using 12 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 17398
+{'hlr': 17398}
+===== iter1=16 ======
+Using 7 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 18001
+{'hlr': 18001}
+===== iter1=17 ======
+Using 18 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 19167
+{'hlr': 19167}
+===== iter1=18 ======
+Using 14 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 20660
+{'hlr': 20660}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 21506
+{'hlr': 21506}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 21879
+{'hlr': 21879}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 22661
+{'hlr': 22661}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 24270
+{'hlr': 24270}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 25712
+{'hlr': 25712}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 26521
+{'hlr': 26521}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 28039
+{'hlr': 28039}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 29013
+{'hlr': 29013}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 29754
+{'hlr': 29754}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 31022
+{'hlr': 31022}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 32447
+{'hlr': 32447}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 33479
+{'hlr': 33479}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 35117
+{'hlr': 35117}
+===== iter1=32 ======
+Using 13 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 36269
+{'hlr': 36269}
+===== iter1=33 ======
+Using 8 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 37141
+{'hlr': 37141}
+===== iter1=34 ======
+Using 2 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 37187
+{'hlr': 37187}
+===== iter1=35 ======
+Using 2 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 37490
+{'hlr': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 3 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 799
+{'hlr': 799}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 1224
+{'hlr': 1224}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 1477
+{'hlr': 1477}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 1593
+{'hlr': 1593}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 1754
+{'hlr': 1754}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 1930
+{'hlr': 1930}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 2046
+{'hlr': 2046}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 2343
+{'hlr': 2343}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 2835
+{'hlr': 2835}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 3086
+{'hlr': 3086}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 3552
+{'hlr': 3552}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 3734
+{'hlr': 3734}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 4294
+{'hlr': 4294}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 4547
+{'hlr': 4547}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 4830
+{'hlr': 4830}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 5244
+{'hlr': 5244}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 5375
+{'hlr': 5375}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 5558
+{'hlr': 5558}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 6492
+{'hlr': 6492}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 6994
+{'hlr': 6994}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 7147
+{'hlr': 7147}
+===== iter1=23 ======
+Using 20 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 7894
+{'hlr': 7894}
+===== iter1=24 ======
+Using 20 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 8419
+{'hlr': 8419}
+===== iter1=25 ======
+Using 20 processors ...
+
+---------------- iteration = 24 -------------
+Number of receivers with donors identified: 9060
+{'hlr': 9060}
+===== iter1=26 ======
+Using 20 processors ...
+
+---------------- iteration = 25 -------------
+Number of receivers with donors identified: 9793
+{'hlr': 9793}
+===== iter1=27 ======
+Using 20 processors ...
+
+---------------- iteration = 26 -------------
+Number of receivers with donors identified: 10001
+{'hlr': 10001}
+===== iter1=28 ======
+Using 20 processors ...
+
+---------------- iteration = 27 -------------
+Number of receivers with donors identified: 10393
+{'hlr': 10393}
+===== iter1=29 ======
+Using 20 processors ...
+
+---------------- iteration = 28 -------------
+Number of receivers with donors identified: 10770
+{'hlr': 10770}
+===== iter1=30 ======
+Using 20 processors ...
+
+---------------- iteration = 29 -------------
+Number of receivers with donors identified: 11642
+{'hlr': 11642}
+===== iter1=31 ======
+Using 20 processors ...
+
+---------------- iteration = 30 -------------
+Number of receivers with donors identified: 12366
+{'hlr': 12366}
+===== iter1=32 ======
+Using 20 processors ...
+
+---------------- iteration = 31 -------------
+Number of receivers with donors identified: 12692
+{'hlr': 12692}
+===== iter1=33 ======
+Using 20 processors ...
+
+---------------- iteration = 32 -------------
+Number of receivers with donors identified: 13008
+{'hlr': 13008}
+===== iter1=34 ======
+Using 20 processors ...
+
+---------------- iteration = 33 -------------
+Number of receivers with donors identified: 13839
+{'hlr': 13839}
+===== iter1=35 ======
+Using 20 processors ...
+
+---------------- iteration = 34 -------------
+Number of receivers with donors identified: 14455
+{'hlr': 14455}
+===== iter1=36 ======
+Using 20 processors ...
+
+---------------- iteration = 35 -------------
+Number of receivers with donors identified: 14774
+{'hlr': 14774}
+===== iter1=37 ======
+Using 20 processors ...
+
+---------------- iteration = 36 -------------
+Number of receivers with donors identified: 15534
+{'hlr': 15534}
+===== iter1=38 ======
+Using 20 processors ...
+
+---------------- iteration = 37 -------------
+Number of receivers with donors identified: 16589
+{'hlr': 16589}
+===== iter1=39 ======
+Using 20 processors ...
+
+---------------- iteration = 38 -------------
+Number of receivers with donors identified: 16931
+{'hlr': 16931}
+===== iter1=40 ======
+Using 20 processors ...
+
+---------------- iteration = 39 -------------
+Number of receivers with donors identified: 17816
+{'hlr': 17816}
+===== iter1=41 ======
+Using 20 processors ...
+
+---------------- iteration = 40 -------------
+Number of receivers with donors identified: 18162
+{'hlr': 18162}
+===== iter1=42 ======
+Using 20 processors ...
+
+---------------- iteration = 41 -------------
+Number of receivers with donors identified: 18686
+{'hlr': 18686}
+===== iter1=43 ======
+Using 20 processors ...
+
+---------------- iteration = 42 -------------
+Number of receivers with donors identified: 19192
+{'hlr': 19192}
+===== iter1=44 ======
+Using 20 processors ...
+
+---------------- iteration = 43 -------------
+Number of receivers with donors identified: 19496
+{'hlr': 19496}
+===== iter1=45 ======
+Using 20 processors ...
+
+---------------- iteration = 44 -------------
+Number of receivers with donors identified: 20130
+{'hlr': 20130}
+===== iter1=46 ======
+Using 20 processors ...
+
+---------------- iteration = 45 -------------
+Number of receivers with donors identified: 20795
+{'hlr': 20795}
+===== iter1=47 ======
+Using 20 processors ...
+
+---------------- iteration = 46 -------------
+Number of receivers with donors identified: 21482
+{'hlr': 21482}
+===== iter1=48 ======
+Using 20 processors ...
+
+---------------- iteration = 47 -------------
+Number of receivers with donors identified: 22490
+{'hlr': 22490}
+===== iter1=49 ======
+Using 20 processors ...
+
+---------------- iteration = 48 -------------
+Number of receivers with donors identified: 22957
+{'hlr': 22957}
+===== iter1=50 ======
+Using 20 processors ...
+
+---------------- iteration = 49 -------------
+Number of receivers with donors identified: 23425
+{'hlr': 23425}
+===== iter1=51 ======
+Using 20 processors ...
+
+---------------- iteration = 50 -------------
+Number of receivers with donors identified: 23764
+{'hlr': 23764}
+===== iter1=52 ======
+Using 20 processors ...
+
+---------------- iteration = 51 -------------
+Number of receivers with donors identified: 24398
+{'hlr': 24398}
+===== iter1=53 ======
+Using 20 processors ...
+
+---------------- iteration = 52 -------------
+Number of receivers with donors identified: 25038
+{'hlr': 25038}
+===== iter1=54 ======
+Using 20 processors ...
+
+---------------- iteration = 53 -------------
+Number of receivers with donors identified: 26102
+{'hlr': 26102}
+===== iter1=55 ======
+Using 20 processors ...
+
+---------------- iteration = 54 -------------
+Number of receivers with donors identified: 26798
+{'hlr': 26798}
+===== iter1=56 ======
+Using 20 processors ...
+
+---------------- iteration = 55 -------------
+Number of receivers with donors identified: 27466
+{'hlr': 27466}
+===== iter1=57 ======
+Using 20 processors ...
+
+---------------- iteration = 56 -------------
+Number of receivers with donors identified: 28152
+{'hlr': 28152}
+===== iter1=58 ======
+Using 17 processors ...
+
+---------------- iteration = 57 -------------
+Number of receivers with donors identified: 28541
+{'hlr': 28541}
+===== iter1=59 ======
+Using 20 processors ...
+
+---------------- iteration = 58 -------------
+Number of receivers with donors identified: 29290
+{'hlr': 29290}
+===== iter1=60 ======
+Using 11 processors ...
+
+---------------- iteration = 59 -------------
+Number of receivers with donors identified: 29702
+{'hlr': 29702}
+===== iter1=61 ======
+Using 3 processors ...
+
+---------------- iteration = 60 -------------
+Number of receivers with donors identified: 29712
+{'hlr': 29712}
+===== iter1=62 ======
+Using 3 processors ...
+
+---------------- iteration = 61 -------------
+Number of receivers with donors identified: 29760
+{'hlr': 29760}
+
+------------------------hlr attributes,  Round 2--------------------
+Excluding 1 attributes: sand_frac
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8390917968256657
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 10 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 170
+{'hlr': 170}
+===== iter1=3 ======
+Using 11 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 190
+{'hlr': 190}
+===== iter1=4 ======
+Using 12 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 200
+{'hlr': 200}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 356
+{'hlr': 356}
+===== iter1=6 ======
+Using 16 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 443
+{'hlr': 443}
+===== iter1=7 ======
+Using 9 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 453
+{'hlr': 453}
+===== iter1=8 ======
+Using 9 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 480
+{'hlr': 480}
+===== iter1=9 ======
+Using 6 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 497
+{'hlr': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 58
+{'hlr': 58}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 91
+{'hlr': 91}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 118
+{'hlr': 118}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 174
+{'hlr': 174}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 212
+{'hlr': 212}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 239
+{'hlr': 239}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 288
+{'hlr': 288}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 314
+{'hlr': 314}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 336
+{'hlr': 336}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 391
+{'hlr': 391}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 423
+{'hlr': 423}
+===== iter1=13 ======
+Using 20 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 445
+{'hlr': 445}
+===== iter1=14 ======
+Using 20 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 462
+{'hlr': 462}
+===== iter1=15 ======
+Using 20 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 480
+{'hlr': 480}
+===== iter1=16 ======
+Using 20 processors ...
+
+---------------- iteration = 15 -------------
+Number of receivers with donors identified: 518
+{'hlr': 518}
+===== iter1=17 ======
+Using 20 processors ...
+
+---------------- iteration = 16 -------------
+Number of receivers with donors identified: 545
+{'hlr': 545}
+===== iter1=18 ======
+Using 20 processors ...
+
+---------------- iteration = 17 -------------
+Number of receivers with donors identified: 585
+{'hlr': 585}
+===== iter1=19 ======
+Using 20 processors ...
+
+---------------- iteration = 18 -------------
+Number of receivers with donors identified: 633
+{'hlr': 633}
+===== iter1=20 ======
+Using 20 processors ...
+
+---------------- iteration = 19 -------------
+Number of receivers with donors identified: 689
+{'hlr': 689}
+===== iter1=21 ======
+Using 20 processors ...
+
+---------------- iteration = 20 -------------
+Number of receivers with donors identified: 731
+{'hlr': 731}
+===== iter1=22 ======
+Using 20 processors ...
+
+---------------- iteration = 21 -------------
+Number of receivers with donors identified: 759
+{'hlr': 759}
+===== iter1=23 ======
+Using 17 processors ...
+
+---------------- iteration = 22 -------------
+Number of receivers with donors identified: 787
+{'hlr': 787}
+===== iter1=24 ======
+Using 11 processors ...
+
+---------------- iteration = 23 -------------
+Number of receivers with donors identified: 806
+{'hlr': 806}
+===== iter1=25 ======
+Using 1 processors ...
+
+Algorithm converged without donors identified for 2 receivers ... use proximity for these receivers
+
+------------------------hlr attributes,  Round 3--------------------
+Excluding 1 attributes: geo_permeability
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8469856129692905
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 3 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 32
+{'hlr': 32}
+===== iter1=3 ======
+Using 5 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 38
+{'hlr': 38}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 78
+{'hlr': 78}
+===== iter1=5 ======
+Using 8 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 93
+{'hlr': 93}
+===== iter1=6 ======
+Using 8 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 100
+{'hlr': 100}
+===== iter1=7 ======
+Using 11 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 113
+{'hlr': 113}
+===== iter1=8 ======
+Using 10 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 118
+{'hlr': 118}
+===== iter1=9 ======
+Using 12 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 131
+{'hlr': 131}
+===== iter1=10 ======
+Using 6 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 135
+{'hlr': 135}
+===== iter1=11 ======
+Using 4 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 138
+{'hlr': 138}
+===== iter1=12 ======
+Using 2 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 138
+{'hlr': 138}
+===== iter1=13 ======
+Using 4 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 141
+{'hlr': 141}
+===== iter1=14 ======
+Using 1 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 143
+{'hlr': 143}
+
+======= 0 snowy basins ========
+
+------------------------hlr attributes,  Round 4--------------------
+Excluding 2 attributes: sand_frac,geo_permeability
+Number of PCs selected: 2
+PCA total portion of variance explained ... 0.8064908655414407
+
+======= 90 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 4 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 36
+{'hlr': 36}
+===== iter1=3 ======
+Using 5 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 64
+{'hlr': 64}
+===== iter1=4 ======
+Using 4 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 64
+{'hlr': 64}
+===== iter1=5 ======
+Using 6 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 65
+{'hlr': 65}
+===== iter1=6 ======
+Using 9 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 74
+{'hlr': 74}
+===== iter1=7 ======
+Using 5 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 81
+{'hlr': 81}
+===== iter1=8 ======
+Using 3 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 83
+{'hlr': 83}
+===== iter1=9 ======
+Using 2 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 88
+{'hlr': 88}
+===== iter1=10 ======
+Using 2 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 90
+{'hlr': 90}
+
+======= 0 snowy basins ========
+
+Total processing time for (hdbscan, hlr): --- 6478.752779245377 seconds ---
+
+======== Identify donors for: birch  camels =============
+
+perform clustering using birch approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------camels attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 6
+PCA total portion of variance explained ... 0.8196275131362075
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 7023
+{'camels': 7023}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 14951
+{'camels': 14951}
+===== iter1=4 ======
+Using 20 processors ...
+/home/***REMOVED***/data-science/ds_venv/lib64/python3.8/site-packages/joblib/externals/loky/process_executor.py:688: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 18351
+{'camels': 18351}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 23288
+{'camels': 23288}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 27961
+{'camels': 27961}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 32099
+{'camels': 32099}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 34090
+{'camels': 34090}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 35758
+{'camels': 35758}
+===== iter1=10 ======
+Using 16 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 37490
+{'camels': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 328
+{'camels': 328}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 3942
+{'camels': 3942}
+===== iter1=4 ======
+Using 20 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 7544
+{'camels': 7544}
+===== iter1=5 ======
+Using 20 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 12489
+{'camels': 12489}
+===== iter1=6 ======
+Using 20 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 15480
+{'camels': 15480}
+===== iter1=7 ======
+Using 20 processors ...
+
+---------------- iteration = 6 -------------
+Number of receivers with donors identified: 17602
+{'camels': 17602}
+===== iter1=8 ======
+Using 20 processors ...
+
+---------------- iteration = 7 -------------
+Number of receivers with donors identified: 18518
+{'camels': 18518}
+===== iter1=9 ======
+Using 20 processors ...
+
+---------------- iteration = 8 -------------
+Number of receivers with donors identified: 20769
+{'camels': 20769}
+===== iter1=10 ======
+Using 20 processors ...
+
+---------------- iteration = 9 -------------
+Number of receivers with donors identified: 25063
+{'camels': 25063}
+===== iter1=11 ======
+Using 20 processors ...
+
+---------------- iteration = 10 -------------
+Number of receivers with donors identified: 27096
+{'camels': 27096}
+===== iter1=12 ======
+Using 20 processors ...
+
+---------------- iteration = 11 -------------
+Number of receivers with donors identified: 28646
+{'camels': 28646}
+===== iter1=13 ======
+Using 19 processors ...
+
+---------------- iteration = 12 -------------
+Number of receivers with donors identified: 29230
+{'camels': 29230}
+===== iter1=14 ======
+Using 13 processors ...
+
+---------------- iteration = 13 -------------
+Number of receivers with donors identified: 29646
+{'camels': 29646}
+===== iter1=15 ======
+Using 4 processors ...
+
+---------------- iteration = 14 -------------
+Number of receivers with donors identified: 29760
+{'camels': 29760}
+
+------------------------camels attributes,  Round 2--------------------
+Excluding 5 attributes: sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8439597681869782
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 14 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 248
+{'camels': 248}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 401
+{'camels': 401}
+===== iter1=4 ======
+Using 13 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 471
+{'camels': 471}
+===== iter1=5 ======
+Using 2 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 497
+{'camels': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 353
+{'camels': 353}
+===== iter1=3 ======
+Using 20 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 626
+{'camels': 626}
+===== iter1=4 ======
+Using 18 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 745
+{'camels': 745}
+===== iter1=5 ======
+Using 9 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 808
+{'camels': 808}
+
+------------------------camels attributes,  Round 3--------------------
+Excluding 2 attributes: geo_porosity,geo_permeability
+Number of PCs selected: 5
+PCA total portion of variance explained ... 0.8237620777544364
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 7 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 95
+{'camels': 95}
+===== iter1=3 ======
+Using 8 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 115
+{'camels': 115}
+===== iter1=4 ======
+Using 7 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 134
+{'camels': 134}
+===== iter1=5 ======
+Using 4 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 142
+{'camels': 142}
+===== iter1=6 ======
+Using 1 processors ...
+
+---------------- iteration = 5 -------------
+Number of receivers with donors identified: 143
+{'camels': 143}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 4--------------------
+Excluding 6 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.819911060938979
+
+======= 32 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 4 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 15
+{'camels': 15}
+===== iter1=3 ======
+Using 3 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 16
+{'camels': 16}
+===== iter1=4 ======
+Using 2 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 32
+{'camels': 32}
+
+======= 0 snowy basins ========
+
+------------------------camels attributes,  Round 5--------------------
+Excluding 7 attributes: geo_porosity,geo_permeability,sand_frac,clay_frac,soil_porosity,soil_conductivity,soil_depth
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8008580423427237
+
+======= 58 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 4 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 8
+{'camels': 8}
+===== iter1=3 ======
+Using 4 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 58
+{'camels': 58}
+
+======= 0 snowy basins ========
+
+Total processing time for (birch, camels): --- 4361.613610267639 seconds ---
+
+======== Identify donors for: birch  hlr =============
+
+perform clustering using birch approach ...
+
+ Total number of receivers to be paired with donors: 68788
+
+------------------------hlr attributes,  Round 1--------------------
+Using all attributes
+Number of PCs selected: 4
+PCA total portion of variance explained ... 0.8687072833399309
+
+======= 37490 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 13 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 4560
+{'hlr': 4560}
+===== iter1=3 ======
+Using 10 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 27523
+{'hlr': 27523}
+===== iter1=4 ======
+Using 6 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 36691
+{'hlr': 36691}
+===== iter1=5 ======
+Using 2 processors ...
+
+---------------- iteration = 4 -------------
+Number of receivers with donors identified: 37490
+{'hlr': 37490}
+
+======= 29760 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 20 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 25488
+{'hlr': 25488}
+===== iter1=3 ======
+Using 12 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 29707
+{'hlr': 29707}
+===== iter1=4 ======
+Using 2 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 29760
+{'hlr': 29760}
+
+------------------------hlr attributes,  Round 2--------------------
+Excluding 1 attributes: sand_frac
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8390917968256657
+
+======= 497 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 10 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 453
+{'hlr': 453}
+===== iter1=3 ======
+Using 2 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 497
+{'hlr': 497}
+
+======= 808 snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 7 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 556
+{'hlr': 556}
+===== iter1=3 ======
+Using 6 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 594
+{'hlr': 594}
+===== iter1=4 ======
+Using 4 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 808
+{'hlr': 808}
+
+------------------------hlr attributes,  Round 3--------------------
+Excluding 1 attributes: geo_permeability
+Number of PCs selected: 3
+PCA total portion of variance explained ... 0.8469856129692905
+
+======= 143 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 8 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 122
+{'hlr': 122}
+===== iter1=3 ======
+Using 2 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 123
+{'hlr': 123}
+===== iter1=4 ======
+Using 2 processors ...
+
+---------------- iteration = 3 -------------
+Number of receivers with donors identified: 143
+{'hlr': 143}
+
+======= 0 snowy basins ========
+
+------------------------hlr attributes,  Round 4--------------------
+Excluding 2 attributes: sand_frac,geo_permeability
+Number of PCs selected: 2
+PCA total portion of variance explained ... 0.8064908655414407
+
+======= 90 non-snowy basins ========
+===== iter1=1 ======
+Using 1 processors ...
+===== iter1=2 ======
+Using 5 processors ...
+
+---------------- iteration = 1 -------------
+Number of receivers with donors identified: 66
+{'hlr': 66}
+===== iter1=3 ======
+Using 2 processors ...
+
+---------------- iteration = 2 -------------
+Number of receivers with donors identified: 90
+{'hlr': 90}
+
+======= 0 snowy basins ========
+
+Total processing time for (birch, hlr): --- 3717.3779106140137 seconds ---

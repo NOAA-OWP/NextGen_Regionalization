@@ -10,8 +10,8 @@ library(ncdf4)
 library(raster)
 source("correct_geojson.R")
 
-vers <- "2.0pre"
-hucs <- c("12")
+vers <- "2.0"
+hucs <- c("01")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
@@ -137,9 +137,12 @@ for (c1 in pars) {
 
 # compare land cover fractions between NWM and NLCD
 huc <- merge(huc, attrs, by="id", all=TRUE)
+huc <- merge(huc, attrs, by="id", all=TRUE)
 for (str1 in strs) {
   message(str1)
-  png(filename = paste0("figs/attr_",str1,"_huc",h1,"_v",ver1,".png"),width = 12,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",str1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 12,height=5,units="in",res=300)
   huc[[paste0(str1,"_diff")]] <- abs(huc[[paste0(str1,"_nlcd")]] - huc[[paste0(str1,"_nwm")]])
   print(plot(huc[c("nlcd_coverage",paste0(str1,c("_nlcd","_nwm","_diff")))], border=NA, key.pos=1))
   dev.off() 
@@ -149,7 +152,9 @@ for (str1 in strs) {
 pars <- c("gvf_max", "gvf_diff","lai_max","lai_diff")
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_v",ver1,".png"),width = 5,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",c1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }

@@ -6,20 +6,20 @@ library(data.table)
 
 rm(list=ls())
 
-ver1 <- "2.0pre" #hydrofabric version
-huc1 <- "12"
+ver1 <- "2.0" #hydrofabric version
+h1 <- "01"
 
 # hourly data for all forcing variables in individual csv files
-files <- list.files(paste0("../../datasets/AORC_hydrofabric_v",ver1,"/huc",huc1),full.names=TRUE)
+files <- list.files(paste0("../../datasets/AORC_hydrofabric_v",ver1,"/huc",h1),full.names=TRUE)
 
 # hours expected
 date1 <- "20121001"; date2 <- "20210831"
-h1 <- as.POSIXct(date1,format="%Y%m%d")
-h2 <- as.POSIXct(paste0(date2,"23"),format="%Y%m%d%H")
-hours <- data.table(Time=seq(h1,h2,by="hour"))
+hr1 <- as.POSIXct(date1,format="%Y%m%d")
+hr2 <- as.POSIXct(paste0(date2,"23"),format="%Y%m%d%H")
+hours <- data.table(Time=seq(hr1,hr2,by="hour"))
 
 attrs <- data.table()
-outfile <- paste0("../output_attr/clim_attr_huc",huc1,"_v",ver1,".Rdata")
+outfile <- paste0("../output_attr/clim_attr_huc",h1,"_v",ver1,".Rdata")
 if (file.exists(outfile))   load(outfile)
 
 for (f1 in files) {
@@ -106,8 +106,8 @@ for (c1 in pars) {
   message(c1)
   print(summary(attrs[[c1]]))
 }
-#huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",huc1,"/catchment_data.geojson"))
-huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",huc1,".gpkg"),"divides")
+#huc <- st_read(paste0("../../datasets/gpkg_v",ver1,"/huc",h1,"/catchment_data.geojson"))
+huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",h1,".gpkg"),"divides")
 huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
 huc <- merge(huc, attrs, by="id", all=TRUE)
@@ -118,7 +118,9 @@ huc <- merge(huc, attrs, by="id", all=TRUE)
 # plot the attributes separately with legend
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",huc1,"_",ver1,".png"),width = 5,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",c1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }

@@ -1,0 +1,11 @@
+Notes about streamflow signatures:
+
+1. The following scripts related streamflow signature calculations were copied directly from NWMv3 regionalization
+and can be adapted easily for use in NextGen regionalization
+
+download_qme_usgs.R
+process_gage_record.R
+derive_streamflow_signatures.R
+plot_streamflow_signatures.R
+
+2. The script derive_streamflow_signatures.R uses a few functions from "../func", also directly copied from NWMv3 regionalization

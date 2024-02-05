@@ -1,10 +1,10 @@
 ####### NextGen regionalization scenario configuration
 
 ### huc region:
-huc: "01"
+huc: "12"
 
 ### hydrfabric version (must be the same for receivers and donors)
-ver: "2.0"
+ver: "2.0pre"
 
 ### attribute scenarios to run
 scenarios:
@@ -15,7 +15,6 @@ scenarios:
 
 ### algorithms to run
 algorithms:
-  proximity: TRUE
   gower: TRUE
   urf: TRUE
   kmeans: TRUE
@@ -27,8 +26,6 @@ algorithms:
 njobs: 20
 
 ### attributes for different scenarios
-# Note 1) if "proximity" is chosen as the algorithm, attribute scenario is ignored, as donors are solely chosen based on spatial distance
-# Note 2) the "base" attributes are used as a supplementary scenario when the choosen scenario (e.g., hlr, camles, nwmv21, all) fails to identify a suitable donor 
 attrs:
   base: [elev_mean, aridity, forest_frac, sand_frac, geo_porosity]
   hlr: [prcFlatLowland, prcFlatUpland, prcFlatTotal, relief, aridity, sand_frac, geo_permeability]  
@@ -49,8 +46,8 @@ inputs:
   file_attrs_data: ../output_attr/all_attrs_huc{huc}_v{ver}.csv
   
   # file containing list of donor basins (USGS gage ID)
-  file_donor_list: ../data/donor_gages_huc{huc}_screened.csv
-  #file_donor_list: ../data/donor_gages_nwmv30.csv
+  #file_donor_list: ../data/donor_gages_huc{huc}_screened.csv
+  file_donor_list: ../data/donor_gages_nwmv30.csv
   
   # crosswalk table linking donor gage ID to catchment IDs
   file_crosswalk: ../data/crosswalk_gage_cat_huc{huc}_v{ver}.csv

@@ -14,8 +14,8 @@ soil_raster <- FALSE #if soil property rasters already exist
 # attributes to compute
 pars <- c("soil_depth","soil_porosity","soil_conductivity","sand_frac","silt_frac","clay_frac","organic_frac","water_frac","other_frac")
 
-vers <- "2.0pre"
-hucs <- c("12")
+vers <- "2.0"
+hucs <- c("01")
 for (ver1 in vers)  {
 for (h1 in hucs) {
 
@@ -26,13 +26,15 @@ message(paste0("read geojson v", ver1," huc",h1))
 #huc <- correct_geojson(h1, huc)
 
 # v2.0 pre-release
-huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_",h1,".gpkg"),"divides")
+huc <- read_sf(paste0("../../datasets/gpkg_v",ver1,"/nextgen_huc",h1,".gpkg"),"divides")
 huc$id <- NULL
 names(huc)[names(huc)=="divide_id"] <- "id"
 
 attrs <- data.table(id=huc$id)
 fout <- paste0("../output_attr/soil_attr_huc",h1,"_v",ver1,"_statsgo.Rdata")
 if (file.exists(fout)) attrs <- get(load(fout))
+
+stop()
 
 # if soil property rasters do not already exist, rasterize the shapefile first
 # tried computing zonal statistics directly from vector layer (i.e., without coverting to raster first) 
@@ -162,12 +164,14 @@ for (c1 in pars) {
 
 # plot the attributes (multiple panels, no legend)
 huc <- merge(huc,attrs, by="id",all=TRUE)
-plot(huc[pars],border=NA)
+#plot(huc[pars],border=NA)
 
 # plot the attributes separately with legend
 for (c1 in pars) {
   message(c1)
-  png(filename = paste0("figs/attr_",c1,"_huc",h1,"_v",ver1,".png"),width = 5,height=5,units="in",res=300)
+  f1 <- paste0("../figs/attrs/huc",h1,"_v",ver1,"/attr_",c1,"_huc",h1,"_v",ver1,".png")
+  if (!dir.exists(dirname(f1))) dir.create(dirname(f1))
+  png(filename = f1,width = 5,height=5,units="in",res=300)
   print(plot(huc[c1], border=NA, key.pos=1))
   dev.off()
 }
