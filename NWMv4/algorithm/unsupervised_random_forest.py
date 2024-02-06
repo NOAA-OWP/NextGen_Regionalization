@@ -1,4 +1,15 @@
 
+
+"""
+For an unsupervised random forest, the set up is as follows:
+
+1) A joint distribution of the explanatory variables is constructed and draws are taken from this distribution to create synthetic data. In most cases the same number of draws as in the real data set will be taken.
+2) The real and synthetic data are combined. A label is then created, say 1 for the real data and 0 for the synthetic data.
+3) The random forest model then works in the same way, building a set of weak learners and determining whether or not observation i is real or synthetic.
+
+The key output is a similarity/dissimilarity matrix, which will be used by the regionalization algorithm to assign donors to receivers.
+
+"""
 from sklearn.ensemble import RandomForestClassifier
 import numpy
 from joblib import Parallel, delayed
