@@ -3,11 +3,10 @@
 **Description**: NextGen regionalization is adapted from the NWMv3.0 regionalization framework, which uses a physical similarity-based approach to transfer model formulations and parameters from calibrated basins (donors) to uncalibrated areas (receivers). Currently, the framework considers two different sets of basin attributes to represent physical similarity: Hydrologic Landscape Regions (HLR, Winter 2001 and Wolock et al. 2004 ) and Catchment Attributes and Meteorology for Large-sample Studies (CAMELS, Addor et al. 2017). 
 
 **List of documents & presentations**
-
-    - [Documentation for NextGen Regionalization](https://docs.google.com/document/d/1ZmeANwzd9xMEP0M1WOGOc6ZPnJyBB-nW3m2jwdIvkU0/edit?usp=sharing)
-    - [AMS 2024 presentation slides](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true)
-    - [AGU 2022 presentation slides](https://docs.google.com/presentation/d/1XSBxOIiGiAvA5EOr6h3_moN72ek1lrvS/edit?usp=drive_link&ouid=117267696082803250432&rtpof=true&sd=true)
-    - [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
+- [Documentation for NextGen Regionalization](https://docs.google.com/document/d/1ZmeANwzd9xMEP0M1WOGOc6ZPnJyBB-nW3m2jwdIvkU0/edit?usp=sharing)
+- [AMS 2024 presentation slides](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true)
+- [AGU 2022 presentation slides](https://docs.google.com/presentation/d/1XSBxOIiGiAvA5EOr6h3_moN72ek1lrvS/edit?usp=drive_link&ouid=117267696082803250432&rtpof=true&sd=true)
+- [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
 
     
 **Notes about the scripts in subfolders**
