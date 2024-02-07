@@ -4,19 +4,18 @@
 
 A few notes:
 
-  - **./scripts**: scripts related to computing catchment attributes and generating donor-receiver pairings 
-  - **./fihm/scripts**: scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM MVP
-  - **./agu2022**: scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU 2022 MVP
-  - **./NWMv4**: Scripts and datasets related to transforming NextGen regionalization into a new framework towards the operational NWMv4, with the regionalization algorithms coded in Python and the calculation of catchment attributes still coded in R. 
+  - **./NWMv4**: latest developments related to transforming NextGen regionalization into a new framework towards the operational NWMv4, with the regionalization algorithms coded in Python and the calculation of catchment attributes still coded in R. 
   - [Documentation for NextGen Regionalization](https://docs.google.com/document/d/1ZmeANwzd9xMEP0M1WOGOc6ZPnJyBB-nW3m2jwdIvkU0/edit?usp=sharing)
   - [AMS 2024 presentation slides](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true)
   - [AGU 2022 presentation slides](https://docs.google.com/presentation/d/1XSBxOIiGiAvA5EOr6h3_moN72ek1lrvS/edit?usp=drive_link&ouid=117267696082803250432&rtpof=true&sd=true)
   - [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
+  - **./scripts**: earlier scripts related to computing catchment attributes and generating donor-receiver pairings 
+  - **./fihm/scripts**: earlier scripts related to generating ngen realization files and processing/analyzing the outputs for the FIHM MVP
+  - **./agu2022**: earlier scripts related to deriving the attributes, conducting donor-receier pairing in HUC-01, generating realization files for various scenarios, and evaluating/visualizing the results for the AGU 2022 MVP
 
- 
-![workflow](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen regionalization workflow.png)
+![workflow](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen_regionalization_workflow.png)
 
-![algorithms](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen regionalization algorithms.png)
+![algorithms](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/doc/NextGen_regionalization_algorithms.png)
 
 ## Dependencies
 
