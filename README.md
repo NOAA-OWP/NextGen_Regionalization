@@ -7,7 +7,6 @@
 doc/Summary_NextGen_Regionalization_Feb2024.pdf)
 - [AMS 2024 presentation slides](https://github.com/NOAA-OWP/OWP-Presentations/blob/33b411be176994a9687ffa02e255d55dbcd8786e/AMS/AMS%202024/Oral%20Presentations/Liu_AMS%202024.pdf)
 - [AGU 2022 presentation slides](https://github.com/NOAA-OWP/OWP-Presentations/blob/33b411be176994a9687ffa02e255d55dbcd8786e/AGU/AGU%202022/Oral%20Presentations/Liu_AGU_2022.pdf)
-- [AGU 2022 presentation video](https://drive.google.com/file/d/1MDRVlVToZYJaFhu6vtjWuzcPI5AklK3m/view?usp=share_link)
 
     
 **Notes about the scripts in subfolders**
