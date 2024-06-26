@@ -30,6 +30,12 @@ The scripts use the following Python libraries:
   * `hdbscan`
   * `numba` 
 
+## Build and Run Instructions
+Detailed instructions on how to install and run the NextGen_Regionalization workflow can be found in the [INSTALL](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/INSTALL.md) guide.
+ - Test example highlights
+   - Clone the NextGen_Regionalization repo
+   - Replicate the donor/receiver pairing results from AMS 2024 for HUC 12 (Texas-Gulf Region) (see [the presentation slides](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true))
+   
 ## Credits and references
 
 **Acknowlegement**: The NextGen regionalization framework was adapted from the NWM v3 regionalization work and has benefited from discussions and help from the NWM calibration team, as well as the valuable feedback from the RFCs.
