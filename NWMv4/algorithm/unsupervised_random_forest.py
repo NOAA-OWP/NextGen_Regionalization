@@ -17,7 +17,7 @@ from numba import njit
 import synthetic_data
 
 class urf(object):
-    def __init__(self, n_trees = 100, synthetic_data_type = None, max_features='auto', max_depth=None):
+    def __init__(self, n_trees = 100, synthetic_data_type = None, max_features='sqrt', max_depth=None):
 
         self.n_trees = n_trees
         self.synthetic_data_type = synthetic_data_type
