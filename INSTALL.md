@@ -29,9 +29,9 @@ cd NWMv4/ams2024
 
 4. Explore the output 
 The outputs contain the following columns:
--`id`: receiver catchment ID	
--`tag`: regionalization method	
--`donor`: selected donor catchment from regionalization	
--`distSpatial`:	spatial distance between donor and receiver pair (km)
--`donors`: top 3 potential donor catchments	
--`distSpatials`: spatial distnaces between the top 3 potential donor catchments and the receiver catchment (km)
+* `id`: receiver catchment ID	
+* `tag`: regionalization method	
+* `donor`: selected donor catchment from regionalization	
+* `distSpatial`:	spatial distance between donor and receiver pair (km)
+* `donors`: top 3 potential donor catchments	
+* `distSpatials`: spatial distnaces between the top 3 potential donor catchments and the receiver catchment (km)
