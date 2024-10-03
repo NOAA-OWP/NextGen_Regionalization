@@ -1,3 +1,37 @@
 # Installation instructions
 
-Detailed instructions on how to install, configure, and get the project running.
+Detailed instructions on how to clone and run NextGen_Regionalization are provided below. The workflow requires the following Python libraries:
+  * `yaml` (`pip install pyyaml`)
+  * `scikit-learn` 
+  * `scikit-learn-extra`
+  * `matplotlib`
+  * `geopandas` 
+  * `hdbscan`
+  * `numba` 
+
+## Clone the repository
+```
+git clone https://github.com/NOAA-OWP/NextGen_Regionalization
+cd NextGen_Regionalization
+```
+
+## Run the Example Regionalization Workflow ([presented at AMS 2024](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true))
+0. Activate the virtual python environment with all dependencies installed
+
+1. Go to the example directory
+```
+cd NWMv4/ams2024 
+```
+
+2. Download the [hydrofabric data](https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/) for [HUC 12](https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/nextgen_12.gpkg) (Texas-Gulf Region) to `NextGen_Regionalization/NWMv4/data/nextgen_12.gpkg`
+
+3. `python main_identify_donors.py`
+
+4. Explore the output 
+The outputs contain the following columns:
+* `id`: receiver catchment ID	
+* `tag`: regionalization method	
+* `donor`: selected donor catchment from regionalization	
+* `distSpatial`:	spatial distance between donor and receiver pair (km)
+* `donors`: top 3 potential donor catchments	
+* `distSpatials`: spatial distnaces between the top 3 potential donor catchments and the receiver catchment (km)
