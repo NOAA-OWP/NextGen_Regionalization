@@ -41,7 +41,7 @@ attrs:
 inputs:
   
   # path to hydrofabric file (download at https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/)
-  file_hydrofab: ../datasets/nextgen_{huc}.gpkg
+  file_hydrofab: ../data/nextgen_{huc}.gpkg
 
   # file for attribute data for all catchments (donors & receivers)
   file_attrs_data: ../attr_calc/output/all_attrs_huc{huc}_v{ver}.csv

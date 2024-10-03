@@ -23,7 +23,7 @@ cd NextGen_Regionalization
 cd NWMv4/ams2024 
 ```
 
-2. Download the [hydrofabric data](https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/) for HUC 12 (Texas-Gulf Region) to `NextGen_Regionalization/NWMv4/datasets/nextgen_12.gpkg`
+2. Download the [hydrofabric data](https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/) for [HUC 12](https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/nextgen_12.gpkg) (Texas-Gulf Region) to `NextGen_Regionalization/NWMv4/data/nextgen_12.gpkg`
 
 3. `python main_identify_donors.py`
 
