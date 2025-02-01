@@ -21,6 +21,7 @@ algorithms:
   kmedoids: TRUE
   hdbscan: TRUE
   birch: TRUE
+  proximity: TRUE
 
 ### number of parallel jobs to run
 njobs: 20
@@ -39,11 +40,11 @@ attrs:
 ### inputs
 inputs:
   
-  # path to hydrofabric file
-  file_hydrofab: ../../datasets/gpkg_v{ver}/nextgen_huc{huc}.gpkg
+  # path to hydrofabric file (download at https://www.lynker-spatial.com/#hydrofabric/v20.1/gpkg/)
+  file_hydrofab: ../data/nextgen_{huc}.gpkg
 
   # file for attribute data for all catchments (donors & receivers)
-  file_attrs_data: ../output_attr/all_attrs_huc{huc}_v{ver}.csv
+  file_attrs_data: ../attr_calc/output/all_attrs_huc{huc}_v{ver}.csv
   
   # file containing list of donor basins (USGS gage ID)
   #file_donor_list: ../data/donor_gages_huc{huc}_screened.csv
