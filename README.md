@@ -1,4 +1,4 @@
-# Parameter/Fomulation Regionalization for NextGen
+# Parameter/Formulation Regionalization for NextGen
 
 **Description**: NextGen regionalization is adapted from the NWMv3.0 regionalization framework, which uses a physical similarity-based approach to transfer model formulations and parameters from calibrated basins (donors) to uncalibrated areas (receivers). Currently, the framework considers two different sets of basin attributes to represent physical similarity: Hydrologic Landscape Regions (HLR, Winter 2001 and Wolock et al. 2004 ) and Catchment Attributes and Meteorology for Large-sample Studies (CAMELS, Addor et al. 2017). 
 
@@ -21,8 +21,21 @@
 
 ## Dependencies
 
-The scripts use the python libary [scikit-learn](https://scikit-learn.org/stable/modules/clustering.html) as well as R libraries including the zonal package in the [hydrofabric](https://github.com/NOAA-OWP/hydrofabric) tools 
+The scripts use the following Python libraries:
+  * `yaml`
+  * `scikit-learn`  
+  * `scikit-learn-extra`
+  * `matplotlib`
+  * `geopandas` 
+  * `hdbscan`
+  * `numba` 
 
+## Build and Run Instructions
+Detailed instructions on how to install and run the NextGen_Regionalization workflow can be found in the [INSTALL](https://github.com/NOAA-OWP/NextGen_Regionalization/blob/master/INSTALL.md) guide.
+ - Test example highlights
+   - Clone the NextGen_Regionalization repo
+   - Replicate the donor/receiver pairing results from AMS 2024 for HUC 12 (Texas-Gulf Region) (see [the presentation slides](https://docs.google.com/presentation/d/1xkYs-Hs3_cmIheLZ1Di7Dy3vWaiL3jmx/edit?usp=sharing&ouid=117267696082803250432&rtpof=true&sd=true))
+   
 ## Credits and references
 
 **Acknowlegement**: The NextGen regionalization framework was adapted from the NWM v3 regionalization work and has benefited from discussions and help from the NWM calibration team, as well as the valuable feedback from the RFCs.
